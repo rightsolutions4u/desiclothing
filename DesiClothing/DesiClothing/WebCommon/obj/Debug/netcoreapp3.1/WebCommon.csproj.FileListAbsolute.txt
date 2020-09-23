@@ -1,0 +1,12 @@
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\bin\Debug\netcoreapp3.1\WebCommon.deps.json
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\bin\Debug\netcoreapp3.1\WebCommon.dll
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\obj\Debug\netcoreapp3.1\WebCommon.csprojAssemblyReference.cache
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\obj\Debug\netcoreapp3.1\WebCommon.AssemblyInfoInputs.cache
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\obj\Debug\netcoreapp3.1\WebCommon.AssemblyInfo.cs
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\bin\Debug\netcoreapp3.1\WebCommon.runtimeconfig.json
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\bin\Debug\netcoreapp3.1\WebCommon.runtimeconfig.dev.json
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\obj\Debug\netcoreapp3.1\WebCommon.genruntimeconfig.cache
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\bin\Debug\netcoreapp3.1\WebCommon.pdb
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\obj\Debug\netcoreapp3.1\WebCommon.csproj.CoreCompileInputs.cache
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\obj\Debug\netcoreapp3.1\WebCommon.dll
+F:\Mars\FreelanceWork\Danish USA\DesiClothing\DesiClothing\WebCommon\obj\Debug\netcoreapp3.1\WebCommon.pdb
