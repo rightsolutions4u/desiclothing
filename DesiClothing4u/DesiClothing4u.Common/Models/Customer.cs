@@ -5,7 +5,7 @@ using DesiClothing4u.Common.Models;
 
 namespace DesiClothing4u.Common.Models
 {
-    [Serializable]
+    //[Serializable]
     public partial class Customer
     {
         public Customer()

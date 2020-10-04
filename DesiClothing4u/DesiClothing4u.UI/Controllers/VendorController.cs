@@ -1,55 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using DesiClothing4u.Common.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using DesiClothing4u.Common.Models;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace DesiClothing4u.UI.Controllers
 {
-    public class AccountController : Controller
+    public class VendorController : Controller
     {
-        // GET: Customer Registration
+        // GET: VendorController
         public ActionResult Index()
         {
-            return View("~/Views/Register.cshtml");
-        }
-
-        // GET: Vendor Registration
-        public ActionResult VendorRegister()
-        {
             return View("~/Views/VendorRegister.cshtml");
+            //return View("VendorView");
         }
 
-
-        // GET: AccountController/Details/5
+        // GET: VendorController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: AccountController/Create
+        // GET: VendorController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AccountController/Create
+        // POST: VendorController/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public async Task<ActionResult<Customer>> Create(IFormCollection collection)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult<Vendor>> Create(IFormCollection collection)
         {
             try
-
             {
                 Address address = new Address
                 {
-                    FirstName = collection["FirstName"],
-                    LastName = collection["LastName"],
+                    FirstName = collection["Name"],
+                    LastName = collection["Name"],
                     Address1 = collection["StreetAddress1"],
                     Address2 = collection["StreetAddress2"],
                     City = collection["city"],
@@ -69,63 +62,40 @@ namespace DesiClothing4u.UI.Controllers
                 //ViewBag.SiteUsers = a;
                 //PostAddress
 
-                Customer customer = new Customer
+                Vendor vendor = new Vendor
                 {
-                    Username = collection["Email"],
+                    Name = collection["name"],
                     Email = collection["Email"],
-                    EmailToRevalidate = "",
-                    SystemName = "",
-                    BillingAddressId = BillingAddress1.Id,
-                    ShippingAddressId = BillingAddress1.Id,
-                    AdminComment = "",
-                    IsTaxExempt = true,
-                    AffiliateId = 0,
-                    VendorId = 0,
-                    HasShoppingCartItems = false,
-                    RequireReLogin = false,
-                    FailedLoginAttempts = 0,
+                    AddressId = BillingAddress1.Id,
                     Active = true,
                     Deleted = false,
-                    IsSystemAccount = false,
-                    LastIpAddress = "",
-                    CreatedOnUtc = DateTime.UtcNow,
-                    RegisteredInStoreId = 1
+                    password = collection["password"]
+                    //,                    PictureId = PictureId1.Id
                 };
-                CustomerPassword customerPassword = new CustomerPassword();
-                customerPassword.Password = collection["password"];
-                customerPassword.CreatedOnUtc = DateTime.UtcNow;
-                customer.CustomerPasswords.Add(customerPassword);
-                CustomerAddress customerAddress = new CustomerAddress();
-                customerAddress.AddressId = BillingAddress1.Id;
-                customerAddress.CustomerId = customer.Id;
-                customer.CustomerAddresses.Add(customerAddress);
 
-
-
-                output = JsonConvert.SerializeObject(customer);
-                 data = new StringContent(output, Encoding.UTF8, "application/json");
-                url = "https://localhost:44356/api/Customers";
+                output = JsonConvert.SerializeObject(vendor);
+                data = new StringContent(output, Encoding.UTF8, "application/json");
+                url = "https://localhost:44356/api/Vendors";
                 client = new HttpClient();
                 response = await client.PostAsync(url, data);
-                var Customer = response.Content.ReadAsStringAsync().Result;
-                var a = JsonConvert.DeserializeObject<Customer>(Customer);
-                ViewBag.Customer = a;
-                return View("/home/index", a);
-                //return RedirectToAction(nameof(Index));
+                var Vendor = response.Content.ReadAsStringAsync().Result;
+                var a = JsonConvert.DeserializeObject<Vendor>(Vendor);
+                ViewBag.Vendor = a;
+                return View("VendorView", a);
             }
             catch
             {
-                return View("/home/index");
+                return View();
             }
         }
 
-        // GET: AccountController/Edit/5
+        // GET: VendorController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: AccountController/Edit/5
+        // POST: VendorController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -140,13 +110,13 @@ namespace DesiClothing4u.UI.Controllers
             }
         }
 
-        // GET: AccountController/Delete/5
+        // GET: VendorController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: AccountController/Delete/5
+        // POST: VendorController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

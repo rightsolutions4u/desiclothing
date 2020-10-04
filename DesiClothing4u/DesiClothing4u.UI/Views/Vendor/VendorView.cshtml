@@ -1,4 +1,10 @@
-﻿<!--
+﻿@model DesiClothing4u.Common.Models.Vendor
+
+@{
+    ViewData["Title"] = "Vendor Management";
+}
+
+<!--
     Author: W3layouts
     Author URL: http://w3layouts.com
     License: Creative Commons Attribution 3.0 Unported
@@ -133,6 +139,22 @@
 
                 </div>
                 <!-- open/close -->
+            </div>
+            <div class="row">
+                <div style="text-align: right;">
+                    @if (Model is DesiClothing4u.Common.Models.Vendor)
+                    {
+                        Html.RenderPartial("Vendorwelcome");
+                    }
+                    else if (Model is DesiClothing4u.Common.Models.Error)
+                    {
+                        Html.RenderPartial("Error");
+                    }
+                    else
+                    {
+
+                    }
+                </div>
             </div>
             <label class="top-log mx-auto"></label>
             <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
@@ -321,7 +343,7 @@
                             <a href="index.html">Home</a>
                             <i>|</i>
                         </li>
-                        <li>Contact Us</li>
+                        <li>Vendor</li>
                     </ul>
                 </div>
             </div>
@@ -333,87 +355,54 @@
     <!-- top Products -->
     <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
         <div class="container">
-            <h3 class="tittle-w3layouts text-center my-lg-4 my-4">Register</h3>
+            <h3 class="tittle-w3layouts text-center my-lg-4 my-4">Vendor Management</h3>
             <div class="inner_sec">
                 <!-- <p class="sub text-center mb-lg-5 mb-3">We love to discuss your idea</p> -->
 
-                <div class="contact_grid_right">
-                    <form action="Account/Create" method="post">
-                        <div class="row contact_left_grid ">
-                            <div class="col-md-6 con-left">
-                                <div class="form-group">
-                                    <label class="my-2">First Name</label>
-                                    <input class="form-control" type="text" name="FirstName" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label>Last Name</label>
-                                    <input class="form-control" type="text" name="LastName" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="my-2">Password</label>
-                                    <input class="form-control" type="password" name="password" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="my-2">Confirm Password</label>
-                                    <input class="form-control" type="password" name="password" placeholder="" required="">
-                                </div>
-                            </div>
-                            <div class="col-md-6 con-right">
-                                <div class="form-group">
-                                    <label class="my-2">Date of birth</label>
-                                    <input class="form-control" type="text" name="dateofbirth" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input class="form-control" type="email" name="Email" placeholder="" required="">
-                                </div>
-                                @*<div class="form-group">
-                                    <label class="my-2">Subject</label>
-                                    <input class="form-control" type="text" name="Subject" placeholder="" required="">
-                                </div>*@
-                            </div>
-                        </div>
-
-                        <div class="row contact_left_grid">
-                            <div class="col-md-6 con-left">
-                                <div class="form-group">
-                                    <label class="my-2">Street Address1</label>
-                                    <input class="form-control" type="text" name="StreetAddress1" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label>Street Address2</label>
-                                    <input class="form-control" type="text" name="Street Address2" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="my-2">Country</label>
-                                    <div class="select">
-                                        <select class="form-control" name="country" id="Country">
-                                            <option value="x">Select Country</option>
-                                            <option value="USA">USA</option>
-                                            <option value="Pakistan">Pakistan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 con-right">
-                                <div class="form-group">
-                                    <label class="my-2">City.</label>
-                                    <input class="form-control" type="text" name="city" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="my-2">Phone No.</label>
-                                    <input class="form-control" type="text" name="phoneno" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label>Zip Code</label>
-                                    <input class="form-control" type="text" name="ZipCode" placeholder="" required="">
-                                </div>
-                                <input class="form-control" type="submit" value="Submit">
-
-                            </div>
-
-                        </div>
-                    </form>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="javascript:;">Home</a></li>
+                                <li><a href="javascript:;">About</a></li>
+                                <li><a href="javascript:;">Products</a></li>
+                                <li><a href="javascript:;">FAQ</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-sm-2 col-sm-offset-8">
+                        <nav class="nav-sidebar pull-right">
+                            <ul class="nav">
+                                <li class="active"><a href="javascript:;">Home</a></li>
+                                <li><a href="javascript:;">A long link will naturally wrap around</a></li>
+                                <li class="text-overflow" title="An long link with .text-overflow"><a href="javascript:;">A link with .text-overflow can be applied in case it's too long!</a></li>
+                                <li>
+                                    <a href="javascript:;" class="media">
+                                        <span class="pull-left">
+                                            <i class="media-object glyphicon glyphicon-list"></i>
+                                        </span>
+                                        <div class="media-body">
+                                            A media object can also be a link, making longer wrapping links play well with the icons!
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-overflow" title="Combine them all to make an awesome, safe solution!">
+                                    <a href="javascript:;" class="media">
+                                        <span class="pull-left">
+                                            <i class="media-object glyphicon glyphicon-list"></i>
+                                        </span>
+                                        <div class="media-body">
+                                            Combine them all to make an awesome, safe solution!
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-divider"></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>

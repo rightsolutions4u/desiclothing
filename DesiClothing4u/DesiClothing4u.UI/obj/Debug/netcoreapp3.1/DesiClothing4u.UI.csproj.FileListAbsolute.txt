@@ -154,3 +154,7 @@ F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\bin\Debug\netc
 F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.dll
 F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.pdb
 F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\DesiClothing4u.UI.MvcApplicationPartsAssemblyInfo.cs
+F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Welcome.cshtml.g.cs
+F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\VendorRegister.cshtml.g.cs
+F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Vendorwelcome.cshtml.g.cs
+F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\VendorView.cshtml.g.cs
