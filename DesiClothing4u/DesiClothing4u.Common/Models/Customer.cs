@@ -12,9 +12,9 @@ namespace DesiClothing4u.Common.Models
         {
             //ActivityLogs = new HashSet<ActivityLog>();
             //BackInStockSubscriptions = new HashSet<BackInStockSubscription>();
-            CustomerAddresses = new HashSet<CustomerAddress>();
+            //CustomerAddresses = new HashSet<CustomerAddress>();
             //CustomerCustomerRoleMappings = new HashSet<CustomerCustomerRoleMapping>();
-            CustomerPasswords = new HashSet<CustomerPassword>();
+            //CustomerPasswords = new HashSet<CustomerPassword>();
             //ExternalAuthenticationRecords = new HashSet<ExternalAuthenticationRecord>();
             //Logs = new HashSet<Log>();
             //NewsComments = new HashSet<NewsComment>();
@@ -51,14 +51,15 @@ namespace DesiClothing4u.Common.Models
         public DateTime LastActivityDateUtc { get; set; }
         public int RegisteredInStoreId { get; set; }
         public string Apitoken { get; set; }
+        public string Password { get; set; }
 
         public virtual Address BillingAddress { get; set; }
         public virtual Address ShippingAddress { get; set; }
         //public virtual ICollection<ActivityLog> ActivityLogs { get; set; }
         //public virtual ICollection<BackInStockSubscription> BackInStockSubscriptions { get; set; }
-        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
+       // public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         //public virtual ICollection<CustomerCustomerRoleMapping> CustomerCustomerRoleMappings { get; set; }
-        public virtual ICollection<CustomerPassword> CustomerPasswords { get; set; }
+        //public virtual ICollection<CustomerPassword> CustomerPasswords { get; set; }
         //public virtual ICollection<ExternalAuthenticationRecord> ExternalAuthenticationRecords { get; set; }
         //public virtual ICollection<Log> Logs { get; set; }
         //public virtual ICollection<NewsComment> NewsComments { get; set; }

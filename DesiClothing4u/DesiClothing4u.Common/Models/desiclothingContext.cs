@@ -443,6 +443,10 @@ namespace DesiClothing4u.Common.Models
                     .HasMaxLength(500)
                     .IsUnicode(false)
                     .HasColumnName("APIToken");
+                entity.Property(e => e.Password)
+                   .HasMaxLength(256)
+                   .IsUnicode(false)
+                   .HasColumnName("Password");
 
                 entity.Property(e => e.BillingAddressId).HasColumnName("BillingAddress_Id");
 
@@ -484,10 +488,10 @@ namespace DesiClothing4u.Common.Models
                 //    .HasForeignKey(d => d.AddressId)
                 //    .HasConstraintName("FK_CustomerAddresses_Address_Id_Address_Id");
 
-                entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.CustomerAddresses)
-                    .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK_CustomerAddresses_Customer_Id_Customer_Id");
+                //entity.HasOne(d => d.Customer)
+                //    .WithMany(p => p.CustomerAddresses)
+                //    .HasForeignKey(d => d.CustomerId)
+                //    .HasConstraintName("FK_CustomerAddresses_Customer_Id_Customer_Id");
             });
 
             modelBuilder.Entity<CustomerAttribute>(entity =>
@@ -546,10 +550,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.HasIndex(e => e.CustomerId, "IX_CustomerPassword_CustomerId");
 
-                entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.CustomerPasswords)
-                    .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK_CustomerPassword_CustomerId_Customer_Id");
+                //entity.HasOne(d => d.Customer)
+                //    .WithMany(p => p.CustomerPasswords)
+                //    .HasForeignKey(d => d.CustomerId)
+                //    .HasConstraintName("FK_CustomerPassword_CustomerId_Customer_Id");
             });
 
             modelBuilder.Entity<CustomerRole>(entity =>

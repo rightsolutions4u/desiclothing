@@ -89,16 +89,17 @@ namespace DesiClothing4u.UI.Controllers
                     IsSystemAccount = false,
                     LastIpAddress = "",
                     CreatedOnUtc = DateTime.UtcNow,
-                    RegisteredInStoreId = 1
+                    RegisteredInStoreId = 1,
+                    Password = collection["Password"],
                 };
-                CustomerPassword customerPassword = new CustomerPassword();
-                customerPassword.Password = collection["password"];
-                customerPassword.CreatedOnUtc = DateTime.UtcNow;
-                customer.CustomerPasswords.Add(customerPassword);
-                CustomerAddress customerAddress = new CustomerAddress();
-                customerAddress.AddressId = BillingAddress1.Id;
-                customerAddress.CustomerId = customer.Id;
-                customer.CustomerAddresses.Add(customerAddress);
+                //CustomerPassword customerPassword = new CustomerPassword();
+                //customerPassword.Password = collection["password"];
+                //customerPassword.CreatedOnUtc = DateTime.UtcNow;
+                //customer.CustomerPasswords.Add(customerPassword);
+                //CustomerAddress customerAddress = new CustomerAddress();
+                //customerAddress.AddressId = BillingAddress1.Id;
+                //customerAddress.CustomerId = customer.Id;
+                //customer.CustomerAddresses.Add(customerAddress);
 
 
 
@@ -110,12 +111,12 @@ namespace DesiClothing4u.UI.Controllers
                 var Customer = response.Content.ReadAsStringAsync().Result;
                 var a = JsonConvert.DeserializeObject<Customer>(Customer);
                 ViewBag.Customer = a;
-                return View("/home/index", a);
+                return View("~/Views/Home/Index", a);
                 //return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View("/home/index");
+                return View("~/Views/Home/Index");
             }
         }
 
