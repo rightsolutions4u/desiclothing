@@ -1,6 +1,8 @@
 ﻿@model DesiClothing4u.Common.Models.Customer
+<h5>This is welcome</h5>
 <h2>
-    @if (Model != null && ViewBag.UserId != null)
+    
+    @if (Model != null && ViewBag.BillingAddress.FirstName != null)
     {
         <i class="Welcome">Welcome @ViewBag.BillingAddress.FirstName</i>
     }
