@@ -156,5 +156,5 @@ F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netc
 F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Welcome.cshtml.g.cs
 F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\VendorRegister.cshtml.g.cs
 F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Vendorwelcome.cshtml.g.cs
-F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\VendorView.cshtml.g.cs
 F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Register.cshtml.g.cs
+F:\Mars\FreelanceWork\Danish USA\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\VendorView.cshtml.g.cs
