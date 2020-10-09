@@ -89,7 +89,7 @@
                             <div class="wrap">
                                 <h5 class="text-center mb-4">Register</h5>
                                 
-                                @*<form action="~/Home/CreateCustomer/" method="post">*@
+                                <form id="frmRegister" method="post">
                                     <div class="row contact_left_grid ">
                                         <div class="col-md-6 con-left">
                                             <div class="form-group" style="text-align:left">
@@ -163,7 +163,7 @@
                                         @*<button type="submit" class="btn btn-primary submit mb-4">Register</button>*@
                                         <input class="form-control" type="submit" value="Submit" onclick="Register()">
                                     </div>
-                                @*</form>*@
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -208,32 +208,55 @@
 
             }
         </div>*@
-            <div id="welcome" display:none">
-                <script>
-                    function Register() {
-                        var formData = new FormData();
-                        formData.append('FirstName', $("#FirstName").val());
-                        formData.append('LastName', $("#LastName").val());
-                        formData.append('Password', $("#Password").val());
-                        formData.append('Email', $("#Email").val());
-                        formData.append('dateofbirth', $("#dateofbirth").val());
-                        formData.append('StreetAddress1', $("StreetAddress1").val());
-                        formData.append('StreetAddress2', $("#StreetAddress2").val());
-                        formData.append('Country', $("#Country").val());
-                        formData.append('city', $("#city").val());
-                        formData.append('phoneno', $("#phoneno").val());
-                        formData.append('ZipCode', $("#ZipCode").val());
-                                       $.ajax({
-                                        url: '@Url.Action("CreateCustomer", "Home")',
-                                           type: 'POST',
-                                           data: formData
-                                           , success: function (result) {
-                                           $('#welcome').replaceWith(result);
+            @*<div id="welcome" display:none">
+            <script>
+                function Register() {
+                    var formData = new FormData();
+                    formData.append('FirstName', $("#FirstName").val());
+                    formData.append('LastName', $("#LastName").val());
+                    formData.append('Password', $("#Password").val());
+                    formData.append('Email', $("#Email").val());
+                    formData.append('dateofbirth', $("#dateofbirth").val());
+                    formData.append('StreetAddress1', $("StreetAddress1").val());
+                    formData.append('StreetAddress2', $("#StreetAddress2").val());
+                    formData.append('Country', $("#Country").val());
+                    formData.append('city', $("#city").val());
+                    formData.append('phoneno', $("#phoneno").val());
+                    formData.append('ZipCode', $("#ZipCode").val());
+                                   $.ajax({
+                                    url: '@Url.Action("CreateCustomer", "Home")',
+                                       type: 'POST',
+                                       data: formData
+                                       , success: function (result) {
+                                       $('#welcome').replaceWith(result);
+                                    }
+                                    , error: function (result) {
+                                        alert("err "+ result.responseText);
                                         }
-                                        , error: function (result) {
-                                            alert("err "+ result.responseText);
-                                            }
-                                        })
+                                    })
+                            }
+            </script>
+        </div>*@
+
+            <div id="welcome" display:none">
+                <label id="welcomemessage">Welcome</label>
+                <script>
+                        function Register() {
+                            var form = $("#frmRegister");
+
+                            $.ajax({
+                            url: '@Url.Action("CreateCustomer", "Home")',
+                                type: 'POST',
+                                data: form.serialize()
+                                , success: function (a) {
+                                    //alert("success " + result.responseText);
+                                    //$('#welcome').replaceWith(result);
+                                    $("#welcome").html("Done " + a);
+                            }
+                            , error: function (a) {
+                                alert("err "+ result.responseText);
+                                }
+                            })
                                 }
                 </script>
             </div>

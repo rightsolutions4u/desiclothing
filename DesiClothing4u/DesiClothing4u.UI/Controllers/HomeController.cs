@@ -113,7 +113,8 @@ namespace DesiClothing4u.UI.Controllers
                 ViewBag.Customer = a;
                 //return View("~/Views/Home/Index", a);
                 //return RedirectToAction(nameof(Index));
-                return PartialView("Welcome", a);
+                return a;
+                //return PartialView("Welcome", a);
                 //return View();
             }
             catch
