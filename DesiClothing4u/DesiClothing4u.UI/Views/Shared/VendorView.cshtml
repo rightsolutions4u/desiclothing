@@ -358,61 +358,103 @@
             <h3 class="tittle-w3layouts text-center my-lg-4 my-4">Vendor Management</h3>
             <div class="inner_sec">
                 <!-- <p class="sub text-center mb-lg-5 mb-3">We love to discuss your idea</p> -->
+                <div class="row border">
+                    <div class="col-md-2">
+                        <div class="bg-light-gray mb-5">
+                            <div class="container p-0">
+                                <div id="accordion" class="accordion">
+                                    <div class="card mb-0">
+                                        <div class="card-header collapsed" data-toggle="collapse" href="#collapse1">
+                                            <a class="card-title">
+                                                Manage
+                                            </a>
+                                        </div>
 
-                <div class="row">
-                    <div class="col-sm-2">
-                        <nav class="nav-sidebar">
-                            <ul class="nav">
-                                <li class="active"><a href="javascript:;">Home</a></li>
-                                <li><a href="javascript:;">About</a></li>
-                                <li><a href="javascript:;">Products</a></li>
-                                <li><a href="javascript:;">FAQ</a></li>
-                                <li class="nav-divider"></li>
-                                <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
-                            </ul>
-                        </nav>
+                                        <div class="card-header collapsed" data-toggle="collapse" href="#collapse7">
+                                            <a class="nav-link ml-lg-0" href="#">
+                                                Products
+                                            </a>
+                                        </div>
+                                        <div class="card-header collapsed" data-toggle="collapse" href="#collapse7">
+                                            <a class="card-title" href="#">
+                                                Edit Profile
+                                            </a>
+                                        </div>
+                                        <div class="card-header collapsed" data-toggle="collapse" href="#collapse7">
+                                            <a class="card-title" href="#">
+                                                Orders
+                                            </a>
+                                        </div>
+                                        <div class="card-header collapsed" data-toggle="collapse" href="#collapse7">
+                                            <a class="card-title" href="#">
+                                                Payments
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-2 col-sm-offset-8">
-                        <nav class="nav-sidebar pull-right">
-                            <ul class="nav">
-                                <li class="active"><a href="javascript:;">Home</a></li>
-                                <li><a href="javascript:;">A long link will naturally wrap around</a></li>
-                                <li class="text-overflow" title="An long link with .text-overflow"><a href="javascript:;">A link with .text-overflow can be applied in case it's too long!</a></li>
-                                <li>
-                                    <a href="javascript:;" class="media">
-                                        <span class="pull-left">
-                                            <i class="media-object glyphicon glyphicon-list"></i>
-                                        </span>
-                                        <div class="media-body">
-                                            A media object can also be a link, making longer wrapping links play well with the icons!
+                    <div class="col-md-10 border border-info">
+                        <div id="default" style="width:99%;align-self:center;align-content:center">
+                            <table width="100%">
+                                <tr valign="middle">
+                                    <td width="50%">
+                                        <h4>Products</h4>
+                                    </td>
+                                    <td width="50%" align="right">
+                                        <button type="submit" class="btn btn-primary submit mb-4">Add New</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div style="width:90%;align-self:center;align-content:center">
+                                <img src="~/images/gridview.jpg" />
+                            </div>
+                        </div>
+                        <div id="default" style="width:99%;align-self:center;align-content:center">
+                            <form id="frmProduct" method="post">
+                                <table width="100%">
+                                    <tr valign="middle">
+                                        <td width="50%">
+                                            <h4>Add Products</h4>
+                                        </td>
+                                        <td width="50%" align="right">
+                                            <button type="submit" class="btn btn-primary submit mb-4">Save</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="width:90%;align-self:center;align-content:center">
+                                    @*<div class="wrap">*@
+                                        @*<div class="row contact_left_grid ">*@
+                                    <div class="col-md-12 con-left">
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2">Product Name</label>
+                                            <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
                                         </div>
-                                    </a>
-                                </li>
-                                <li class="text-overflow" title="Combine them all to make an awesome, safe solution!">
-                                    <a href="javascript:;" class="media">
-                                        <span class="pull-left">
-                                            <i class="media-object glyphicon glyphicon-list"></i>
-                                        </span>
-                                        <div class="media-body">
-                                            Combine them all to make an awesome, safe solution!
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2">Short Description</label>
+                                            <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
                                         </div>
-                                    </a>
-                                </li>
-                                <li class="nav-divider"></li>
-                                <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
-                            </ul>
-                        </nav>
+                                        <div class="form-group" style="text-align:left">
+                                            <label>Full Description </label>
+                                            <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
+                                        </div>
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2">Price</label>
+                                            <input class="form-control" type="text" name="Price" id="Price" placeholder="" required="" style="width:500px;">
+                                        </div>
+                                    </div>
+                                        @*</div>*@
+                                    @*</div>*@
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
     </section>
-    <!-- <div class="contact-map">
-
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100949.24429313939!2d-122.44206553967531!3d37.75102885910819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1472190196783"
-            class="map" style="border:0" allowfullscreen=""></iframe>
-    </div> -->
     <!--footer -->
     <footer class="py-lg-5 py-4">
         <div class="container-fluid px-lg-5 px-4">

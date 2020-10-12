@@ -49,11 +49,15 @@
                     <div class="wrap">
                         <h5 class="text-center mb-4">Login Now</h5>
                         <div class="login p-5 bg-dark mx-auto mw-100">
-                            <form action="#" method="post">
+                            <form action="~/Vendor/CheckVendorLogin" id ="frmLogin" method="post">
+                                <div class="form-check mb-2">
+                                    <input type="checkbox" class="form-check-input" id="loginasvendor">
+                                    <label class="form-check-label" for="loginasvendor">Login as Vendor</label>
+                                </div>
                                 <div class="form-group">
                                     <label class="mb-2">Email address</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1"
-                                           aria-describedby="emailHelp" placeholder="" required="">
+                                           name="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
                                     <small id="emailHelp" class="form-text text-muted">
                                         We'll never share your email
                                         with anyone else.
@@ -62,15 +66,14 @@
                                 <div class="form-group">
                                     <label class="mb-2">Password</label>
                                     <input type="password" class="form-control" id="exampleInputPassword1"
-                                           placeholder="" required="">
+                                           name="exampleInputPassword1" placeholder="" required="">
                                 </div>
                                 <div class="form-check mb-2">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
+                                <button type="submit" class="btn btn-primary submit mb-4" >Sign In</button>
                                 <div>
-                                    @*<label class="mb-2">New User <a href="#" onclick="location.href='@Url.Action("Register", "Home")'">click here</a></label>*@
                                     <p>Don't have an account? <a href="#signupform" data-toggle="modal" data-dismiss="modal">Signup Here</a></p></br>
                                 </div>
 
@@ -240,7 +243,7 @@
 
             <div id="welcome" display:none">
                 <label id="welcomemessage">Welcome</label>
-                <script>
+                @*<script>
                         function Register() {
                             var form = $("#frmRegister");
 
@@ -257,7 +260,36 @@
                                 alert("err "+ result.responseText);
                                 }
                             })
-                                }
+                    }
+                </script>*@
+                <script>
+                    function checklogin() {
+                    //alert("First one");
+                    var form = $("#frmLogin");
+                    //alert(form.serialize());
+                    var userId = $('#exampleInputEmail1').val();
+                    var pwd = $('#exampleInputPassword1').val();
+                        alert(userId);    
+                        alert(pwd);    
+                    var checkBox = document.getElementById("loginasvendor");
+                    if (checkBox.checked == true) {
+                        //alert("Checked");
+                        $.ajax({
+                        data: { "email": userId, "pwd": pwd },
+                        url: '@Url.Action("CheckVendorLogin", "Vendor")',
+                        type: 'POST'
+                        , success: function (vendor) {
+                        alert("success ");
+                        }
+                        , error: function (a) {
+                        alert("err "+ result.responseText);
+                        }
+                        })
+                    }
+                    else {
+                        alert("UnChecked");
+                        }
+                    }
                 </script>
             </div>
         </div>

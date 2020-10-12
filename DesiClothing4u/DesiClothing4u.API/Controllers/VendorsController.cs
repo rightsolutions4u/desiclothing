@@ -101,6 +101,33 @@ namespace DesiClothing4u.API.Controllers
             return vendor;
         }
 
+        [HttpGet("ValidateVendor")]
+        public async Task<ActionResult<Vendor>> ValidateVendor(string email, string UserPassword)
+        {
+            bool VendorExists;
+            VendorExists = _context.Vendors.Any(e => e.Email == email && e.password == UserPassword);
+
+            if (VendorExists == false)
+            {
+                return NotFound();
+            }
+
+            //var siteUsers = await _context.Vendors.FindAsync(email);
+
+            var siteUsers = _context.Vendors.SingleOrDefault(e => e.Email == email);
+            return siteUsers;
+            //VendorExists = _context.Vendors.Any(e => e.Email == email && e.password == UserPassword);
+            //VendorExists = _context.Vendors.Any(e => e.Id == 1007);
+            //var foos = await _context.Vendors.Where(x => x.Email == email && x.password == UserPassword);
+            //if (VendorExists == false)
+            //{
+            //    return NotFound();
+            //}
+            //var a = _context.Vendors.Where(x => x.Email == email && x.password == UserPassword);
+            //return a;
+            
+        }
+        
         private bool VendorExists(int id)
         {
             return _context.Vendors.Any(e => e.Id == id);

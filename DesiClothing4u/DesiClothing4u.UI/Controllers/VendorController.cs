@@ -88,47 +88,79 @@ namespace DesiClothing4u.UI.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        public async Task<ActionResult<Vendor>> CheckVendorLogin(IFormCollection collection)
+            //string email,string pwd)
+        {
+            //ValidateVendor
+            //Vendor vendor = new Vendor
+            //{
+            //    Email = email,
+            //    password = pwd
+            //};
+
+
+            Vendor vendor = new Vendor();
+            var client = new HttpClient();
+            //client.BaseAddress = new Uri(Baseurl);
+            client.DefaultRequestHeaders.Clear();
+            //Sending request to find web api REST service resource PostSiteUsers using HttpClient  
+            UriBuilder builder = new UriBuilder("https://localhost:44356/api/Vendors/ValidateVendor?");
+            builder.Query = "email=" + collection["exampleInputEmail1"] + "&UserPassword=" + collection["exampleInputPassword1"];
+            HttpResponseMessage Res = await client.GetAsync(builder.Uri);
+
+
+            //var output = JsonConvert.SerializeObject(vendor);
+            //var data = new StringContent(output, Encoding.UTF8, "application/json");
+            //var url = "https://localhost:44356/api/Vendors/ValidateVendor";
+            //var client = new HttpClient();
+            //var response = await client.PostAsync(url, data);
+            var Vendor = Res.Content.ReadAsStringAsync().Result;
+            var a = JsonConvert.DeserializeObject<Vendor>(Vendor);
+            ViewBag.Vendor = a;
+            return View("VendorView", a);
+        }
 
         // GET: VendorController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    return View();
+        //}
 
         // POST: VendorController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: VendorController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
 
-        // POST: VendorController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //// POST: VendorController/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }
