@@ -429,7 +429,7 @@
                                 <img src="~/images/gridview.jpg" />
                             </div>
                         </div>
-                        <div id="welcome" display:none">
+                        @*<div id="welcome" display:none">
                             <label id="welcomemessage">Welcome</label>
                             <script>
                                 function AddProduct() {
@@ -450,56 +450,80 @@
                                 }
                             </script>
                             
-                        </div>
+                        </div>*@
                     </div>
                         <div id="addproduct" style="display:none">
                             <div id="default" style="width:99%;align-self:center;align-content:center">
-                                <form id="frmProduct"  method="post">
-                                    <table width="100%">
-                                        <tr valign="middle">
-                                            <td width="50%">
-                                                <h4>Add Products</h4>
-                                            </td>
-                                            <td width="50%" align="right">
-                                                <button type="button" class="btn btn-primary submit mb-4" onclick="AddProduct()">Save</button>
-                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div style="width:90%;align-self:center;align-content:center">
+                                @*<form id="frmProduct"  method="post">*@
+                                <table width="100%">
+                                    <tr valign="middle">
+                                        <td width="50%">
+                                            <h4>Add Products</h4>
+                                        </td>
+                                        <td width="50%" align="right">
+                                            <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
+                                            @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="width:90%;align-self:center;align-content:center">
 
-                                        <div class="col-md-6 con-left">
-                                            <div class="form-group" style="text-align:left">
-                                                <label class="my-2">Product Name</label>
-                                                <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
-                                            </div>
-                                            <div class="form-group" style="text-align:left">
-                                                <label class="my-2">Short Description</label>
-                                                <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
-                                            </div>
-                                            <div class="form-group" style="text-align:left">
-                                                <label>Full Description </label>
-                                                <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
-                                            </div>
+                                    <div class="col-md-6 con-left">
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2">Product Name</label>
+                                            <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
+                                        </div>
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2">Short Description</label>
+                                            <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
+                                        </div>
+                                        <div class="form-group" style="text-align:left">
+                                            <label>Full Description </label>
+                                            <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
+                                        </div>
 
-                                            <div class="form-group" style="text-align:left">
-                                                <select class="form-control" name="CategoryId" id="CategoryId">
-                                                    <option value="x">Select Category</option>";
-                                                    <option value="3">Men -- Clothing</option>
-                                                    <option value="6">Women -- Clothing -- Kurti</option>
-                                                    <option value="10">Kids -- Boys -- TShirts</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group" style="text-align:left">
-                                                <label class="my-2">Price</label>
-                                                <input class="form-control" type="text" align="right" name="Price" id="ProductName" placeholder="" required="" style="width:500px;">
-                                            </div>
-                                            <div class="form-group" style="text-align:left">
-                                                <input class="form-control" type="hidden" name="ProductId" id="ProductId" placeholder="" required="" style="width:500px;">
-                                            </div>
+                                        <div class="form-group" style="text-align:left">
+                                            <select class="form-control" name="CategoryId" id="CategoryId">
+                                                <option value="x">Select Category</option>";
+                                                <option value="3">Men -- Clothing</option>
+                                                <option value="6">Women -- Clothing -- Kurti</option>
+                                                <option value="10">Kids -- Boys -- TShirts</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2">Price</label>
+                                            <input class="form-control" type="text" align="right" name="Price" id="Price" placeholder="" required="" style="width:500px;">
+                                        </div>
+                                        <div class="form-group" style="text-align:left">
+                                            <input class="form-control" type="hidden" name="ProductId" id="ProductId" placeholder="" required="" style="width:500px;">
                                         </div>
                                     </div>
-                                </form>
+                                </div>
+                                <script>
+                                    function PostProduct() {
+                                        var ProductName = $('#ProductName').val();
+                                        var ShortDescription = $('#ShortDescription').val();
+                                        var FullDescription = $('#FullDescription').val();
+                                        //var CategoryId = $('#CategoryId').val();
+                                        var ProductTypeId = $('#ProductTypeId').val();
+                                        var Price = $('#Price').val();
+                                        //var VendorId = DesiClothing4u.Common.Models.Vendor.Id;
+                                        var VendorId = @ViewBag.VendorId;
+                                        alert("VendorId " + VendorId);
+                                        $.ajax({
+                                            url: 'https://localhost:44356/api/Products/PostProduct',
+                                            type: 'POST',
+                                            data: { "ProductName": ProductName, "ShortDescription": ShortDescription, "FullDescription": FullDescription, "ProductTypeId": ProductTypeId, "Price": Price, "VendorId": VendorId }
+                                            , success: function (result) {
+                                                alert("success");
+                                            }
+                                            , error: function (result) {
+                                                alert("err " + result.responseText);
+                                            }
+                                        })
+                                    }
+                                </script>
+                                @*</form>*@
                             </div>
                             @* for pic upload*@
                             <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
@@ -713,15 +737,15 @@
 </footer>
 <!-- //footer -->
 <!--jQuery-->
-<script src="js/jquery-2.2.3.min.js"></script>
+<script src="~/js/jquery-2.2.3.min.js"></script>
 <!-- newsletter modal -->
 <!--search jQuery-->
-<script src="js/modernizr-2.6.2.min.js"></script>
-<script src="js/classie-search.js"></script>
-<script src="js/demo1-search.js"></script>
+<script src="~/js/modernizr-2.6.2.min.js"></script>
+<script src="~/js/classie-search.js"></script>
+<script src="~/js/demo1-search.js"></script>
 <!--//search jQuery-->
 <!-- cart-js -->
-<script src="js/minicart.js"></script>
+<script src="~/js/minicart.js"></script>
 <script>
     googles.render();
 

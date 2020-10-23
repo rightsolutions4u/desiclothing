@@ -67,6 +67,8 @@ namespace DesiClothing4u.UI.Controllers
             }
         }
 
+
+
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {

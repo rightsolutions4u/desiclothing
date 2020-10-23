@@ -118,6 +118,7 @@ namespace DesiClothing4u.UI.Controllers
             var Vendor = Res.Content.ReadAsStringAsync().Result;
             var a = JsonConvert.DeserializeObject<Vendor>(Vendor);
             ViewBag.Vendor = a;
+            ViewBag.VendorId = a.Id;
             return View("VendorView", a);
         }
 
