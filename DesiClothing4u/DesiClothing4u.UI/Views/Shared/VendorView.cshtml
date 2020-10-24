@@ -515,6 +515,7 @@
                                             type: 'POST',
                                             data: { "ProductName": ProductName, "ShortDescription": ShortDescription, "FullDescription": FullDescription, "ProductTypeId": ProductTypeId, "Price": Price, "VendorId": VendorId }
                                             , success: function (result) {
+                                                //var j = JSON.stringify(result.Name);
                                                 alert("success");
                                             }
                                             , error: function (result) {
@@ -622,7 +623,7 @@
                     </div>
                     </div>
         </div>
-    </div>
+    @*</div>*@
 </section>
 <!--footer -->
 <footer class="py-lg-5 py-4">

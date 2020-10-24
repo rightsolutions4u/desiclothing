@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DesiClothing4u.Common.Models;
+//using Microsoft.AspNetCore.Cors;
 
 namespace DesiClothing4u.API.Controllers
 {
+    //[EnableCors("CorsApi")]
     [Route("api/[controller]")]
     [ApiController]
     public class VendorsController : ControllerBase
@@ -102,7 +104,7 @@ namespace DesiClothing4u.API.Controllers
         }
 
         [HttpGet("ValidateVendor")]
-        public async Task<ActionResult<Vendor>> ValidateVendor(string email, string UserPassword)
+        public ActionResult<Vendor> ValidateVendor(string email, string UserPassword)
         {
             bool VendorExists;
             VendorExists = _context.Vendors.Any(e => e.Email == email && e.password == UserPassword);

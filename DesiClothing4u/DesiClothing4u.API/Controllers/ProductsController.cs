@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DesiClothing4u.Common.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace DesiClothing4u.API.Controllers
 {
@@ -84,6 +85,7 @@ namespace DesiClothing4u.API.Controllers
 
         //    return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         //}
+        [EnableCors("CorsApi")]
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId)
         {

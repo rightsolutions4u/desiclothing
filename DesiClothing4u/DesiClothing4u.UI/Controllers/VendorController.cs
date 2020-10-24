@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
 
+
 namespace DesiClothing4u.UI.Controllers
 {
     public class VendorController : Controller

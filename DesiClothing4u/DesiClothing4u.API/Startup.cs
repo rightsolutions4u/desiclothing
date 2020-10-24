@@ -32,7 +32,15 @@ namespace DesiClothing4u.API
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddScoped<ICustomer, CustomerServer>();
+            
             services.AddDbContext<desiclothingContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DesiClothing4uDatabase")));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi",
+                    builder => builder.WithOrigins("http://localhost:44328")
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -73,7 +81,7 @@ namespace DesiClothing4u.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-            //app.UseCors("CorsApi");
+           
             app.UseSwaggerUI(c =>
             {
 
@@ -81,6 +89,7 @@ namespace DesiClothing4u.API
                 //c.RoutePrefix = "docs";
 
             });
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -91,7 +100,7 @@ namespace DesiClothing4u.API
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors("CorsApi");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
