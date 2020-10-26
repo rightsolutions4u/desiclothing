@@ -4,19 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Web.Http.Cors;
 using DesiClothing4u.Common.Models;
+using Microsoft.AspNetCore.Cors;
 
-
-using EnableCorsAttribute = System.Web.Http.Cors.EnableCorsAttribute;
+//using EnableCorsAttribute = System.Web.Http.Cors.EnableCorsAttribute;
 
 namespace DesiClothing4u.API.Controllers
 {
-
-    //[Microsoft.AspNetCore.Cors.EnableCors("CorsApi")]
+    [EnableCors("CorsApi")]
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductsController : ControllerBase
     {
         private readonly desiclothingContext _context;
@@ -80,7 +78,7 @@ namespace DesiClothing4u.API.Controllers
         }
         //GET: api/PostProduct
         [HttpPost("PostProduct")]
-        public async Task<ActionResult<Product>> PostProduct(string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId)
+        public async Task<ActionResult<Product>> PostProduct([FromBody] string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId)
         {
             Product product = new Product
             {

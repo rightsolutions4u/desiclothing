@@ -230,7 +230,7 @@
                                             <h5 class="tittle-w3layouts-sub"> Tittle goes here </h5>
                                             <div class="media-mini mt-3">
                                                 <a href="shop.html">
-                                                    <img src="images/g2.jpg" class="img-fluid" alt="">
+                                                    <img src="~/images/g2.jpg" class="img-fluid" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -238,7 +238,7 @@
                                             <h5 class="tittle-w3layouts-sub">Tittle goes here </h5>
                                             <div class="media-mini mt-3">
                                                 <a href="shop.html">
-                                                    <img src="images/g3.jpg" class="img-fluid" alt="">
+                                                    <img src="~/images/g3.jpg" class="img-fluid" alt="">
                                                 </a>
                                             </div>
 
@@ -330,7 +330,7 @@
                                             <h5 class="tittle-w3layouts-sub-nav">Tittle goes here </h5>
                                             <div class="media-mini mt-3">
                                                 <a href="shop.html">
-                                                    <img src="images/g1.jpg" class="img-fluid" alt="">
+                                                    <img src="~/images/g1.jpg" class="img-fluid" alt="">
                                                 </a>
                                             </div>
 
@@ -475,11 +475,11 @@
                                         </div>
                                         <div class="form-group" style="text-align:left">
                                             <label class="my-2">Short Description</label>
-                                            <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
+                                            <textarea  rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
                                         </div>
                                         <div class="form-group" style="text-align:left">
                                             <label>Full Description </label>
-                                            <textarea id="textarea" rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
+                                            <textarea  rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
                                         </div>
 
                                         <div class="form-group" style="text-align:left">
@@ -505,17 +505,27 @@
                                         var ShortDescription = $('#ShortDescription').val();
                                         var FullDescription = $('#FullDescription').val();
                                         var CategoryId = $('#CategoryId').val();
-                                        var ProductTypeId = $('#ProductTypeId').val();
+                                        var ProductTypeId = 1;
                                         var Price = $('#Price').val();
                                         //var VendorId = DesiClothing4u.Common.Models.Vendor.Id;
                                         var VendorId = '@ViewBag.VendorId';
-                                        alert("ProductName " + ProductName);
+                                        alert("ProductName " + ProductName + " " + ShortDescription + " " + FullDescription + " " + CategoryId + " " + Price );
                                         $.ajax({
                                             //crossOrigin: true,
-                                            url: 'https://localhost:44356/api/Products/PostProduct',
+                                            contentType: 'application/json',
+                                            data : JSON.stringify({
+                                                "ProductName": ProductName,
+                                                "ShortDescription": ShortDescription,
+                                                "FullDescription": FullDescription,
+                                                "ProductTypeId": ProductTypeId,
+                                                "Price": Price,
+                                                "VendorId": VendorId,
+                                                "CategoryId": CategoryId
+                                            }),
                                             type: 'POST',
-                                            data: { "ProductName": ProductName, "ShortDescription": ShortDescription, "FullDescription": FullDescription, "ProductTypeId": ProductTypeId, "Price": Price, VendorId: VendorId, "CategoryId": CategoryId }
-                                            , success: function (result) {
+                                            dataType: "json",   
+                                            url: 'https://localhost:44356/api/Products/PostProduct',
+                                            success: function (result) {
                                                 //var j = JSON.stringify(result.Name);
                                                 alert("success");
                                             }
@@ -748,7 +758,7 @@
 <!--//search jQuery-->
 <!-- cart-js -->
 <script src="~/js/minicart.js"></script>
-<script>
+@*<script>
     googles.render();
 
     googles.cart.on('googles_checkout', function (evt) {
@@ -760,7 +770,7 @@
             for (i = 0, len = items.length; i < len; i++) { }
         }
     });
-</script>
+</script>*@
 <!-- //cart-js -->
 <script>
     $(document).ready(function () {
@@ -792,9 +802,9 @@
     });
 </script>
 <!-- //dropdown nav -->
-<script src="js/move-top.js"></script>
-<script src="js/easing.js"></script>
-<script>
+@*<script src="js/move-top.js"></script>*@
+@*<script src="js/easing.js"></script>*@
+@*<script>
     jQuery(document).ready(function ($) {
         $(".scroll").click(function (event) {
             event.preventDefault();
@@ -803,8 +813,8 @@
             }, 900);
         });
     });
-</script>
-<script>
+</script>*@
+@*<script>
     $(document).ready(function () {
         /*
                                 var defaults = {
@@ -820,11 +830,11 @@
         });
 
     });
-</script>
+</script>*@
 <!--// end-smoth-scrolling -->
 
 
-<script src="js/bootstrap.js"></script>
+<script src="~/js/bootstrap.js"></script>
 <!-- js file -->
 </body>
 

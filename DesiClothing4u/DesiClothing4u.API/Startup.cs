@@ -39,7 +39,7 @@ namespace DesiClothing4u.API
             services.AddDbContext<desiclothingContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DesiClothing4uDatabase")));
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsApi", builder => builder.WithOrigins("http://localhost:44328")
+                options.AddPolicy("CorsApi", builder => builder.WithOrigins("https://localhost:44328")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 );
@@ -75,11 +75,16 @@ namespace DesiClothing4u.API
             app.UseStaticFiles();//added on Oct 24 by SM
             app.UseRouting();
             app.UseCors("CorsApi");
+            //app.UseCors();
             //app.UseCors(options => options.AllowAnyOrigin());
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                //endpoints.MapGet("/echo",
+                //    context => context.Response.WriteAsync("echo"))
+                //    .RequireCors("CorsApi");
+                endpoints.MapControllers()
+                .RequireCors("CorsApi");
             });
            
         }
