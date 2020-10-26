@@ -16,11 +16,14 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.Cors;
+
 
 namespace DesiClothing4u.API
 {
     public class Startup
     {
+        //readonly string CorsApi = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,43 +39,16 @@ namespace DesiClothing4u.API
             services.AddDbContext<desiclothingContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DesiClothing4uDatabase")));
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsApi",
-                    builder => builder.WithOrigins("http://localhost:44328")
+                options.AddPolicy("CorsApi", builder => builder.WithOrigins("http://localhost:44328")
                 .AllowAnyHeader()
-                .AllowAnyMethod());
+                .AllowAnyMethod()
+                );
             });
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-                //added by Mohtashim on 27/08/2020
-                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Description =
-                //    "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey,
-                //    Scheme = "Bearer"
-                //});
-
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement()
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme,
-                //                Id = "Bearer"
-                //            },
-                //            Scheme = "oauth2",
-                //            Name = "Bearer",
-                //            In = ParameterLocation.Header,
-
-                //        },
-                //        new List<string>()
-                //    }
-                //});
+               
             });
             services.AddControllers();
         }
@@ -96,15 +72,16 @@ namespace DesiClothing4u.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();//added on Oct 24 by SM
             app.UseRouting();
-
-            app.UseAuthorization();
             app.UseCors("CorsApi");
+            //app.UseCors(options => options.AllowAnyOrigin());
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+           
         }
     }
 }

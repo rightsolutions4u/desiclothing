@@ -11,6 +11,53 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "Microsoft.AspNet.Cors/5.2.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Cors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Cors.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Client/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json.Bson": "1.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.7"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Cors/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Cors": "5.2.7",
+          "Microsoft.AspNet.WebApi.Core": "[5.2.7, 5.3.0)"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -960,6 +1007,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Newtonsoft.Json.Bson/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -2865,6 +2925,62 @@
         "logo.png"
       ]
     },
+    "Microsoft.AspNet.Cors/5.2.7": {
+      "sha512": "r7qTj8SKzHT32F2mbB3qgE+6VUd2xILkGaq4LtMW+KP3dDAQmI//j+8Ku01I3D1GKZvB9PU8HTJPkaw7sxSLtQ==",
+      "type": "package",
+      "path": "microsoft.aspnet.cors/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Web.Cors.dll",
+        "microsoft.aspnet.cors.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.cors.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.7": {
+      "sha512": "/76fAHknzvFqbznS6Uj2sOyE9rJB3PltY+f53TH8dX9RiGhk02EhuFCWljSj5nnqKaTsmma8DFR50OGyQ4yJ1g==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.client/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Net.Http.Formatting.dll",
+        "lib/net45/System.Net.Http.Formatting.xml",
+        "lib/netstandard2.0/System.Net.Http.Formatting.dll",
+        "lib/netstandard2.0/System.Net.Http.Formatting.xml",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml",
+        "microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.client.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.7": {
+      "sha512": "gM2QzApnHdy1FbKUJ/ROGJSm69P2G+HMoVd/t5Vq1O/zZ5TI4IKC9PX6nUfRt/NHgebZOIWHpB4/4K4inuy4yQ==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.core/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/web.config.transform",
+        "lib/net45/System.Web.Http.dll",
+        "lib/net45/System.Web.Http.xml",
+        "microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Cors/5.2.7": {
+      "sha512": "LUY5ufoiYLHKZXdrrNe7GlAwmu9WlyrX5iUtBSLwFZ31/tvPobyU7j1E31OWVdGZMBvRCxKbfyB7unxgrjTRpA==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.cors/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Web.Http.Cors.dll",
+        "lib/net45/System.Web.Http.Cors.xml",
+        "microsoft.aspnet.webapi.cors.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.cors.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -4406,6 +4522,21 @@
         "newtonsoft.json.nuspec"
       ]
     },
+    "Newtonsoft.Json.Bson/1.0.1": {
+      "sha512": "5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
+      "type": "package",
+      "path": "newtonsoft.json.bson/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Newtonsoft.Json.Bson.dll",
+        "lib/net45/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
+        "newtonsoft.json.bson.1.0.1.nupkg.sha512",
+        "newtonsoft.json.bson.nuspec"
+      ]
+    },
     "NuGet.Frameworks/4.7.0": {
       "sha512": "qbXaB76XYUVLocLBs8Z9TS/ERGK2wm797feO+0JEPFvT7o7MRadOR77mqaSD4J1k8G+DlZQyq+MlkCuxrkr3ag==",
       "type": "package",
@@ -4508,7 +4639,7 @@
       ]
     },
     "runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "DloMk88juo0OuOWr56QG7MNchmafTLYWvABy36izkrLI5VledI0rq28KGs1i9wbpeT9NPQrx/wTf8U2vazqQ3Q==",
+      "sha512": "jwjwlEL0Elv6gwoyaokRn12nv/JE+UW/DXJEbzhjCPvGbef36StnHKc9XaZD/rGWqYicrphZ7eumR/jdmNcjRg==",
       "type": "package",
       "path": "runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
@@ -4549,12 +4680,11 @@
       ]
     },
     "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "KeLz4HClKf+nFS7p/6Fi/CqyLXh81FpiGzcmuS8DGi9lUqSnZ6Es23/gv2O+1XVGfrbNmviF7CckBpavkBoIFQ==",
+      "sha512": "G2+96gYRbzp1JZCID6B+u2XJ0bs2wCubd6rE3+Tj436dKfnciF7YgsLi2VvLeJq6kxYyU4IJrVrpCvC8Yf6bhA==",
       "type": "package",
       "path": "runtime.opensuse.42.1-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.opensuse.42.1-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -4563,7 +4693,7 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
+      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
@@ -4590,12 +4720,11 @@
       ]
     },
     "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "nyFNiCk/r+VOiIqreLix8yN+q3Wga9+SE8BCgkf+2BwEKiNx6DyvFjCgkfV743/grxv8jHJ8gUK4XEQw7yzRYg==",
+      "sha512": "T5NvFgmHX0WH4c7lP72krsnk+IJI10vJf2j2twGE+5QBRA4RyRAgD+ZjEgdmpLOjW4B+nZGaadewTCUcR899OQ==",
       "type": "package",
       "path": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -4604,12 +4733,11 @@
       ]
     },
     "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "ytoewC6wGorL7KoCAvRfsgoJPJbNq+64k2SqW6JcOAebWsFUvCCYgfzQMrnpvPiEl4OrblUlhF2ji+Q1+SVLrQ==",
+      "sha512": "JGc0pAWRE8lB4Ucygk2pYSKbUPLlAIq6Bczf5/WF2D/VKJEPtYlVUMxk8fbl1zRfTWzSHi+VcFZlaPlWiNxeKg==",
       "type": "package",
       "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -5000,12 +5128,11 @@
       ]
     },
     "System.Collections.NonGeneric/4.3.0": {
-      "sha512": "prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
+      "sha512": "LE/oChpRvkSi3U25u0KnJcI44JeDZ1QJCyN4qFDx2uusEypdqR24w7lKYw21eYe5esuCBuc862wRmpF63Yy1KQ==",
       "type": "package",
       "path": "system.collections.nongeneric/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5039,7 +5166,7 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -5225,7 +5352,7 @@
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
-      "sha512": "KMVuoQ+8bMQ/Z59M3s64num5AD74X5YSqVc7ibwGkPTfmmkl2W8VuSxLRJtpw4KzQrSKUgR0BLbF0adPfcTSGQ==",
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
       "type": "package",
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
@@ -7688,12 +7815,11 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
+      "sha512": "2Z5t70a2SwMsfQDp9KOclaZNyQhfIga2gppq9lIUDM1A4ohTshn4JqT7ir8bvIhXgorWKYDAr6rPzEbi/nTGKg==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8983,7 +9109,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "sha512": "VShQJhOxgD/5M2Z1IWm1vMaSqlbjo1zdFf8H7Ahte6bTvSUhUko/gDpAVVhGgGgTDeue4QyNg1fu1Zz2GKSEuQ==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
@@ -9061,6 +9187,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "DesiClothing4u.Common >= 1.0.0",
+      "Microsoft.AspNet.WebApi.Cors >= 5.2.7",
       "Microsoft.EntityFrameworkCore >= 5.0.0-rc.1.20451.13",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.0-rc.1.20451.13",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0-rc.1.20451.13",
@@ -9073,27 +9200,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mars\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\smali\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Mars\\FreelanceWork\\Danish USA\\DesiClothing4u\\DesiClothing4u.API\\DesiClothing4u.API.csproj",
+      "projectUniqueName": "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.API\\DesiClothing4u.API.csproj",
       "projectName": "DesiClothing4u.API",
-      "projectPath": "F:\\Mars\\FreelanceWork\\Danish USA\\DesiClothing4u\\DesiClothing4u.API\\DesiClothing4u.API.csproj",
-      "packagesPath": "C:\\Users\\mars\\.nuget\\packages\\",
-      "outputPath": "F:\\Mars\\FreelanceWork\\Danish USA\\DesiClothing4u\\DesiClothing4u.API\\obj\\",
+      "projectPath": "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.API\\DesiClothing4u.API.csproj",
+      "packagesPath": "C:\\Users\\smali\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mars\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\smali\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9105,8 +9229,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\Mars\\FreelanceWork\\Danish USA\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj": {
-              "projectPath": "F:\\Mars\\FreelanceWork\\Danish USA\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj"
+            "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj": {
+              "projectPath": "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj"
             }
           }
         }
@@ -9120,6 +9244,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Cors": {
+            "target": "Package",
+            "version": "[5.2.7, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.0-rc.1.20451.13, )"
@@ -9179,8 +9307,40 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Cors 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Cors",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebApi.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebApi.Cors 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebApi.Cors",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

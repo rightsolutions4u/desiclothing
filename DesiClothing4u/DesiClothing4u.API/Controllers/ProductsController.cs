@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Web.Http.Cors;
 using DesiClothing4u.Common.Models;
-using Microsoft.AspNetCore.Cors;
+
+
+using EnableCorsAttribute = System.Web.Http.Cors.EnableCorsAttribute;
 
 namespace DesiClothing4u.API.Controllers
 {
+
+    //[Microsoft.AspNetCore.Cors.EnableCors("CorsApi")]
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductsController : ControllerBase
     {
         private readonly desiclothingContext _context;
@@ -73,21 +78,9 @@ namespace DesiClothing4u.API.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Products
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<Product>> PostProduct(Product product)
-        //{
-        //    _context.Products.Add(product);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetProduct", new { id = product.Id }, product);
-        //}
-        [EnableCors("CorsApi")]
-        [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId)
+        //GET: api/PostProduct
+        [HttpPost("PostProduct")]
+        public async Task<ActionResult<Product>> PostProduct(string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId)
         {
             Product product = new Product
             {

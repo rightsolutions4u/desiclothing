@@ -43,7 +43,7 @@ namespace DesiClothing4u.UI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseCors("CorsApi");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

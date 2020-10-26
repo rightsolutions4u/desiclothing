@@ -454,7 +454,7 @@
                     </div>
                         <div id="addproduct" style="display:none">
                             <div id="default" style="width:99%;align-self:center;align-content:center">
-                                @*<form id="frmProduct"  method="post">*@
+                                <form id="frmProduct">
                                 <table width="100%">
                                     <tr valign="middle">
                                         <td width="50%">
@@ -467,7 +467,7 @@
                                     </tr>
                                 </table>
                                 <div style="width:90%;align-self:center;align-content:center">
-
+                                  
                                     <div class="col-md-6 con-left">
                                         <div class="form-group" style="text-align:left">
                                             <label class="my-2">Product Name</label>
@@ -504,16 +504,17 @@
                                         var ProductName = $('#ProductName').val();
                                         var ShortDescription = $('#ShortDescription').val();
                                         var FullDescription = $('#FullDescription').val();
-                                        //var CategoryId = $('#CategoryId').val();
+                                        var CategoryId = $('#CategoryId').val();
                                         var ProductTypeId = $('#ProductTypeId').val();
                                         var Price = $('#Price').val();
                                         //var VendorId = DesiClothing4u.Common.Models.Vendor.Id;
-                                        var VendorId = @ViewBag.VendorId;
-                                        alert("VendorId " + VendorId);
+                                        var VendorId = '@ViewBag.VendorId';
+                                        alert("ProductName " + ProductName);
                                         $.ajax({
+                                            //crossOrigin: true,
                                             url: 'https://localhost:44356/api/Products/PostProduct',
                                             type: 'POST',
-                                            data: { "ProductName": ProductName, "ShortDescription": ShortDescription, "FullDescription": FullDescription, "ProductTypeId": ProductTypeId, "Price": Price, "VendorId": VendorId }
+                                            data: { "ProductName": ProductName, "ShortDescription": ShortDescription, "FullDescription": FullDescription, "ProductTypeId": ProductTypeId, "Price": Price, VendorId: VendorId, "CategoryId": CategoryId }
                                             , success: function (result) {
                                                 //var j = JSON.stringify(result.Name);
                                                 alert("success");
@@ -524,7 +525,7 @@
                                         })
                                     }
                                 </script>
-                                @*</form>*@
+                                </form>
                             </div>
                             @* for pic upload*@
                             <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
