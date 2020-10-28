@@ -76,9 +76,115 @@ namespace DesiClothing4u.API.Controllers
 
             return NoContent();
         }
-        //GET: api/PostProduct
+        //GET: api/PostProduct 
         [HttpPost("PostProduct")]
-        public async Task<ActionResult<Product>> PostProduct([FromBody] string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId)
+        public async Task<ActionResult<Product>> PostProduct([FromBody] dynamic myproduct/*string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId*/)
+        {
+            var sProduct = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(myproduct.ToString());
+            Product product = new Product
+            {
+                Name = sProduct.ProductName,
+                ShortDescription = sProduct.ShortDescription,
+                FullDescription = sProduct.FullDescription,
+                CreatedOnUtc = DateTime.UtcNow,
+                ProductTypeId = 1,
+                Price = sProduct.Price,
+                ParentGroupedProductId = 1,
+                VisibleIndividually = true,
+                ProductTemplateId = 1,
+                VendorId = sProduct.VendorId,
+                ShowOnHomepage = true,
+                AllowCustomerReviews = true,
+                ApprovedRatingSum = 1,
+                NotApprovedRatingSum = 1,
+                ApprovedTotalReviews = 1,
+                NotApprovedTotalReviews = 1,
+                SubjectToAcl = true,
+                LimitedToStores = true,
+                IsGiftCard = true,
+                GiftCardTypeId = 1,
+                RequireOtherProducts = true,
+                AutomaticallyAddRequiredProducts = true,
+                IsDownload = true,
+                DownloadId = 0,
+                UnlimitedDownloads = true,
+                MaxNumberOfDownloads = 50000,
+                DownloadActivationTypeId = 0,
+                HasSampleDownload = true,
+                SampleDownloadId = 0,
+                HasUserAgreement = true,
+                IsRecurring = true,
+                RecurringCycleLength = 1,
+                RecurringCyclePeriodId = 1,
+                RecurringTotalCycles = 1,
+                IsRental = true,
+                RentalPriceLength = 1,
+                RentalPricePeriodId = 1,
+                IsShipEnabled = true,
+                IsFreeShipping = true,
+                ShipSeparately = true,
+                AdditionalShippingCharge = 1,
+                DeliveryDateId = 1,
+                IsTaxExempt = true,
+                TaxCategoryId = 1,
+                IsTelecommunicationsOrBroadcastingOrElectronicServices = true,
+                ManageInventoryMethodId = 1,
+                ProductAvailabilityRangeId = 1,
+                UseMultipleWarehouses = true,
+                WarehouseId = 1,
+                StockQuantity = 1,
+                DisplayStockAvailability = true,
+                DisplayStockQuantity = true,
+                MinStockQuantity = 1,
+                LowStockActivityId = 1,
+                NotifyAdminForQuantityBelow = 1,
+                BackorderModeId = 1,
+                AllowBackInStockSubscriptions = true,
+                OrderMinimumQuantity = 1,
+                OrderMaximumQuantity = 1,
+                AllowAddingOnlyExistingAttributeCombinations = true,
+                NotReturnable = true,
+                DisableBuyButton = true,
+                DisableWishlistButton = true,
+                AvailableForPreOrder = true,
+                CallForPrice = true,
+                OldPrice = 1,
+                ProductCost = 1,
+                CustomerEntersPrice = true,
+                MinimumCustomerEnteredPrice = 1,
+                MaximumCustomerEnteredPrice = 1,
+                BasepriceEnabled = true,
+                BasepriceAmount = 1,
+                BasepriceUnitId = 1,
+                BasepriceBaseAmount = 1,
+                BasepriceBaseUnitId = 1,
+                MarkAsNew = true,
+                HasTierPrices = true,
+                HasDiscountsApplied = true,
+                Weight = 1,
+                Length = 1,
+                Width = 1,
+                Height = 1,
+                DisplayOrder = 1,
+                Published = true,
+                Deleted = true,
+                UpdatedOnUtc = DateTime.UtcNow,
+            };
+            return await PostProductJson (product);
+        }
+        public async Task<ActionResult<Product>> PostProductJson(Product product /*string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId*/)
+        {
+         
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetProduct", new { id = product.Id
+            }, product);
+            //return NoContent();
+        }
+        //mohtashim's changes dated oct 26, remove this action method once above is ok
+    //GET: api/PostProduct1
+[HttpPost("PostProduct1")]
+        public async Task<ActionResult<Product>> PostProduct1([FromBody] string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId)
         {
             Product product = new Product
             {

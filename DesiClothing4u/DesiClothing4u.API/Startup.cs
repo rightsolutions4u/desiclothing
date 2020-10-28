@@ -7,7 +7,7 @@ using DesiClothing4u.Common.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json.Serialization;
 
 
 namespace DesiClothing4u.API
@@ -35,7 +36,7 @@ namespace DesiClothing4u.API
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddScoped<ICustomer, CustomerServer>();
-            
+            //services.AddControllers().Add
             services.AddDbContext<desiclothingContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DesiClothing4uDatabase")));
             services.AddCors(options =>
             {
@@ -44,7 +45,8 @@ namespace DesiClothing4u.API
                 .AllowAnyMethod()
                 );
             });
-            
+            //services.AddMvc()
+            //.AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -75,8 +77,7 @@ namespace DesiClothing4u.API
             app.UseStaticFiles();//added on Oct 24 by SM
             app.UseRouting();
             app.UseCors("CorsApi");
-            //app.UseCors();
-            //app.UseCors(options => options.AllowAnyOrigin());
+           //app.UseCors(options => options.AllowAnyOrigin());
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

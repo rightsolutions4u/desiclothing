@@ -429,105 +429,79 @@
                                 <img src="~/images/gridview.jpg" />
                             </div>
                         </div>
-                        @*<div id="welcome" display:none">
-                            <label id="welcomemessage">Welcome</label>
-                            <script>
-                                function AddProduct() {
-                                    var form = $("#frmProduct");
-                                    alert('called');
-                                    $.ajax({
-                                    url: '@Url.Action("Create", "Product")',
-                                        type: 'POST',
-                                        data: form.serialize()
-                                        , success: function (a) {
-                                            //alert("success " + result.responseText);
-                                            $("#welcome").html("Done " + a);
-                                    }
-                                    , error: function (a) {
-                                        alert("err "+ result.responseText);
-                                        }
-                                    })
-                                }
-                            </script>
-                            
-                        </div>*@
+                       
                     </div>
                         <div id="addproduct" style="display:none">
                             <div id="default" style="width:99%;align-self:center;align-content:center">
-                                <form id="frmProduct">
-                                <table width="100%">
-                                    <tr valign="middle">
-                                        <td width="50%">
-                                            <h4>Add Products</h4>
-                                        </td>
-                                        <td width="50%" align="right">
-                                            <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
-                                            @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div style="width:90%;align-self:center;align-content:center">
-                                  
-                                    <div class="col-md-6 con-left">
-                                        <div class="form-group" style="text-align:left">
-                                            <label class="my-2">Product Name</label>
-                                            <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <label class="my-2">Short Description</label>
-                                            <textarea  rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <label>Full Description </label>
-                                            <textarea  rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
-                                        </div>
+                                <form id="frmProduct" method="post">
+                                    <table width="100%">
+                                        <tr valign="middle">
+                                            <td width="50%">
+                                                <h4>Add Products</h4>
+                                            </td>
+                                            <td width="50%" align="right">
+                                                <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
+                                                @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="width:90%;align-self:center;align-content:center">
 
-                                        <div class="form-group" style="text-align:left">
-                                            <select class="form-control" name="CategoryId" id="CategoryId">
-                                                <option value="x">Select Category</option>";
-                                                <option value="3">Men -- Clothing</option>
-                                                <option value="6">Women -- Clothing -- Kurti</option>
-                                                <option value="10">Kids -- Boys -- TShirts</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <label class="my-2">Price</label>
-                                            <input class="form-control" type="text" align="right" name="Price" id="Price" placeholder="" required="" style="width:500px;">
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <input class="form-control" type="hidden" name="ProductId" id="ProductId" placeholder="" required="" style="width:500px;">
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2">Product Name</label>
+                                                <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2">Short Description</label>
+                                                <textarea rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <label>Full Description </label>
+                                                <textarea rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
+                                            </div>
+
+                                            <div class="form-group" style="text-align:left">
+                                                <select class="form-control" name="CategoryId" id="CategoryId">
+                                                    <option value="x">Select Category</option>";
+                                                    <option value="3">Men -- Clothing</option>
+                                                    <option value="6">Women -- Clothing -- Kurti</option>
+                                                    <option value="10">Kids -- Boys -- TShirts</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2">Price</label>
+                                                <input class="form-control" type="text" align="right" name="Price" id="Price" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <input class="form-control" type="hidden" name="ProductId" id="ProductId" placeholder="" required="" style="width:500px;">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                   
                                 <script>
                                     function PostProduct() {
                                         var ProductName = $('#ProductName').val();
                                         var ShortDescription = $('#ShortDescription').val();
                                         var FullDescription = $('#FullDescription').val();
-                                        var CategoryId = $('#CategoryId').val();
-                                        var ProductTypeId = 1;
                                         var Price = $('#Price').val();
-                                        //var VendorId = DesiClothing4u.Common.Models.Vendor.Id;
                                         var VendorId = '@ViewBag.VendorId';
-                                        alert("ProductName " + ProductName + " " + ShortDescription + " " + FullDescription + " " + CategoryId + " " + Price );
-                                        $.ajax({
-                                            //crossOrigin: true,
-                                            contentType: 'application/json',
-                                            data : JSON.stringify({
-                                                "ProductName": ProductName,
-                                                "ShortDescription": ShortDescription,
-                                                "FullDescription": FullDescription,
-                                                "ProductTypeId": ProductTypeId,
-                                                "Price": Price,
-                                                "VendorId": VendorId,
-                                                "CategoryId": CategoryId
-                                            }),
-                                            type: 'POST',
-                                            dataType: "json",   
-                                            url: 'https://localhost:44356/api/Products/PostProduct',
-                                            success: function (result) {
-                                                //var j = JSON.stringify(result.Name);
-                                                alert("success");
+                                        var myproduct = {
+                                            ProductName: ProductName,
+                                            ShortDescription: ShortDescription,
+                                            FullDescription: FullDescription,
+                                            Price: Price,
+                                            VendorId: VendorId
+                                           
+                                        }
+                                          $.ajax({
+                                             url: 'https://localhost:44356/api/Products/PostProduct',
+                                             type: 'POST',
+                                             dataType: 'json',
+                                             contentType: 'application/json; charset=utf-8',
+                                             data: JSON.stringify(myproduct)
+                                              ,success: function (result) {
+                                              alert("success");
                                             }
                                             , error: function (result) {
                                                 alert("err " + result.responseText);
