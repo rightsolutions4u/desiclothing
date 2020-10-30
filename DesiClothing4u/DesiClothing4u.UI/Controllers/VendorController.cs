@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text;
 
 
+
 namespace DesiClothing4u.UI.Controllers
 {
     public class VendorController : Controller
@@ -52,6 +53,7 @@ namespace DesiClothing4u.UI.Controllers
                     ZipPostalCode = collection["ZipCode"],
                     PhoneNumber = collection["phoneno"]
                 };
+                //Post Address
                 string output = JsonConvert.SerializeObject(address);
                 var data = new StringContent(output, Encoding.UTF8, "application/json");
                 var url = "https://localhost:44356/api/Addresses";
@@ -60,9 +62,10 @@ namespace DesiClothing4u.UI.Controllers
                 var Address = response.Content.ReadAsStringAsync().Result;
                 var BillingAddress1 = JsonConvert.DeserializeObject<Address>(Address);
                 var BillingAddressId = BillingAddress1.Id;
-                //ViewBag.SiteUsers = a;
-                //PostAddress
 
+                VendorProduct vendorproduct = new VendorProduct();
+
+                //Post Vendor
                 Vendor vendor = new Vendor
                 {
                     Name = collection["name"],
@@ -73,20 +76,36 @@ namespace DesiClothing4u.UI.Controllers
                     password = collection["password"]
                     //,                    PictureId = PictureId1.Id
                 };
-
                 output = JsonConvert.SerializeObject(vendor);
                 data = new StringContent(output, Encoding.UTF8, "application/json");
                 url = "https://localhost:44356/api/Vendors";
                 client = new HttpClient();
                 response = await client.PostAsync(url, data);
+                //Load Vendor
                 var Vendor = response.Content.ReadAsStringAsync().Result;
-                var a = JsonConvert.DeserializeObject<Vendor>(Vendor);
-                ViewBag.Vendor = a;
-                return View("VendorView", a);
+                vendorproduct.Vendor = JsonConvert.DeserializeObject<Vendor>(Vendor);
+                ViewBag.Vendor = vendorproduct.Vendor;
+
+                    //Load Product
+                    UriBuilder builder = new UriBuilder("https://localhost:44356/api/Products/GetProductByVendor?");
+                    builder.Query = "VendorId=" + vendorproduct.Vendor.Id;
+                    HttpResponseMessage Prodresponse = await client.GetAsync(builder.Uri);
+                    var Products = Prodresponse.Content.ReadAsStringAsync().Result;
+                    vendorproduct.Product = JsonConvert.DeserializeObject<Product[]>(Products);
+                    //Load Picture
+                    var PicClient = new HttpClient();
+                    var Picurl = "https://localhost:44356/api/Pictures";
+                    var Picresponse = await PicClient.GetAsync(Picurl);
+                    var Pics = Picresponse.Content.ReadAsStringAsync().Result;
+                    vendorproduct.Picture = JsonConvert.DeserializeObject<Picture[]>(Pics);
+
+
+
+                    return View("VendorView", vendorproduct);
             }
             catch
             {
-                return View();
+                return View("VendorView");
             }
         }
         [HttpPost]
@@ -102,6 +121,7 @@ namespace DesiClothing4u.UI.Controllers
 
 
             Vendor vendor = new Vendor();
+            VendorProduct vendorproduct = new VendorProduct();
             var client = new HttpClient();
             //client.BaseAddress = new Uri(Baseurl);
             client.DefaultRequestHeaders.Clear();
@@ -117,10 +137,12 @@ namespace DesiClothing4u.UI.Controllers
             //var client = new HttpClient();
             //var response = await client.PostAsync(url, data);
             var Vendor = Res.Content.ReadAsStringAsync().Result;
-            var a = JsonConvert.DeserializeObject<Vendor>(Vendor);
-            ViewBag.Vendor = a;
-            ViewBag.VendorId = a.Id;
-            return View("VendorView", a);
+            //var a = JsonConvert.DeserializeObject<Vendor>(Vendor);
+            vendorproduct.Vendor = JsonConvert.DeserializeObject<Vendor>(Vendor);
+            ViewBag.Vendor = vendorproduct.Vendor;
+            ViewBag.VendorId = vendorproduct.Vendor.Id/* a.Id*/;
+            //return View("VendorView", a);
+            return View("VendorView", vendorproduct);
         }
 
         // GET: VendorController/Edit/5
