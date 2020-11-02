@@ -41,6 +41,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Grid.Mvc": {
+              "target": "Package",
+              "version": "[3.1.0-ci1036, )"
+            },
+            "GridMvcCore": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.0-rc.1.20451.13, )"
@@ -48,6 +56,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.0-rc.1.20451.13, )"
+            },
+            "System-Web-Helpers.dll": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [
@@ -113,6 +125,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Grid.Mvc": {
+              "target": "Package",
+              "version": "[3.1.0-ci1036, )"
+            },
+            "GridMvcCore": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -134,6 +154,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "System-Web-Helpers.dll": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

@@ -45,6 +45,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Grid.Mvc": {
+              "target": "Package",
+              "version": "[3.1.0-ci1036, )"
+            },
+            "GridMvcCore": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Microsoft.AspNet.WebApi.Cors": {
               "target": "Package",
               "version": "[5.2.7, )"
@@ -88,6 +96,10 @@
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System-Web-Helpers.dll": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [
@@ -149,6 +161,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Grid.Mvc": {
+              "target": "Package",
+              "version": "[3.1.0-ci1036, )"
+            },
+            "GridMvcCore": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.0-rc.1.20451.13, )"
@@ -156,6 +176,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.0-rc.1.20451.13, )"
+            },
+            "System-Web-Helpers.dll": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

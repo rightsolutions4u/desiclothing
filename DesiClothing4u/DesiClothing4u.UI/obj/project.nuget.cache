@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "rzLaeb1vKi17fD0DNjhW4ozUgNq6Cahg1I7caLgtw4f15+WtBRI+Fp8ToZiUGSAu/hrAr2SFfEWPTPt/edVBPw==",
+  "dgSpecHash": "YprZfm0ssKwjXiaXTchSp4v0Gdynz/I8Nn5M0pOm6dV2I1Xv6/D3oUihKzYvFMTzlHqrsU3SzfPV1r7EkpSoeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.UI\\DesiClothing4u.UI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\smali\\.nuget\\packages\\grid.mvc\\3.1.0-ci1036\\grid.mvc.3.1.0-ci1036.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\gridmvccore\\4.0.0\\gridmvccore.4.0.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\gridshared\\4.0.0\\gridshared.4.0.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.0\\microsoft.aspnetcore.http.features.3.1.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.2\\microsoft.aspnetcore.jsonpatch.3.1.2.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.2\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.2.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
@@ -31,6 +35,8 @@
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.configuration.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0-rc.1.20451.14\\microsoft.extensions.dependencyinjection.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.dependencyinjection.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.0\\microsoft.extensions.fileproviders.abstractions.3.1.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\3.1.0\\microsoft.extensions.fileproviders.embedded.3.1.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0-rc.1.20451.14\\microsoft.extensions.logging.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.logging.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.options\\5.0.0-rc.1.20451.14\\microsoft.extensions.options.5.0.0-rc.1.20451.14.nupkg.sha512",
@@ -74,6 +80,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system-web-helpers.dll\\1.0.0\\system-web-helpers.dll.1.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -107,6 +114,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system.io.pipelines\\4.7.0\\system.io.pipelines.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
@@ -153,6 +161,7 @@
     "C:\\Users\\smali\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system.text.json\\4.7.0\\system.text.json.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
@@ -164,5 +173,26 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Grid.Mvc 3.1.0-ci1036' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Grid.Mvc",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System-Web-Helpers.dll 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "System-Web-Helpers.dll",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

@@ -74,7 +74,7 @@ namespace DesiClothing4u.UI.Controllers
                     Active = true,
                     Deleted = false,
                     password = collection["password"]
-                    //,                    PictureId = PictureId1.Id
+                    //, PictureId = PictureId1.Id
                 };
                 output = JsonConvert.SerializeObject(vendor);
                 data = new StringContent(output, Encoding.UTF8, "application/json");

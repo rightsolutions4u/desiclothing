@@ -18,7 +18,6 @@ C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common
 C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.csprojAssemblyReference.cache
 C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.AssemblyInfoInputs.cache
 C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.AssemblyInfo.cs
-C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.csproj.CoreCompileInputs.cache
 C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.RazorTargetAssemblyInfo.cache
 C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.Common.StaticWebAssets.Manifest.cache
 C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.Common.StaticWebAssets.xml
@@ -37,3 +36,4 @@ F:\Mars\FreelanceWork\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Co
 F:\Mars\FreelanceWork\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.Common.StaticWebAssets.xml
 F:\Mars\FreelanceWork\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.dll
 F:\Mars\FreelanceWork\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.pdb
+C:\Users\smali\DesiClothingNew\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.csproj.CoreCompileInputs.cache

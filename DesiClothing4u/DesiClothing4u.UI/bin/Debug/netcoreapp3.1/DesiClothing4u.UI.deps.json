@@ -25,11 +25,14 @@
       "DesiClothing4u.UI/1.0.0": {
         "dependencies": {
           "DesiClothing4u.Common": "1.0.0",
+          "Grid.Mvc": "3.1.0-ci1036",
+          "GridMvcCore": "4.0.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.2",
           "Microsoft.EntityFrameworkCore": "5.0.0-rc.1.20451.13",
           "Microsoft.EntityFrameworkCore.Design": "5.0.0-rc.1.20451.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.0-rc.1.20451.13",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
+          "System-Web-Helpers.dll": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -65,7 +68,7 @@
           "Microsoft.AspNetCore.Http.Connections": "3.1.0.0",
           "Microsoft.AspNetCore.Http": "3.1.0.0",
           "Microsoft.AspNetCore.Http.Extensions": "3.1.0.0",
-          "Microsoft.AspNetCore.Http.Features": "3.1.0.0",
+          "Microsoft.AspNetCore.Http.Features.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.HttpOverrides": "3.1.0.0",
           "Microsoft.AspNetCore.HttpsPolicy": "3.1.0.0",
           "Microsoft.AspNetCore.Identity": "3.1.0.0",
@@ -120,9 +123,9 @@
           "Microsoft.Extensions.Configuration.Xml": "3.1.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "3.1.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "3.1.0.0",
-          "Microsoft.Extensions.FileProviders.Abstractions": "3.1.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions.Reference": "3.1.0.0",
           "Microsoft.Extensions.FileProviders.Composite": "3.1.0.0",
-          "Microsoft.Extensions.FileProviders.Embedded": "3.1.0.0",
+          "Microsoft.Extensions.FileProviders.Embedded.Reference": "3.1.0.0",
           "Microsoft.Extensions.FileProviders.Physical": "3.1.0.0",
           "Microsoft.Extensions.FileSystemGlobbing": "3.1.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "3.1.0.0",
@@ -195,7 +198,7 @@
           "System.IO.FileSystem.Watcher": "4.1.2.0",
           "System.IO.IsolatedStorage": "4.1.2.0",
           "System.IO.MemoryMappedFiles": "4.1.2.0",
-          "System.IO.Pipelines": "4.0.2.0",
+          "System.IO.Pipelines.Reference": "4.0.2.0",
           "System.IO.Pipes": "4.1.2.0",
           "System.IO.UnmanagedMemoryStream": "4.1.2.0",
           "System.Linq.Reference": "4.2.2.0",
@@ -271,7 +274,7 @@
           "System.Text.Encoding.Reference": "4.1.2.0",
           "System.Text.Encoding.Extensions.Reference": "4.1.2.0",
           "System.Text.Encodings.Web.Reference": "4.0.5.0",
-          "System.Text.Json": "4.0.1.0",
+          "System.Text.Json.Reference": "4.0.1.0",
           "System.Text.RegularExpressions.Reference": "4.2.2.0",
           "System.Threading.Channels": "4.0.2.0",
           "System.Threading.Reference": "4.1.2.0",
@@ -308,6 +311,99 @@
           "DesiClothing4u.UI.dll": {}
         }
       },
+      "Grid.Mvc/3.1.0-ci1036": {},
+      "GridMvcCore/4.0.0": {
+        "dependencies": {
+          "GridShared": "4.0.0",
+          "Microsoft.Extensions.FileProviders.Embedded": "3.1.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/GridMvc.Views.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          },
+          "lib/netcoreapp3.1/GridMvc.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.1/ca-ES/GridMvc.resources.dll": {
+            "locale": "ca-ES"
+          },
+          "lib/netcoreapp3.1/cs/GridMvc.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/de/GridMvc.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/GridMvc.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/eu-ES/GridMvc.resources.dll": {
+            "locale": "eu-ES"
+          },
+          "lib/netcoreapp3.1/fa-IR/GridMvc.resources.dll": {
+            "locale": "fa-IR"
+          },
+          "lib/netcoreapp3.1/fr/GridMvc.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/gl-ES/GridMvc.resources.dll": {
+            "locale": "gl-ES"
+          },
+          "lib/netcoreapp3.1/hr/GridMvc.resources.dll": {
+            "locale": "hr"
+          },
+          "lib/netcoreapp3.1/it/GridMvc.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/nb-NO/GridMvc.resources.dll": {
+            "locale": "nb-NO"
+          },
+          "lib/netcoreapp3.1/nl/GridMvc.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/netcoreapp3.1/pt-BR/GridMvc.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/GridMvc.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/se/GridMvc.resources.dll": {
+            "locale": "se"
+          },
+          "lib/netcoreapp3.1/sl/GridMvc.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/netcoreapp3.1/sr/GridMvc.resources.dll": {
+            "locale": "sr"
+          },
+          "lib/netcoreapp3.1/tr/GridMvc.resources.dll": {
+            "locale": "tr"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/GridMvc.Views.dll": {},
+          "lib/netcoreapp3.1/GridMvc.dll": {}
+        }
+      },
+      "GridShared/4.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "3.1.0",
+          "Microsoft.Extensions.Primitives": "5.0.0-rc.1.20451.14",
+          "System.Text.Json": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/GridShared.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/GridShared.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -319,6 +415,12 @@
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "dependencies": {
           "System.Text.Encodings.Web": "4.5.0"
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "5.0.0-rc.1.20451.14",
+          "System.IO.Pipelines": "4.7.0"
         }
       },
       "Microsoft.AspNetCore.JsonPatch/3.1.2": {
@@ -849,6 +951,16 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.FileProviders.Abstractions/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "5.0.0-rc.1.20451.14"
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Embedded/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "3.1.0"
+        }
+      },
       "Microsoft.Extensions.Logging/5.0.0-rc.1.20451.14": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "5.0.0-rc.1.20451.14",
@@ -1273,6 +1385,17 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
+      "System-Web-Helpers.dll/1.0.0": {
+        "runtime": {
+          "lib/Net40/System.Web.Helpers.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/Net40/System.Web.Helpers.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1663,6 +1786,7 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.IO.Pipelines/4.7.0": {},
       "System.Linq/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -2133,6 +2257,11 @@
         }
       },
       "System.Text.Encodings.Web/4.5.0": {},
+      "System.Text.Json/4.7.0": {
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -2236,8 +2365,11 @@
       },
       "DesiClothing4u.Common/1.0.0": {
         "dependencies": {
+          "Grid.Mvc": "3.1.0-ci1036",
+          "GridMvcCore": "4.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.0-rc.1.20451.13",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.0-rc.1.20451.13"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.0-rc.1.20451.13",
+          "System-Web-Helpers.dll": "1.0.0"
         },
         "runtime": {
           "DesiClothing4u.Common.dll": {}
@@ -2456,7 +2588,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Http.Features/3.1.0.0": {
+      "Microsoft.AspNetCore.Http.Features.Reference/3.1.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Http.Features.dll": {}
         },
@@ -2786,7 +2918,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.FileProviders.Abstractions/3.1.0.0": {
+      "Microsoft.Extensions.FileProviders.Abstractions.Reference/3.1.0.0": {
         "compile": {
           "Microsoft.Extensions.FileProviders.Abstractions.dll": {}
         },
@@ -2798,7 +2930,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.FileProviders.Embedded/3.1.0.0": {
+      "Microsoft.Extensions.FileProviders.Embedded.Reference/3.1.0.0": {
         "compile": {
           "Microsoft.Extensions.FileProviders.Embedded.dll": {}
         },
@@ -3236,7 +3368,7 @@
         },
         "compileOnly": true
       },
-      "System.IO.Pipelines/4.0.2.0": {
+      "System.IO.Pipelines.Reference/4.0.2.0": {
         "compile": {
           "System.IO.Pipelines.dll": {}
         },
@@ -3692,7 +3824,7 @@
         },
         "compileOnly": true
       },
-      "System.Text.Json/4.0.1.0": {
+      "System.Text.Json.Reference/4.0.1.0": {
         "compile": {
           "System.Text.Json.dll": {}
         },
@@ -3874,6 +4006,27 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Grid.Mvc/3.1.0-ci1036": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9xkzQsA1ctj79kpM4OLp/fpk6RUjQECMlIyoVHWuMRSBbN+pxCmXyOqcuBm+y2CVCo55UwtHeqTqXFweXS/KhA==",
+      "path": "grid.mvc/3.1.0-ci1036",
+      "hashPath": "grid.mvc.3.1.0-ci1036.nupkg.sha512"
+    },
+    "GridMvcCore/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NgMq2FtGkLOpNi0fh+7nYrsdUe5lttpsv0UTPOSNUTILA6454octwCJ/1Wxrzbzfkc/G6GnK5nR/n4wnUYFlOw==",
+      "path": "gridmvccore/4.0.0",
+      "hashPath": "gridmvccore.4.0.0.nupkg.sha512"
+    },
+    "GridShared/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8AWhHpnznHmcFEvJR1mbaXEgIXVYxNM5PQ11U3ph6eZwNB47pGv/t7MOeeXMiwlKgWPPtF9pdqyUD17gR1WAUA==",
+      "path": "gridshared/4.0.0",
+      "hashPath": "gridshared.4.0.0.nupkg.sha512"
+    },
     "Humanizer.Core/2.8.26": {
       "type": "package",
       "serviceable": true,
@@ -3887,6 +4040,13 @@
       "sha512": "sha512-Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "path": "microsoft.aspnetcore.html.abstractions/2.2.0",
       "hashPath": "microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MzNJ2HbB4i5cIDlH5d62uUpHTPlmbjvAo2tx0x+wYRKJyFoRpxkNvFSB/eCCV/vf4K2+zhKkGC5uNyKvXgvaow==",
+      "path": "microsoft.aspnetcore.http.features/3.1.0",
+      "hashPath": "microsoft.aspnetcore.http.features.3.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.JsonPatch/3.1.2": {
       "type": "package",
@@ -4062,6 +4222,20 @@
       "sha512": "sha512-tXszQtgqpXCiT/AkpMcNbV6DqmJon+Bpwp6VU27lo4GIi9tB+c3b/EdcQqzGA2qfClX8sV59HP3QPpBVMHhY3w==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/5.0.0-rc.1.20451.14",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-G3iBMOnn3tETEUvkE9J3a23wQpRkiXZp73zR0XNlicjLFhkeWW1FCaC2bTjrgHhPi2KO6x0BXnHvVuJPIlygBQ==",
+      "path": "microsoft.extensions.fileproviders.abstractions/3.1.0",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Embedded/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8mRwL8WZ3vUgnERk1O/q2a45AUIFx+uQYfx+9lS5/kpNaD2BBCbcaY4HFDTJNpWuiNI+MitkeGd3EEWKe+LY8w==",
+      "path": "microsoft.extensions.fileproviders.embedded/3.1.0",
+      "hashPath": "microsoft.extensions.fileproviders.embedded.3.1.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/5.0.0-rc.1.20451.14": {
       "type": "package",
@@ -4364,6 +4538,13 @@
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
     },
+    "System-Web-Helpers.dll/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YNi625gkYOPE1CN6HdDGW4Ve7/E4xxnBGsnTBdzz91b+Pk0WrE2hPPOrXJc9vTjW2PjRju0TeyUZYtBntYXuVA==",
+      "path": "system-web-helpers.dll/1.0.0",
+      "hashPath": "system-web-helpers.dll.1.0.0.nupkg.sha512"
+    },
     "System.AppContext/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4594,6 +4775,13 @@
       "sha512": "sha512-6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
       "path": "system.io.filesystem.primitives/4.3.0",
       "hashPath": "system.io.filesystem.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Pipelines/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S0L7oyWyQdVzD+5xIvcC8h44Vc+FY+qXDCLRh2+YsuBDORNphcxNX+tXR6ByLMjQ/7jDaXxsYBF6qbAr7ZIaFw==",
+      "path": "system.io.pipelines/4.7.0",
+      "hashPath": "system.io.pipelines.4.7.0.nupkg.sha512"
     },
     "System.Linq/4.3.0": {
       "type": "package",
@@ -4917,6 +5105,13 @@
       "path": "system.text.encodings.web/4.5.0",
       "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
     },
+    "System.Text.Json/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IPq/x/d5nAcnD3vIyM3AbPOaTgcqrh0AqPSx7U53UFu3M6k1TH1u/eXc9/h4jm/3mpP1WRUpevlPY4PACd7AWw==",
+      "path": "system.text.json/4.7.0",
+      "hashPath": "system.text.json.4.7.0.nupkg.sha512"
+    },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -5167,7 +5362,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Http.Features/3.1.0.0": {
+    "Microsoft.AspNetCore.Http.Features.Reference/3.1.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5442,7 +5637,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.FileProviders.Abstractions/3.1.0.0": {
+    "Microsoft.Extensions.FileProviders.Abstractions.Reference/3.1.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5452,7 +5647,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.FileProviders.Embedded/3.1.0.0": {
+    "Microsoft.Extensions.FileProviders.Embedded.Reference/3.1.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5817,7 +6012,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.IO.Pipelines/4.0.2.0": {
+    "System.IO.Pipelines.Reference/4.0.2.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -6197,7 +6392,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Text.Json/4.0.1.0": {
+    "System.Text.Json.Reference/4.0.1.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

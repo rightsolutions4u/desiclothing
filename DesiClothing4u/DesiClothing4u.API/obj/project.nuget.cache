@@ -1,15 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "KZqcqZsvkZwzDVvgfWC/IsgHjQhVyVblVr7fJt8qDr8MWok83EiiYT9N5HtHNTqA5BJW0CoytHygbbQVyMUdAQ==",
+  "dgSpecHash": "L78trDqSFmqiQYCtGlT5GgqlpYxcI8V5gj1wkCGGG+glhjOgJ5z2jw9+D5ovruJjIKRWcAlPGLV8B1DD7e9esw==",
   "success": true,
   "projectFilePath": "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.API\\DesiClothing4u.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\smali\\.nuget\\packages\\grid.mvc\\3.1.0-ci1036\\grid.mvc.3.1.0-ci1036.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\gridmvccore\\4.0.0\\gridmvccore.4.0.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\gridshared\\4.0.0\\gridshared.4.0.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.7\\microsoft.aspnet.cors.5.2.7.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.7\\microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnet.webapi.cors\\5.2.7\\microsoft.aspnet.webapi.cors.5.2.7.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.0\\microsoft.aspnetcore.http.features.3.1.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
@@ -39,6 +43,8 @@
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0-rc.1.20451.14\\microsoft.extensions.dependencyinjection.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.dependencyinjection.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.6\\microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.0\\microsoft.extensions.fileproviders.abstractions.3.1.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\3.1.0\\microsoft.extensions.fileproviders.embedded.3.1.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0-rc.1.20451.14\\microsoft.extensions.logging.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.logging.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.options\\5.0.0-rc.1.20451.14\\microsoft.extensions.options.5.0.0-rc.1.20451.14.nupkg.sha512",
@@ -90,6 +96,7 @@
     "C:\\Users\\smali\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system-web-helpers.dll\\1.0.0\\system-web-helpers.dll.1.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -123,6 +130,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system.io.pipelines\\4.7.0\\system.io.pipelines.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
@@ -186,6 +194,16 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+      "message": "Package 'Grid.Mvc 3.1.0-ci1036' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Grid.Mvc",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
       "message": "Package 'Microsoft.AspNet.Cors 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.Cors",
       "targetGraphs": [
@@ -208,6 +226,16 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.AspNet.WebApi.Cors 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.WebApi.Cors",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System-Web-Helpers.dll 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "System-Web-Helpers.dll",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"
       ]

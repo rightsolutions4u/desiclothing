@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "eA0VH1pjnJkTgsdPomXMVcKvVtO15T64JUXGVHiHgFk2sEVNMtYiHzrqrMmxjGVAnmet5mTE4XTLRRbMoMMAOg==",
+  "dgSpecHash": "pszYdcftRyx01hpmlz8x+yrjgr1uO68q+49x+nH0mgkyO7helgOfT47PjBDvbioAjjNkttvzImFDLygOmqkI9w==",
   "success": true,
   "projectFilePath": "C:\\Users\\smali\\DesiClothingNew\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\smali\\.nuget\\packages\\grid.mvc\\3.1.0-ci1036\\grid.mvc.3.1.0-ci1036.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\gridmvccore\\4.0.0\\gridmvccore.4.0.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\gridshared\\4.0.0\\gridshared.4.0.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.0\\microsoft.aspnetcore.http.features.3.1.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -17,6 +21,8 @@
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.configuration.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0-rc.1.20451.14\\microsoft.extensions.dependencyinjection.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.dependencyinjection.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.0\\microsoft.extensions.fileproviders.abstractions.3.1.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\3.1.0\\microsoft.extensions.fileproviders.embedded.3.1.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0-rc.1.20451.14\\microsoft.extensions.logging.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.logging.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.extensions.options\\5.0.0-rc.1.20451.14\\microsoft.extensions.options.5.0.0-rc.1.20451.14.nupkg.sha512",
@@ -33,6 +39,7 @@
     "C:\\Users\\smali\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system-web-helpers.dll\\1.0.0\\system-web-helpers.dll.1.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\system.collections.immutable\\5.0.0-rc.1.20451.14\\system.collections.immutable.5.0.0-rc.1.20451.14.nupkg.sha512",
@@ -55,6 +62,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system.io.pipelines\\4.7.0\\system.io.pipelines.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",
@@ -89,6 +97,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\smali\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\system.text.json\\4.7.0\\system.text.json.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
@@ -99,5 +108,26 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Grid.Mvc 3.1.0-ci1036' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Grid.Mvc",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System-Web-Helpers.dll 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "System-Web-Helpers.dll",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

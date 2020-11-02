@@ -2,6 +2,248 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Grid.Mvc/3.1.0-ci1036": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GridMvc.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GridMvc.dll": {}
+        }
+      },
+      "GridMvcCore/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GridShared": "4.0.0",
+          "Microsoft.Extensions.FileProviders.Embedded": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/GridMvc.Views.dll": {},
+          "lib/netcoreapp3.1/GridMvc.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/GridMvc.Views.dll": {},
+          "lib/netcoreapp3.1/GridMvc.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ],
+        "resource": {
+          "lib/netcoreapp3.1/ca-ES/GridMvc.resources.dll": {
+            "locale": "ca-ES"
+          },
+          "lib/netcoreapp3.1/cs/GridMvc.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/de/GridMvc.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/GridMvc.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/eu-ES/GridMvc.resources.dll": {
+            "locale": "eu-ES"
+          },
+          "lib/netcoreapp3.1/fa-IR/GridMvc.resources.dll": {
+            "locale": "fa-IR"
+          },
+          "lib/netcoreapp3.1/fr/GridMvc.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/gl-ES/GridMvc.resources.dll": {
+            "locale": "gl-ES"
+          },
+          "lib/netcoreapp3.1/hr/GridMvc.resources.dll": {
+            "locale": "hr"
+          },
+          "lib/netcoreapp3.1/it/GridMvc.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/nb-NO/GridMvc.resources.dll": {
+            "locale": "nb-NO"
+          },
+          "lib/netcoreapp3.1/nl/GridMvc.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/netcoreapp3.1/pt-BR/GridMvc.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/GridMvc.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/se/GridMvc.resources.dll": {
+            "locale": "se"
+          },
+          "lib/netcoreapp3.1/sl/GridMvc.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/netcoreapp3.1/sr/GridMvc.resources.dll": {
+            "locale": "sr"
+          },
+          "lib/netcoreapp3.1/tr/GridMvc.resources.dll": {
+            "locale": "tr"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc-bootstrap3.css": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc-bootstrap3.min.css": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc.css": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc.min.css": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-ajax.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-ajax.min.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-ca.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-cs.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-de.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-es.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-eu.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-fa.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-fr.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-gl.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-hr.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-it.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-nb.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-nl.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-pt.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-ru.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-se.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-sl.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-sr.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-tr.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc.min.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "GridShared/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "3.1.0",
+          "Microsoft.Extensions.Primitives": "3.1.0",
+          "System.Text.Json": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/GridShared.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/GridShared.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "3.1.0",
+          "System.IO.Pipelines": "4.7.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -201,6 +443,36 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Embedded/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Embedded.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Embedded.dll": {}
+        },
+        "build": {
+          "build/netstandard2.0/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
         }
       },
       "Microsoft.Extensions.Logging/5.0.0-rc.1.20451.14": {
@@ -440,6 +712,15 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
+        }
+      },
+      "System-Web-Helpers.dll/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/Net40/System.Web.Helpers.dll": {}
+        },
+        "runtime": {
+          "lib/Net40/System.Web.Helpers.dll": {}
         }
       },
       "System.Collections/4.3.0": {
@@ -770,6 +1051,15 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
+        }
+      },
+      "System.IO.Pipelines/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/System.IO.Pipelines.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.IO.Pipelines.dll": {}
         }
       },
       "System.Linq/4.3.0": {
@@ -1317,6 +1607,15 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
+      "System.Text.Json/4.7.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1486,6 +1785,185 @@
     }
   },
   "libraries": {
+    "Grid.Mvc/3.1.0-ci1036": {
+      "sha512": "9xkzQsA1ctj79kpM4OLp/fpk6RUjQECMlIyoVHWuMRSBbN+pxCmXyOqcuBm+y2CVCo55UwtHeqTqXFweXS/KhA==",
+      "type": "package",
+      "path": "grid.mvc/3.1.0-ci1036",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/Gridmvc.css",
+        "Content/Grid.mvc.readme",
+        "Content/Scripts/gridmvc.js",
+        "Content/Scripts/gridmvc.lang.fr.js",
+        "Content/Scripts/gridmvc.lang.ru.js",
+        "Content/Scripts/gridmvc.min.js",
+        "Content/Views/Shared/_Grid.cshtml",
+        "Content/Views/Shared/_GridPager.cshtml",
+        "Content/web.config.transform",
+        "grid.mvc.3.1.0-ci1036.nupkg.sha512",
+        "grid.mvc.nuspec",
+        "lib/net40/GridMvc.dll"
+      ]
+    },
+    "GridMvcCore/4.0.0": {
+      "sha512": "NgMq2FtGkLOpNi0fh+7nYrsdUe5lttpsv0UTPOSNUTILA6454octwCJ/1Wxrzbzfkc/G6GnK5nR/n4wnUYFlOw==",
+      "type": "package",
+      "path": "gridmvccore/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Resources/css/gridmvc-bootstrap3.css",
+        "content/Resources/css/gridmvc-bootstrap3.min.css",
+        "content/Resources/css/gridmvc.css",
+        "content/Resources/css/gridmvc.min.css",
+        "content/Resources/js/gridmvc-ajax.js",
+        "content/Resources/js/gridmvc-ajax.min.js",
+        "content/Resources/js/gridmvc-lang-ca.js",
+        "content/Resources/js/gridmvc-lang-cs.js",
+        "content/Resources/js/gridmvc-lang-de.js",
+        "content/Resources/js/gridmvc-lang-es.js",
+        "content/Resources/js/gridmvc-lang-eu.js",
+        "content/Resources/js/gridmvc-lang-fa.js",
+        "content/Resources/js/gridmvc-lang-fr.js",
+        "content/Resources/js/gridmvc-lang-gl.js",
+        "content/Resources/js/gridmvc-lang-hr.js",
+        "content/Resources/js/gridmvc-lang-it.js",
+        "content/Resources/js/gridmvc-lang-nb.js",
+        "content/Resources/js/gridmvc-lang-nl.js",
+        "content/Resources/js/gridmvc-lang-pt.js",
+        "content/Resources/js/gridmvc-lang-ru.js",
+        "content/Resources/js/gridmvc-lang-se.js",
+        "content/Resources/js/gridmvc-lang-sl.js",
+        "content/Resources/js/gridmvc-lang-sr.js",
+        "content/Resources/js/gridmvc-lang-tr.js",
+        "content/Resources/js/gridmvc.js",
+        "content/Resources/js/gridmvc.min.js",
+        "contentFiles/any/net5.0/Resources/css/gridmvc-bootstrap3.css",
+        "contentFiles/any/net5.0/Resources/css/gridmvc-bootstrap3.min.css",
+        "contentFiles/any/net5.0/Resources/css/gridmvc.css",
+        "contentFiles/any/net5.0/Resources/css/gridmvc.min.css",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-ajax.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-ajax.min.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-ca.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-cs.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-de.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-es.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-eu.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-fa.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-fr.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-gl.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-hr.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-it.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-nb.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-nl.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-pt.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-ru.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-se.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-sl.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-sr.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc-lang-tr.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc.js",
+        "contentFiles/any/net5.0/Resources/js/gridmvc.min.js",
+        "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc-bootstrap3.css",
+        "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc-bootstrap3.min.css",
+        "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc.css",
+        "contentFiles/any/netcoreapp3.1/Resources/css/gridmvc.min.css",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-ajax.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-ajax.min.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-ca.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-cs.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-de.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-es.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-eu.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-fa.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-fr.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-gl.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-hr.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-it.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-nb.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-nl.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-pt.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-ru.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-se.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-sl.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-sr.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc-lang-tr.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc.js",
+        "contentFiles/any/netcoreapp3.1/Resources/js/gridmvc.min.js",
+        "gridmvccore.4.0.0.nupkg.sha512",
+        "gridmvccore.nuspec",
+        "lib/net5.0/GridMvc.Views.dll",
+        "lib/net5.0/GridMvc.dll",
+        "lib/net5.0/ca-ES/GridMvc.resources.dll",
+        "lib/net5.0/cs/GridMvc.resources.dll",
+        "lib/net5.0/de/GridMvc.resources.dll",
+        "lib/net5.0/es/GridMvc.resources.dll",
+        "lib/net5.0/eu-ES/GridMvc.resources.dll",
+        "lib/net5.0/fa-IR/GridMvc.resources.dll",
+        "lib/net5.0/fr/GridMvc.resources.dll",
+        "lib/net5.0/gl-ES/GridMvc.resources.dll",
+        "lib/net5.0/hr/GridMvc.resources.dll",
+        "lib/net5.0/it/GridMvc.resources.dll",
+        "lib/net5.0/nb-NO/GridMvc.resources.dll",
+        "lib/net5.0/nl/GridMvc.resources.dll",
+        "lib/net5.0/pt-BR/GridMvc.resources.dll",
+        "lib/net5.0/ru/GridMvc.resources.dll",
+        "lib/net5.0/se/GridMvc.resources.dll",
+        "lib/net5.0/sl/GridMvc.resources.dll",
+        "lib/net5.0/sr/GridMvc.resources.dll",
+        "lib/net5.0/tr/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/GridMvc.Views.dll",
+        "lib/netcoreapp3.1/GridMvc.dll",
+        "lib/netcoreapp3.1/ca-ES/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/cs/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/de/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/es/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/eu-ES/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/fa-IR/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/fr/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/gl-ES/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/hr/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/it/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/nb-NO/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/nl/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/pt-BR/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/ru/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/se/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/sl/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/sr/GridMvc.resources.dll",
+        "lib/netcoreapp3.1/tr/GridMvc.resources.dll"
+      ]
+    },
+    "GridShared/4.0.0": {
+      "sha512": "8AWhHpnznHmcFEvJR1mbaXEgIXVYxNM5PQ11U3ph6eZwNB47pGv/t7MOeeXMiwlKgWPPtF9pdqyUD17gR1WAUA==",
+      "type": "package",
+      "path": "gridshared/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gridshared.4.0.0.nupkg.sha512",
+        "gridshared.nuspec",
+        "lib/net5.0/GridShared.dll",
+        "lib/netstandard2.1/GridShared.dll"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/3.1.0": {
+      "sha512": "MzNJ2HbB4i5cIDlH5d62uUpHTPlmbjvAo2tx0x+wYRKJyFoRpxkNvFSB/eCCV/vf4K2+zhKkGC5uNyKvXgvaow==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.3.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
+      ]
+    },
     "Microsoft.CSharp/4.5.0": {
       "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
@@ -1807,6 +2285,43 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/3.1.0": {
+      "sha512": "G3iBMOnn3tETEUvkE9J3a23wQpRkiXZp73zR0XNlicjLFhkeWW1FCaC2bTjrgHhPi2KO6x0BXnHvVuJPIlygBQ==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.abstractions/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "microsoft.extensions.fileproviders.abstractions.3.1.0.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Microsoft.Extensions.FileProviders.Embedded/3.1.0": {
+      "sha512": "8mRwL8WZ3vUgnERk1O/q2a45AUIFx+uQYfx+9lS5/kpNaD2BBCbcaY4HFDTJNpWuiNI+MitkeGd3EEWKe+LY8w==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.embedded/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.props",
+        "build/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.targets",
+        "buildMultiTargeting/Microsoft.Extensions.FileProviders.Embedded.props",
+        "buildMultiTargeting/Microsoft.Extensions.FileProviders.Embedded.targets",
+        "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Embedded.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.FileProviders.Embedded.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.xml",
+        "microsoft.extensions.fileproviders.embedded.3.1.0.nupkg.sha512",
+        "microsoft.extensions.fileproviders.embedded.nuspec",
+        "packageIcon.png",
+        "tasks/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.Manifest.Task.dll"
       ]
     },
     "Microsoft.Extensions.Logging/5.0.0-rc.1.20451.14": {
@@ -2187,6 +2702,18 @@
         "lib/netstandard1.0/_._",
         "runtime.native.system.4.3.0.nupkg.sha512",
         "runtime.native.system.nuspec"
+      ]
+    },
+    "System-Web-Helpers.dll/1.0.0": {
+      "sha512": "YNi625gkYOPE1CN6HdDGW4Ve7/E4xxnBGsnTBdzz91b+Pk0WrE2hPPOrXJc9vTjW2PjRju0TeyUZYtBntYXuVA==",
+      "type": "package",
+      "path": "system-web-helpers.dll/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Net40/System.Web.Helpers.dll",
+        "system-web-helpers.dll.1.0.0.nupkg.sha512",
+        "system-web-helpers.dll.nuspec"
       ]
     },
     "System.Collections/4.3.0": {
@@ -3325,6 +3852,29 @@
         "ref/xamarinwatchos10/_._",
         "system.io.filesystem.primitives.4.3.0.nupkg.sha512",
         "system.io.filesystem.primitives.nuspec"
+      ]
+    },
+    "System.IO.Pipelines/4.7.0": {
+      "sha512": "S0L7oyWyQdVzD+5xIvcC8h44Vc+FY+qXDCLRh2+YsuBDORNphcxNX+tXR6ByLMjQ/7jDaXxsYBF6qbAr7ZIaFw==",
+      "type": "package",
+      "path": "system.io.pipelines/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.0/System.IO.Pipelines.dll",
+        "lib/netcoreapp3.0/System.IO.Pipelines.xml",
+        "lib/netstandard1.3/System.IO.Pipelines.dll",
+        "lib/netstandard1.3/System.IO.Pipelines.xml",
+        "lib/netstandard2.0/System.IO.Pipelines.dll",
+        "lib/netstandard2.0/System.IO.Pipelines.xml",
+        "ref/netcoreapp2.0/System.IO.Pipelines.dll",
+        "ref/netcoreapp2.0/System.IO.Pipelines.xml",
+        "system.io.pipelines.4.7.0.nupkg.sha512",
+        "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Linq/4.3.0": {
@@ -5170,6 +5720,27 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
+    "System.Text.Json/4.7.0": {
+      "sha512": "IPq/x/d5nAcnD3vIyM3AbPOaTgcqrh0AqPSx7U53UFu3M6k1TH1u/eXc9/h4jm/3mpP1WRUpevlPY4PACd7AWw==",
+      "type": "package",
+      "path": "system.text.json/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Text.Json.dll",
+        "lib/net461/System.Text.Json.xml",
+        "lib/netcoreapp3.0/System.Text.Json.dll",
+        "lib/netcoreapp3.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.4.7.0.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Text.RegularExpressions/4.3.0": {
       "sha512": "RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
       "type": "package",
@@ -5684,8 +6255,11 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Grid.Mvc >= 3.1.0-ci1036",
+      "GridMvcCore >= 4.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.0-rc.1.20451.13",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0-rc.1.20451.13"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0-rc.1.20451.13",
+      "System-Web-Helpers.dll >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5729,6 +6303,14 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "Grid.Mvc": {
+            "target": "Package",
+            "version": "[3.1.0-ci1036, )"
+          },
+          "GridMvcCore": {
+            "target": "Package",
+            "version": "[4.0.0, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.0-rc.1.20451.13, )"
@@ -5736,6 +6318,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[5.0.0-rc.1.20451.13, )"
+          },
+          "System-Web-Helpers.dll": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           }
         },
         "imports": [
@@ -5759,5 +6345,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Grid.Mvc 3.1.0-ci1036' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Grid.Mvc",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System-Web-Helpers.dll 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "System-Web-Helpers.dll",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

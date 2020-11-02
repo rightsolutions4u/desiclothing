@@ -1,15 +1,17 @@
-﻿@model DesiClothing4u.Common.Models.VendorProduct
+﻿@using DesiClothing4u.Common.Models
+@model VendorProduct
+@using System.Web.Helpers;
+@using GridMvc;
 
-@{ ViewData["Title"] = "Vendor Management";}-->
-<!--WebGrid webGrid = new WebGrid(source: DesiClothing4u.Common.Models.VendorProduct., canSort: false, canPage: false);
+@{ ViewData["Title"] = "Vendor Management";
+  //var grid = new WebGrid(source: Model.Picture, canPage: true, rowsPerPage: 15);
+}
 
-
-<!--
-    Author: W3layouts
+@*Author: W3layouts
     Author URL: http://w3layouts.com
     License: Creative Commons Attribution 3.0 Unported
-    License URL: http://creativecommons.org/licenses/by/3.0/
--->
+    License URL: http://creativecommons.org/licenses/by/3.0/*@
+
 @{ Layout = null; }
 <!DOCTYPE html>
 <html lang="zxx">
@@ -503,7 +505,7 @@
                                              contentType: 'application/json; charset=utf-8',
                                              data: JSON.stringify(myproduct)
                                               ,success: function (result) {
-                                              alert("success");
+                                              alert("New Product has been added");
                                             }
                                             , error: function (result) {
                                                 alert("err " + result.responseText);
@@ -514,69 +516,82 @@
                             </form>
                         </div>
                         @* for pic upload*@
+                        
                         <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
-                            <form id="frmPic" action="Product/AddPic" method="post">
-                                <div class="col-md-6 con-left">
-                                </div>
-                                <table width="100%">
-                                    <tr>
-                                        <td>
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        Name
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtName" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="file" id="files" name="files" class="form-control" required="required">
-                                                        @*<input type="button" id="bttnSearch" value="Search" />*@
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    @*<tr>
-                                            <td>
-
-                                                @{
-                                                    var grid = new WebGrid(Model, canPage: true, rowsPerPage: 5,
-                                                    selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
-                                                    grid.Pager(WebGridPagerModes.All);
-                                                }
-
-
-                                                @grid.GetHtml(tableStyle: "webGrid",
-                                                headerStyle: "header",
-                                                alternatingRowStyle: "alt",
-                                                selectedRowStyle: "select",
-                                                columns: grid.Columns(
-                                                grid.Column("Name", " Name"),
-                                                grid.Column("Phone", "Phone"),
-                                                grid.Column("Address", "Address"),
-                                                grid.Column("Class", "Class")
-                                                ))
-
-                                            </td>
-                                        </tr>*@
-                                </table>
-
-
-                                <div class="col-md-6 con-left">
-                                    <div class="form-group" style="text-align:left">
-                                        <label class="my-2">Picture</label>
-                                        <label for="file">Upload Image:</label>
-                                        <input type="file" name="file" id="file" /><br><br>
-                                        <input type="submit" value="Upload Image" />
+                            @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
+                              <form id="frmPic" method="post" enctype="multipart/form-data">
+                                    <div class="col-md-6 con-left">
                                     </div>
-                                </div>
+                                    <span>Select File:</span>
+                                    <input type="file" name="myfiles" id="myfiles" multiple />
+                                    <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
+                                    <br />
+                                    <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+                                    <script>
+                                       
+                                        function PostPicture(inputId) {
+                                            
+                                            var input = $('#myfiles').get(0).files;
+                                            var formData = new FormData();
+                                            for (var i = 0; i <= input.length; i++) {
+                                                formData.append("file", input[i]);
+                                                }
+                                            $.ajax({
+                                                url: 'https://localhost:44356/api/Pictures/PostPicture',
+                                                type: 'POST',
+                                                dataType: 'json',
+                                                data: formData,
+                                                processData: false,
+                                                contentType: false,
+                                                success: function (result) {
+                                                 alert("New Picture has been added");
+                                                }
+                                                , error: function (result) {
+                                                    alert("err " + result.responseText);
+                                                }
+                                            })
+                                        }
+                                    </script>
+                                    @if (Model.Picture != null)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <h2>Uploaded File Details</h2>
+                                                <div class="form-group">
+                                                    <div>
+                                                        @Html.Grid(Model.Picture).Columns(columns =>
+                                                   {
 
-                                <div class="col-md-6 con-left">
-                                    &nbsp;
-                                </div>
-                            </form>
-                        </div>
+                                                       columns.Add(model => model.SeoFilename).Titled("Name");
+                                                       columns.Add(model => model.VirtualPath).Titled("Path");
+                                                   })
+                                                        .Using(GridFilterMode.Header)
+                                                        .Empty("No data found")
+                                                        .Filterable()
+                                                        .Sortable()
+                                                        .Pageable()
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    @*<div class="col-md-6 con-left">
+                <div class="form-group" style="text-align:left">
+                    <label class="my-2">Picture</label>
+                    <label for="file">Upload Image:</label>
+                    <input type="file" name="file" id="file" /><br><br>
+                    <input type="submit" value="Upload Image" />
+                </div>
+            </div>*@
+
+                                    <div class="col-md-6 con-left">
+                                        &nbsp;
+                                    </div>
+                                </form>
+</div>
+                       
                         @* Below Div is for Products Search *@
                         @*<div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
                                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search">Search</button>
