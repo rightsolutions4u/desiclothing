@@ -44,14 +44,15 @@ namespace DesiClothing4u.API.Controllers
         
         //GET: api/PostPicture 
         [HttpPost("PostPicture")]
-        public async Task<ActionResult<IEnumerable<Picture>>> PostPicture(List<IFormFile> file, int Id )
+        public async Task<ActionResult<IEnumerable<Picture>>> PostPicture(List<IFormFile> file, IFormCollection Id )
         {
             //string webRootPath = _webHostEnvironment.WebRootPath;
             //string webRootPath = WebHostEnvironment.WebRootPath;
 
             //string contentRootPath = _webHostEnvironment.ContentRootPath;
-           
+            
             string path = "c:/ProductImages/";
+            var id = Id["Id"];
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

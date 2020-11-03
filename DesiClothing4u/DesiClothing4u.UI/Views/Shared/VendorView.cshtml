@@ -510,7 +510,12 @@
                                                       //alert("New Product has been added with product name : " + result.Name);
                                                       //$('#ProductId').val(JSON.stringify(result.Id));
                                                        
-                                                  alert("New Product has been added");
+                                                  alert("New Product has been added : " + result.name);
+                                                  alert("New Product has been added : " + result.id);
+                                                  $('#ProductId').val(result.id);
+                                                  alert("ProductId : " + $('#ProductId').val());
+                                                  //document.getElementById("#ProductId").value = result.id;
+                                                  //alert("ProductId 2: " + $('#ProductId').val());
                                                  
                                             }
                                             , error: function (result) {
@@ -536,16 +541,17 @@
                                     <script>
                                        
                                         function PostPicture(inputId) {
-                                            
+                                        
                                             var input = $('#myfiles').get(0).files;
                                             var formData = new FormData();
                                             var ProductId = $('#ProductId').val();// for pic prod mapping
-                                             alert("product is "+productid)
+                                            alert("product is " + ProductId);
                                             for (var i = 0; i <= input.length; i++) {
                                                 formData.append("file", input[i]);
                                             }
-
-                                            formData.append(Id, ProductId);
+                                            
+                                            formData.append("Id", ProductId);
+                                            alert("formdata after" );
                                             $.ajax({
                                                 url: 'https://localhost:44356/api/Pictures/PostPicture',
                                                 type: 'POST',
