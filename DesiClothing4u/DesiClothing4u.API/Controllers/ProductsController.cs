@@ -185,13 +185,12 @@ namespace DesiClothing4u.API.Controllers
             };
             return await PostProductJson (product);
         }
-        public async Task<ActionResult<Product>> PostProductJson(Product product /*string ProductName, string ShortDescription, string FullDescription, int Price, int ProductTypeId, int VendorId, string CategoryId*/)
+        public async Task<ActionResult<Product>> PostProductJson(Product product )
         {
          
                 _context.Products.Add(product);
                 await _context.SaveChangesAsync();
-                return CreatedAtAction("GetProduct", new { id = product.Id
-            }, product);
+                 return CreatedAtAction("GetProduct", new { id = product.Id }, product);
             //return NoContent();
         }
         

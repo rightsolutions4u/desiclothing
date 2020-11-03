@@ -504,8 +504,14 @@
                                              dataType: 'json',
                                              contentType: 'application/json; charset=utf-8',
                                              data: JSON.stringify(myproduct)
-                                              ,success: function (result) {
-                                              alert("New Product has been added");
+                                              , success: function (result) {
+                                                  //mohtashim work in this part to display Name or Id
+                                                      //alert(result.responseText);
+                                                      //alert("New Product has been added with product name : " + result.Name);
+                                                      //$('#ProductId').val(JSON.stringify(result.Id));
+                                                       
+                                                  alert("New Product has been added");
+                                                 
                                             }
                                             , error: function (result) {
                                                 alert("err " + result.responseText);
@@ -533,9 +539,13 @@
                                             
                                             var input = $('#myfiles').get(0).files;
                                             var formData = new FormData();
+                                            var ProductId = $('#ProductId').val();// for pic prod mapping
+                                             alert("product is "+productid)
                                             for (var i = 0; i <= input.length; i++) {
                                                 formData.append("file", input[i]);
-                                                }
+                                            }
+
+                                            formData.append(Id, ProductId);
                                             $.ajax({
                                                 url: 'https://localhost:44356/api/Pictures/PostPicture',
                                                 type: 'POST',
@@ -561,7 +571,6 @@
                                                     <div>
                                                         @Html.Grid(Model.Picture).Columns(columns =>
                                                    {
-
                                                        columns.Add(model => model.SeoFilename).Titled("Name");
                                                        columns.Add(model => model.VirtualPath).Titled("Path");
                                                    })
