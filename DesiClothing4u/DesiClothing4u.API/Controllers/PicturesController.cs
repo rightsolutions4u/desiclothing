@@ -82,14 +82,20 @@ namespace DesiClothing4u.API.Controllers
                     IsNew = true,
                     VirtualPath = path
                 };
-                //var sProduct = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(myproduct.ToString());
-               
                 _context.Pictures.Add(picture);
+                await _context.SaveChangesAsync();
+                //code to insert picture and product mapping
+                var pid = Convert.ToInt32(id.ToString());
+                ProductPictureMapping map = new ProductPictureMapping
+                {
+                    ProductId = pid
+                };
+                map.PictureId = picture.Id;
+                map.DisplayOrder = 0;
+                _context.ProductPictureMappings.Add(map);
                 await _context.SaveChangesAsync();
             }
             return await PostPictureJson(); 
-            //return await GetPicture();
-            
         }
         public async Task<ActionResult<IEnumerable<Picture>>> PostPictureJson()
         {
@@ -124,8 +130,7 @@ namespace DesiClothing4u.API.Controllers
                 return View();
             }
         }
-
-       
+      
         // POST: PicturesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]

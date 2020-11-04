@@ -505,19 +505,12 @@
                                              contentType: 'application/json; charset=utf-8',
                                              data: JSON.stringify(myproduct)
                                               , success: function (result) {
-                                                  //mohtashim work in this part to display Name or Id
-                                                      //alert(result.responseText);
-                                                      //alert("New Product has been added with product name : " + result.Name);
-                                                      //$('#ProductId').val(JSON.stringify(result.Id));
-                                                       
+                                                                                                         
                                                   alert("New Product has been added : " + result.name);
                                                   alert("New Product has been added : " + result.id);
                                                   $('#ProductId').val(result.id);
                                                   alert("ProductId : " + $('#ProductId').val());
-                                                  //document.getElementById("#ProductId").value = result.id;
-                                                  //alert("ProductId 2: " + $('#ProductId').val());
-                                                 
-                                            }
+                                           }
                                             , error: function (result) {
                                                 alert("err " + result.responseText);
                                             }
@@ -530,81 +523,98 @@
                         
                         <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
                             @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
-                              <form id="frmPic" method="post" enctype="multipart/form-data">
-                                    <div class="col-md-6 con-left">
-                                    </div>
-                                    <span>Select File:</span>
-                                    <input type="file" name="myfiles" id="myfiles" multiple />
-                                    <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
-                                    <br />
-                                    <span style="color:green">@Html.Raw(ViewBag.Message)</span>
-                                    <script>
-                                       
-                                        function PostPicture(inputId) {
-                                        
-                                            var input = $('#myfiles').get(0).files;
-                                            var formData = new FormData();
-                                            var ProductId = $('#ProductId').val();// for pic prod mapping
-                                            alert("product is " + ProductId);
-                                            for (var i = 0; i <= input.length; i++) {
-                                                formData.append("file", input[i]);
-                                            }
-                                            
-                                            formData.append("Id", ProductId);
-                                            alert("formdata after" );
-                                            $.ajax({
-                                                url: 'https://localhost:44356/api/Pictures/PostPicture',
-                                                type: 'POST',
-                                                dataType: 'json',
-                                                data: formData,
-                                                processData: false,
-                                                contentType: false,
-                                                success: function (result) {
-                                                 alert("New Picture has been added");
-                                                }
-                                                , error: function (result) {
-                                                    alert("err " + result.responseText);
-                                                }
-                                            })
-                                        }
-                                    </script>
-                                    @if (Model.Picture != null)
-                                    {
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <h2>Uploaded File Details</h2>
-                                                <div class="form-group">
-                                                    <div>
-                                                        @Html.Grid(Model.Picture).Columns(columns =>
-                                                   {
-                                                       columns.Add(model => model.SeoFilename).Titled("Name");
-                                                       columns.Add(model => model.VirtualPath).Titled("Path");
-                                                   })
-                                                        .Using(GridFilterMode.Header)
-                                                        .Empty("No data found")
-                                                        .Filterable()
-                                                        .Sortable()
-                                                        .Pageable()
+                            <form id="frmPic" method="post" enctype="multipart/form-data">
+                                <div class="col-md-6 con-left">
+                                </div>
+                                <span>Select File:</span>
+                                <input type="file" name="myfiles" id="myfiles" multiple />
+                                <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
+                                <br />
+                                <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+                                <script>
 
-                                                    </div>
+                                    function PostPicture(inputId) {
+                                        var grid = $("#PicGrid").val();
+                                        var input = $('#myfiles').get(0).files;
+                                        var formData = new FormData();
+                                        var ProductId = $('#ProductId').val();// for pic prod mapping
+                                        alert("product is " + ProductId);
+                                        for (var i = 0; i <= input.length; i++) {
+                                            formData.append("file", input[i]);
+                                        }
+
+                                        formData.append("Id", ProductId);
+                                        alert("formdata after");
+                                        $.ajax({
+                                            url: 'https://localhost:44356/api/Pictures/PostPicture',
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            data: formData,
+                                            processData: false,
+                                            contentType: false,
+                                            success: function (result) {
+                                                alert("New Picture has been added"); //this message now coming now
+                                                var grid1 = $('#PicGrid').GetHtml();
+                                                grid1.dataSource.data(result);
+                                                grid1.columns("seoFilename", "add");//Add column
+                                                grid1.columns("virtualPath", "add");//Add column
+                                                grid1.column($('#ProductName').val(), "add");//Add column
+                                                grid1.refresh();
+                                                //or below.
+                                                alert("Grid added");
+                                                grid.dataSource = result;
+                                                grid('dataBind')
+                                                    .Columns(columns => {
+                                                        columns.Add(model => result.SeoFilename).Titled("Name");
+                                                        columns.Add(model => result.VirtualPath).Titled("Path");
+                                                    });
+                                            }
+                                            , error: function (result) {
+                                                alert("err " + result.responseText);
+
+                                            }
+                                        })
+                                    }
+                                </script>
+                                
+                                        @if (Model.Picture != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <h2>Uploaded File Details</h2>
+                                            <div class="form-group">
+                                                <div>
+
+                                                    @Html.Grid("PicGrid").(Model.Picture).Columns(columns =>
+                                                    {
+                                                    columns.Add(model => model.SeoFilename).Titled("Name");
+                                                    columns.Add(model => model.VirtualPath).Titled("Path");
+                                                    })
+                                                    .Using(GridFilterMode.Header)
+                                                    .Empty("No data found")
+                                                    .Filterable()
+                                                    .Sortable()
+                                                    .Pageable()
+
                                                 </div>
                                             </div>
                                         </div>
-
-                                    }
-                                    @*<div class="col-md-6 con-left">
-                <div class="form-group" style="text-align:left">
-                    <label class="my-2">Picture</label>
-                    <label for="file">Upload Image:</label>
-                    <input type="file" name="file" id="file" /><br><br>
-                    <input type="submit" value="Upload Image" />
-                </div>
-            </div>*@
-
-                                    <div class="col-md-6 con-left">
-                                        &nbsp;
                                     </div>
-                                </form>
+
+                                }
+                                @*<div class="col-md-6 con-left">
+            <div class="form-group" style="text-align:left">
+                <label class="my-2">Picture</label>
+                <label for="file">Upload Image:</label>
+                <input type="file" name="file" id="file" /><br><br>
+                <input type="submit" value="Upload Image" />
+            </div>
+        </div>*@
+
+                                <div class="col-md-6 con-left">
+                                    &nbsp;
+                                </div>
+                            </form>
 </div>
                        
                         @* Below Div is for Products Search *@
