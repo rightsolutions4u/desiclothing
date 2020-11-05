@@ -9,6 +9,7 @@ using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.Hosting.Internal;
+using System.Linq;
 
 namespace DesiClothing4u.API.Controllers
 {
@@ -24,12 +25,13 @@ namespace DesiClothing4u.API.Controllers
         {
             _context = context;
         }
-   
+
         //public PicturesController(IWebHostEnvironment webHostEnvironment)
         //{
         //    _webHostEnvironment = webHostEnvironment;
         //}
         // GET: PicturesController
+        [HttpGet("Index")]
         public ActionResult Index()
         {
             return View();
@@ -41,7 +43,17 @@ namespace DesiClothing4u.API.Controllers
             var picture = await _context.Pictures.FindAsync(id);
             return picture;
         }
-        
+
+        // GET: api/Pictures/5
+        [HttpGet("GetPictureByProduct")]
+        public async Task<ActionResult<IEnumerable<Picture>>> GetPictureByProduct(int ProductId)
+        {
+            var Picture = await _context.Pictures
+                             .Include(a => a.ProductPictureMappings).Where(f => f.ProductPictureMappings.ProductId == ProductId)
+                             .ToListAsync();
+            return Picture;
+        }
+
         //GET: api/PostPicture 
         [HttpPost("PostPicture")]
         public async Task<ActionResult<IEnumerable<Picture>>> PostPicture(List<IFormFile> file, IFormCollection Id )
@@ -85,24 +97,24 @@ namespace DesiClothing4u.API.Controllers
                 _context.Pictures.Add(picture);
                 await _context.SaveChangesAsync();
                 //code to insert picture and product mapping
-                var pid = Convert.ToInt32(id.ToString());
-                ProductPictureMapping map = new ProductPictureMapping
-                {
-                    ProductId = pid
-                };
-                map.PictureId = picture.Id;
-                map.DisplayOrder = 0;
-                _context.ProductPictureMappings.Add(map);
-                await _context.SaveChangesAsync();
+                //var pid = Convert.ToInt32(id.ToString());
+                //ProductPictureMapping map = new ProductPictureMapping
+                //{
+                //    ProductId = pid
+                //};
+                //map.PictureId = picture.Id;
+                //map.DisplayOrder = 0;
+                //_context.ProductPictureMappings.Add(map);
+                //await _context.SaveChangesAsync();
             }
             return await PostPictureJson(); 
         }
-        public async Task<ActionResult<IEnumerable<Picture>>> PostPictureJson()
+        private async Task<ActionResult<IEnumerable<Picture>>> PostPictureJson()
         {
 
             return await _context.Pictures.ToListAsync();
         }
-
+        
         private string EnsureCorrectFilename(string filename)
         {
             if (filename.Contains("\\"))
@@ -117,7 +129,7 @@ namespace DesiClothing4u.API.Controllers
         //}
 
         // POST: PicturesController/Create
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
@@ -132,7 +144,7 @@ namespace DesiClothing4u.API.Controllers
         }
       
         // POST: PicturesController/Edit/5
-        [HttpPost]
+        [HttpPost("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
@@ -147,7 +159,7 @@ namespace DesiClothing4u.API.Controllers
         }
 
         // POST: PicturesController/Delete/5
-        [HttpPost]
+        [HttpPost("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {

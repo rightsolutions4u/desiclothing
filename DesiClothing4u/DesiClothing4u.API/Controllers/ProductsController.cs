@@ -53,6 +53,7 @@ namespace DesiClothing4u.API.Controllers
             var product = await _context.Products.Where(a => a.VendorId == VendorId
                             )
                              .Include(a => a.ProductPictureMappings)
+                                .ThenInclude(f => f.Picture)
                              .Include(a => a.ProductCategoryMappings)
                              .ToListAsync();
             return product;
@@ -185,7 +186,7 @@ namespace DesiClothing4u.API.Controllers
             };
             return await PostProductJson (product);
         }
-        public async Task<ActionResult<Product>> PostProductJson(Product product )
+        private async Task<ActionResult<Product>> PostProductJson(Product product )
         {
          
                 _context.Products.Add(product);

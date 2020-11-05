@@ -86,21 +86,7 @@ namespace DesiClothing4u.UI.Controllers
                 vendorproduct.Vendor = JsonConvert.DeserializeObject<Vendor>(Vendor);
                 ViewBag.Vendor = vendorproduct.Vendor;
 
-                    //Load Product
-                    UriBuilder builder = new UriBuilder("https://localhost:44356/api/Products/GetProductByVendor?");
-                    builder.Query = "VendorId=" + vendorproduct.Vendor.Id;
-                    HttpResponseMessage Prodresponse = await client.GetAsync(builder.Uri);
-                    var Products = Prodresponse.Content.ReadAsStringAsync().Result;
-                    vendorproduct.Product = JsonConvert.DeserializeObject<Product[]>(Products);
-                    //Load Picture
-                    var PicClient = new HttpClient();
-                    var Picurl = "https://localhost:44356/api/Pictures";
-                    var Picresponse = await PicClient.GetAsync(Picurl);
-                    var Pics = Picresponse.Content.ReadAsStringAsync().Result;
-                    vendorproduct.Picture = JsonConvert.DeserializeObject<Picture[]>(Pics);
-
-
-
+          
                     return View("VendorView", vendorproduct);
             }
             catch
@@ -141,7 +127,21 @@ namespace DesiClothing4u.UI.Controllers
             vendorproduct.Vendor = JsonConvert.DeserializeObject<Vendor>(Vendor);
             ViewBag.Vendor = vendorproduct.Vendor;
             ViewBag.VendorId = vendorproduct.Vendor.Id/* a.Id*/;
-            //return View("VendorView", a);
+            //Load Products of that vendor only along with picture once productpicturemapping table is populated
+            UriBuilder builder1 = new UriBuilder("https://localhost:44356/api/Products/GetProductByVendor?");
+            builder1.Query = "VendorId=" + vendorproduct.Vendor.Id;
+            HttpResponseMessage Prodresponse = await client.GetAsync(builder.Uri);
+            var Products = Prodresponse.Content.ReadAsStringAsync().Result;
+            vendorproduct.Product = JsonConvert.DeserializeObject<Product[]>(Products);
+            //Load Picture, once above mapping is done, remove this code
+            var PicClient = new HttpClient();
+            var Picurl = "https://localhost:44356/api/Pictures";
+            var Picresponse = await PicClient.GetAsync(Picurl);
+            var Pics = Picresponse.Content.ReadAsStringAsync().Result;
+            vendorproduct.Picture = JsonConvert.DeserializeObject<Picture[]>(Pics);
+
+
+
             return View("VendorView", vendorproduct);
         }
 

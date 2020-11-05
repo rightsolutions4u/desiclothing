@@ -164,7 +164,7 @@
             </div>
             <div class="row">
                 <div style="text-align: right;">
-                    @if (Model is DesiClothing4u.Common.Models.Vendor)
+                    @if (Model is DesiClothing4u.Common.Models.VendorProduct)
                     {
                         Html.RenderPartial("Vendorwelcome");
                     }
@@ -555,11 +555,12 @@
                                             success: function (result) {
                                                 alert("New Picture has been added"); //this message now coming now
                                                 var grid1 = $('#PicGrid').GetHtml();
-                                                grid1.dataSource.data(result);
-                                                grid1.columns("seoFilename", "add");//Add column
-                                                grid1.columns("virtualPath", "add");//Add column
-                                                grid1.column($('#ProductName').val(), "add");//Add column
-                                                grid1.refresh();
+                                                grid1.dataSource({ dataSource: result });
+                                                alert("Grid ds changed");
+                                                //grid1.columns("seoFilename", "add");//Add column
+                                                //grid1.columns("virtualPath", "add");//Add column
+                                                //grid1.column($('#ProductName').val(), "add");//Add column
+                                                //grid1.refresh();
                                                 //or below.
                                                 alert("Grid added");
                                                 grid.dataSource = result;
@@ -585,7 +586,7 @@
                                             <div class="form-group">
                                                 <div>
 
-                                                    @Html.Grid("PicGrid").(Model.Picture).Columns(columns =>
+                                                    @Html.Grid("PicGrid").(Model.VendorProduct).Columns(columns =>
                                                     {
                                                     columns.Add(model => model.SeoFilename).Titled("Name");
                                                     columns.Add(model => model.VirtualPath).Titled("Path");
