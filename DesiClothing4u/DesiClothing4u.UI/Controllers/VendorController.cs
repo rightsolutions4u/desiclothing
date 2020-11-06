@@ -127,10 +127,11 @@ namespace DesiClothing4u.UI.Controllers
             vendorproduct.Vendor = JsonConvert.DeserializeObject<Vendor>(Vendor);
             ViewBag.Vendor = vendorproduct.Vendor;
             ViewBag.VendorId = vendorproduct.Vendor.Id/* a.Id*/;
+            var client1 = new HttpClient();
             //Load Products of that vendor only along with picture once productpicturemapping table is populated
             UriBuilder builder1 = new UriBuilder("https://localhost:44356/api/Products/GetProductByVendor?");
             builder1.Query = "VendorId=" + vendorproduct.Vendor.Id;
-            HttpResponseMessage Prodresponse = await client.GetAsync(builder.Uri);
+            HttpResponseMessage Prodresponse = await client1.GetAsync(builder1.Uri);
             var Products = Prodresponse.Content.ReadAsStringAsync().Result;
             vendorproduct.Product = JsonConvert.DeserializeObject<Product[]>(Products);
             //Load Picture, once above mapping is done, remove this code

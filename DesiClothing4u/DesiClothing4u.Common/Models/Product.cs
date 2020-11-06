@@ -9,21 +9,21 @@ namespace DesiClothing4u.Common.Models
     {
         public Product()
         {
-            BackInStockSubscriptions = new HashSet<BackInStockSubscription>();
-            DiscountAppliedToProducts = new HashSet<DiscountAppliedToProduct>();
-            OrderItems = new HashSet<OrderItem>();
-            ProductAttributeCombinations = new HashSet<ProductAttributeCombination>();
-            ProductCategoryMappings = new HashSet<ProductCategoryMapping>();
-            ProductManufacturerMappings = new HashSet<ProductManufacturerMapping>();
-            ProductPictureMappings = new HashSet<ProductPictureMapping>();
-            ProductProductAttributeMappings = new HashSet<ProductProductAttributeMapping>();
-            ProductProductTagMappings = new HashSet<ProductProductTagMapping>();
-            ProductReviews = new HashSet<ProductReview>();
-            ProductSpecificationAttributeMappings = new HashSet<ProductSpecificationAttributeMapping>();
-            ProductWarehouseInventories = new HashSet<ProductWarehouseInventory>();
-            ShoppingCartItems = new HashSet<ShoppingCartItem>();
-            StockQuantityHistories = new HashSet<StockQuantityHistory>();
-            TierPrices = new HashSet<TierPrice>();
+            //BackInStockSubscriptions = new HashSet<BackInStockSubscription>();
+            //DiscountAppliedToProducts = new HashSet<DiscountAppliedToProduct>();
+            //OrderItems = new HashSet<OrderItem>();
+            //ProductAttributeCombinations = new HashSet<ProductAttributeCombination>();
+            //ProductCategoryMappings = new HashSet<ProductCategoryMapping>();
+            //ProductManufacturerMappings = new HashSet<ProductManufacturerMapping>();
+            //ProductPictureMappings = new HashSet<ProductPictureMapping>();
+            //ProductProductAttributeMappings = new HashSet<ProductProductAttributeMapping>();
+            //ProductProductTagMappings = new HashSet<ProductProductTagMapping>();
+            //ProductReviews = new HashSet<ProductReview>();
+            //ProductSpecificationAttributeMappings = new HashSet<ProductSpecificationAttributeMapping>();
+            //ProductWarehouseInventories = new HashSet<ProductWarehouseInventory>();
+            //ShoppingCartItems = new HashSet<ShoppingCartItem>();
+            //StockQuantityHistories = new HashSet<StockQuantityHistory>();
+            //TierPrices = new HashSet<TierPrice>();
         }
 
         public int Id { get; set; }
@@ -131,20 +131,21 @@ namespace DesiClothing4u.Common.Models
         public DateTime CreatedOnUtc { get; set; }
         public DateTime UpdatedOnUtc { get; set; }
 
-        public virtual ICollection<BackInStockSubscription> BackInStockSubscriptions { get; set; }
-        public virtual ICollection<DiscountAppliedToProduct> DiscountAppliedToProducts { get; set; }
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
-        public virtual ICollection<ProductAttributeCombination> ProductAttributeCombinations { get; set; }
-        public virtual ICollection<ProductCategoryMapping> ProductCategoryMappings { get; set; }
-        public virtual ICollection<ProductManufacturerMapping> ProductManufacturerMappings { get; set; }
-        public virtual ICollection<ProductPictureMapping> ProductPictureMappings { get; set; }
-        public virtual ICollection<ProductProductAttributeMapping> ProductProductAttributeMappings { get; set; }
-        public virtual ICollection<ProductProductTagMapping> ProductProductTagMappings { get; set; }
-        public virtual ICollection<ProductReview> ProductReviews { get; set; }
-        public virtual ICollection<ProductSpecificationAttributeMapping> ProductSpecificationAttributeMappings { get; set; }
-        public virtual ICollection<ProductWarehouseInventory> ProductWarehouseInventories { get; set; }
-        public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
-        public virtual ICollection<StockQuantityHistory> StockQuantityHistories { get; set; }
-        public virtual ICollection<TierPrice> TierPrices { get; set; }
+        //    public virtual ICollection<BackInStockSubscription> BackInStockSubscriptions { get; set; }
+        //    public virtual ICollection<DiscountAppliedToProduct> DiscountAppliedToProducts { get; set; }
+        //    public virtual ICollection<OrderItem> OrderItems { get; set; }
+        //    public virtual ICollection<ProductAttributeCombination> ProductAttributeCombinations { get; set; }
+        //    public virtual ICollection<ProductCategoryMapping> ProductCategoryMappings { get; set; }
+        //    public virtual ICollection<ProductManufacturerMapping> ProductManufacturerMappings { get; set; }
+        //    public virtual ICollection<ProductPictureMapping> ProductPictureMappings { get; set; }
+        //    public virtual ICollection<ProductProductAttributeMapping> ProductProductAttributeMappings { get; set; }
+        //    public virtual ICollection<ProductProductTagMapping> ProductProductTagMappings { get; set; }
+        //    public virtual ICollection<ProductReview> ProductReviews { get; set; }
+        //    public virtual ICollection<ProductSpecificationAttributeMapping> ProductSpecificationAttributeMappings { get; set; }
+        //    public virtual ICollection<ProductWarehouseInventory> ProductWarehouseInventories { get; set; }
+        //    public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+        //    public virtual ICollection<StockQuantityHistory> StockQuantityHistories { get; set; }
+        //    public virtual ICollection<TierPrice> TierPrices { get; set; }
+        //}
     }
 }

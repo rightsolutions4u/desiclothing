@@ -49,7 +49,7 @@ namespace DesiClothing4u.API.Controllers
         public async Task<ActionResult<IEnumerable<Picture>>> GetPictureByProduct(int ProductId)
         {
             var Picture = await _context.Pictures
-                             .Include(a => a.ProductPictureMappings).Where(f => f.ProductPictureMappings.ProductId == ProductId)
+                             .Include(a => a.ProductPictureMappings)
                              .ToListAsync();
             return Picture;
         }

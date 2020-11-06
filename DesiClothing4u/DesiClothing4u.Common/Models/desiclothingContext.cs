@@ -285,10 +285,10 @@ namespace DesiClothing4u.Common.Models
                 //    .HasForeignKey(d => d.CustomerId)
                 //    .HasConstraintName("FK_BackInStockSubscription_CustomerId_Customer_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.BackInStockSubscriptions)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_BackInStockSubscription_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.BackInStockSubscriptions)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_BackInStockSubscription_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<Campaign>(entity =>
@@ -668,10 +668,10 @@ namespace DesiClothing4u.Common.Models
                     .HasForeignKey(d => d.DiscountId)
                     .HasConstraintName("FK_Discount_AppliedToProducts_Discount_Id_Discount_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.DiscountAppliedToProducts)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_Discount_AppliedToProducts_Product_Id_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.DiscountAppliedToProducts)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_Discount_AppliedToProducts_Product_Id_Product_Id");
             });
 
             modelBuilder.Entity<DiscountRequirement>(entity =>
@@ -1209,10 +1209,10 @@ namespace DesiClothing4u.Common.Models
                     .HasForeignKey(d => d.OrderId)
                     .HasConstraintName("FK_OrderItem_OrderId_Order_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.OrderItems)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_OrderItem_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.OrderItems)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_OrderItem_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<OrderNote>(entity =>
@@ -1496,10 +1496,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.Property(e => e.Sku).HasMaxLength(400);
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductAttributeCombinations)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_ProductAttributeCombination_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductAttributeCombinations)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_ProductAttributeCombination_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<ProductAttributeValue>(entity =>
@@ -1563,10 +1563,10 @@ namespace DesiClothing4u.Common.Models
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK_Product_Category_Mapping_CategoryId_Category_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductCategoryMappings)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_Product_Category_Mapping_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductCategoryMappings)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_Product_Category_Mapping_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<ProductManufacturerMapping>(entity =>
@@ -1589,10 +1589,10 @@ namespace DesiClothing4u.Common.Models
                     .HasForeignKey(d => d.ManufacturerId)
                     .HasConstraintName("FK_Product_Manufacturer_Mapping_ManufacturerId_Manufacturer_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductManufacturerMappings)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_Product_Manufacturer_Mapping_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductManufacturerMappings)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_Product_Manufacturer_Mapping_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<ProductPictureMapping>(entity =>
@@ -1608,10 +1608,10 @@ namespace DesiClothing4u.Common.Models
                     .HasForeignKey(d => d.PictureId)
                     .HasConstraintName("FK_Product_Picture_Mapping_PictureId_Picture_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductPictureMappings)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_Product_Picture_Mapping_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductPictureMappings)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_Product_Picture_Mapping_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<ProductProductAttributeMapping>(entity =>
@@ -1629,10 +1629,10 @@ namespace DesiClothing4u.Common.Models
                     .HasForeignKey(d => d.ProductAttributeId)
                     .HasConstraintName("FK_Product_ProductAttribute_Mapping_ProductAttributeId_ProductAttribute_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductProductAttributeMappings)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_Product_ProductAttribute_Mapping_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductProductAttributeMappings)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_Product_ProductAttribute_Mapping_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<ProductProductTagMapping>(entity =>
@@ -1649,10 +1649,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.Property(e => e.ProductTagId).HasColumnName("ProductTag_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductProductTagMappings)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_Product_ProductTag_Mapping_Product_Id_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductProductTagMappings)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_Product_ProductTag_Mapping_Product_Id_Product_Id");
 
                 entity.HasOne(d => d.ProductTag)
                     .WithMany(p => p.ProductProductTagMappings)
@@ -1675,10 +1675,10 @@ namespace DesiClothing4u.Common.Models
                 //    .HasForeignKey(d => d.CustomerId)
                 //    .HasConstraintName("FK_ProductReview_CustomerId_Customer_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductReviews)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_ProductReview_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductReviews)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_ProductReview_ProductId_Product_Id");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.ProductReviews)
@@ -1733,10 +1733,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.Property(e => e.CustomValue).HasMaxLength(4000);
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductSpecificationAttributeMappings)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_Product_SpecificationAttribute_Mapping_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductSpecificationAttributeMappings)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_Product_SpecificationAttribute_Mapping_ProductId_Product_Id");
 
                 entity.HasOne(d => d.SpecificationAttributeOption)
                     .WithMany(p => p.ProductSpecificationAttributeMappings)
@@ -1776,10 +1776,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.HasIndex(e => e.WarehouseId, "IX_ProductWarehouseInventory_WarehouseId");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ProductWarehouseInventories)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_ProductWarehouseInventory_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ProductWarehouseInventories)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_ProductWarehouseInventory_ProductId_Product_Id");
 
                 entity.HasOne(d => d.Warehouse)
                     .WithMany(p => p.ProductWarehouseInventories)
@@ -2066,10 +2066,10 @@ namespace DesiClothing4u.Common.Models
                 //    .HasForeignKey(d => d.CustomerId)
                 //    .HasConstraintName("FK_ShoppingCartItem_CustomerId_Customer_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.ShoppingCartItems)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_ShoppingCartItem_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.ShoppingCartItems)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_ShoppingCartItem_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<SpecificationAttribute>(entity =>
@@ -2119,10 +2119,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.HasIndex(e => e.ProductId, "IX_StockQuantityHistory_ProductId");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.StockQuantityHistories)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_StockQuantityHistory_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.StockQuantityHistories)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_StockQuantityHistory_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<Store>(entity =>
@@ -2224,10 +2224,10 @@ namespace DesiClothing4u.Common.Models
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_TierPrice_CustomerRoleId_CustomerRole_Id");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.TierPrices)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK_TierPrice_ProductId_Product_Id");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.TierPrices)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .HasConstraintName("FK_TierPrice_ProductId_Product_Id");
             });
 
             modelBuilder.Entity<Topic>(entity =>
