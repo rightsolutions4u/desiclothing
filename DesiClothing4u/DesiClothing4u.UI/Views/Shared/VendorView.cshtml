@@ -4,7 +4,7 @@
 @using GridMvc;
 
 @{ ViewData["Title"] = "Vendor Management";
-  //var grid = new WebGrid(source: Model.Picture, canPage: true, rowsPerPage: 15);
+    //var grid = new WebGrid(source: Model.Picture, canPage: true, rowsPerPage: 15);
 }
 
 @*Author: W3layouts
@@ -430,60 +430,80 @@
                                 </tr>
                             </table>
                             <div style="width:90%;align-self:center;align-content:center">
-                                <img src="~/images/gridview.jpg" />
-                            </div>
-                        </div>
+                                @*<img src="~/images/gridview.jpg" />*@
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <h2>Uploaded File Details</h2>
+                                        <div class="form-group">
+                                            <div>
 
-                    </div>
-                    <div id="addproduct" style="display:none">
-                        <div id="default" style="width:99%;align-self:center;align-content:center">
-                            <form id="frmProduct" method="post">
-                                <table width="100%">
-                                    <tr valign="middle">
-                                        <td width="50%">
-                                            <h4>Add Products</h4>
-                                        </td>
-                                        <td width="50%" align="right">
-                                            <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
-                                            @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div style="width:90%;align-self:center;align-content:center">
+                                                @Html.Grid(Model.Product).Columns(columns =>
+                                                     {
+                                                         columns.Add(model => model.Name).Titled("Name");
+                                                         columns.Add(model => model.Price).Titled("Path");
+                                                     })
+                                                .Using(GridFilterMode.Header)
+                                                .Empty("No data found")
+                                                .Filterable()
+                                                .Sortable()
+                                                .Pageable()
 
-                                    <div class="col-md-6 con-left">
-                                        <div class="form-group" style="text-align:left">
-                                            <label class="my-2">Product Name</label>
-                                            <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <label class="my-2">Short Description</label>
-                                            <textarea rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <label>Full Description </label>
-                                            <textarea rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
-                                        </div>
-
-                                        <div class="form-group" style="text-align:left">
-                                            <select class="form-control" name="CategoryId" id="CategoryId">
-                                                <option value="x">Select Category</option>";
-                                                <option value="3">Men -- Clothing</option>
-                                                <option value="6">Women -- Clothing -- Kurti</option>
-                                                <option value="10">Kids -- Boys -- TShirts</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <label class="my-2">Price</label>
-                                            <input class="form-control" type="text" align="right" name="Price" id="Price" placeholder="" required="" style="width:500px;">
-                                        </div>
-                                        <div class="form-group" style="text-align:left">
-                                            <input class="form-control" type="hidden" name="ProductId" id="ProductId" placeholder="" required="" style="width:500px;">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <script>
+                        </div>
+                        <div id="addproduct" style="display:none">
+                            <div id="default" style="width:99%;align-self:center;align-content:center">
+                                <form id="frmProduct" method="post">
+                                    <table width="100%">
+                                        <tr valign="middle">
+                                            <td width="50%">
+                                                <h4>Add Products</h4>
+                                            </td>
+                                            <td width="50%" align="right">
+                                                <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
+                                                @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="width:90%;align-self:center;align-content:center">
+
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2">Product Name</label>
+                                                <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2">Short Description</label>
+                                                <textarea rows="4" cols="200" style="width:500px;" name="ShortDescription" Id="ShortDescription" placeholder="" required=""></textarea>
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <label>Full Description </label>
+                                                <textarea rows="4" cols="200" style="width:500px;" name="FullDescription" Id="FullDescription" placeholder="" required=""></textarea>
+                                            </div>
+
+                                            <div class="form-group" style="text-align:left">
+                                                <select class="form-control" name="CategoryId" id="CategoryId">
+                                                    <option value="x">Select Category</option>";
+                                                    <option value="3">Men -- Clothing</option>
+                                                    <option value="6">Women -- Clothing -- Kurti</option>
+                                                    <option value="10">Kids -- Boys -- TShirts</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2">Price</label>
+                                                <input class="form-control" type="text" align="right" name="Price" id="Price" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                            <div class="form-group" style="text-align:left">
+                                                <input class="form-control" type="hidden" name="ProductId" id="ProductId" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
                                     function PostProduct() {
                                         var ProductName = $('#ProductName').val();
                                         var ShortDescription = $('#ShortDescription').val();
@@ -505,7 +525,7 @@
                                              contentType: 'application/json; charset=utf-8',
                                              data: JSON.stringify(myproduct)
                                               , success: function (result) {
-                                                                                                         
+
                                                   alert("New Product has been added : " + result.name);
                                                   alert("New Product has been added : " + result.id);
                                                   $('#ProductId').val(result.id);
@@ -516,187 +536,167 @@
                                             }
                                         })
                                     }
-                                </script>
-                            </form>
-                        </div>
-                        @* for pic upload*@
-                        
-                        <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
-                            @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
-                            <form id="frmPic" method="post" enctype="multipart/form-data">
-                                <div class="col-md-6 con-left">
-                                </div>
-                                <span>Select File:</span>
-                                <input type="file" name="myfiles" id="myfiles" multiple />
-                                <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
-                                <br />
-                                <span style="color:green">@Html.Raw(ViewBag.Message)</span>
-                                <script>
+                                    </script>
+                                </form>
+                            </div>
+                            @* for pic upload*@
 
-                                    function PostPicture(inputId) {
-                                        var grid = $("#PicGrid").val();
-                                        var input = $('#myfiles').get(0).files;
-                                        var formData = new FormData();
-                                        var ProductId = $('#ProductId').val();// for pic prod mapping
-                                        alert("product is " + ProductId);
-                                        for (var i = 0; i <= input.length; i++) {
-                                            formData.append("file", input[i]);
-                                        }
-
-                                        formData.append("Id", ProductId);
-                                        alert("formdata after");
-                                        $.ajax({
-                                            url: 'https://localhost:44356/api/Pictures/PostPicture',
-                                            type: 'POST',
-                                            dataType: 'json',
-                                            data: formData,
-                                            processData: false,
-                                            contentType: false,
-                                            success: function (result) {
-                                                alert("New Picture has been added"); //this message now coming now
-                                                var grid1 = $('#PicGrid').GetHtml();
-                                                grid1.dataSource({ dataSource: result });
-                                                alert("Grid ds changed");
-                                                //grid1.columns("seoFilename", "add");//Add column
-                                                //grid1.columns("virtualPath", "add");//Add column
-                                                //grid1.column($('#ProductName').val(), "add");//Add column
-                                                //grid1.refresh();
-                                                //or below.
-                                                alert("Grid added");
-                                                grid.dataSource = result;
-                                                grid('dataBind')
-                                                    .Columns(columns => {
-                                                        columns.Add(model => result.SeoFilename).Titled("Name");
-                                                        columns.Add(model => result.VirtualPath).Titled("Path");
-                                                    });
-                                            }
-                                            , error: function (result) {
-                                                alert("err " + result.responseText);
-
-                                            }
-                                        })
-                                    }
-                                </script>
-                                
-                                        @if (Model.Picture != null)
-                                {
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <h2>Uploaded File Details</h2>
-                                            <div class="form-group">
-                                                <div>
-
-                                                    @Html.Grid("PicGrid").(Model.VendorProduct).Columns(columns =>
-                                                    {
-                                                    columns.Add(model => model.SeoFilename).Titled("Name");
-                                                    columns.Add(model => model.VirtualPath).Titled("Path");
-                                                    })
-                                                    .Using(GridFilterMode.Header)
-                                                    .Empty("No data found")
-                                                    .Filterable()
-                                                    .Sortable()
-                                                    .Pageable()
-
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
+                                @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
+                                <form id="frmPic" method="post" enctype="multipart/form-data">
+                                    <div class="col-md-6 con-left">
                                     </div>
+                                    <span>Select File:</span>
+                                    <input type="file" name="myfiles" id="myfiles" multiple />
+                                    <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
+                                    <br />
+                                    <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+                                    <script>
 
-                                }
-                                @*<div class="col-md-6 con-left">
-            <div class="form-group" style="text-align:left">
-                <label class="my-2">Picture</label>
-                <label for="file">Upload Image:</label>
-                <input type="file" name="file" id="file" /><br><br>
-                <input type="submit" value="Upload Image" />
-            </div>
-        </div>*@
+                                        function PostPicture(inputId) {
+                                            var grid = $("#PicGrid").val();
+                                            var input = $('#myfiles').get(0).files;
+                                            var formData = new FormData();
+                                            var ProductId = $('#ProductId').val();// for pic prod mapping
+                                            alert("product is " + ProductId);
+                                            for (var i = 0; i <= input.length; i++) {
+                                                formData.append("file", input[i]);
+                                            }
 
-                                <div class="col-md-6 con-left">
-                                    &nbsp;
-                                </div>
-                            </form>
-</div>
-                       
-                        @* Below Div is for Products Search *@
-                        @*<div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search">Search</button>
-                                <div id="search" class="collapse">
-                                    <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
+                                            formData.append("Id", ProductId);
+                                            alert("formdata after");
+                                            $.ajax({
+                                                url: 'https://localhost:44356/api/Pictures/PostPicture',
+                                                type: 'POST',
+                                                dataType: 'json',
+                                                data: formData,
+                                                processData: false,
+                                                contentType: false,
+                                                success: function (result) {
+                                                    alert("New Picture has been added"); //this message now coming now
+                                                    //var grid1 = $('#PicGrid').GetHtml();
+                                                    //grid1.dataSource({ dataSource: result });
+                                                    //alert("Grid ds changed");
+                                                    //grid1.columns("seoFilename", "add");//Add column
+                                                    //grid1.columns("virtualPath", "add");//Add column
+                                                    //grid1.column($('#ProductName').val(), "add");//Add column
+                                                    //grid1.refresh();
+                                                    //or below.
+                                                    //alert("Grid added");
+                                                    //grid.dataSource = result;
+                                                    //grid('dataBind')
+                                                    //    .Columns(columns => {
+                                                    //        columns.Add(model => result.SeoFilename).Titled("Name");
+                                                    //        columns.Add(model => result.VirtualPath).Titled("Path");
+                                                    //    });
+                                                }
+                                                , error: function (result) {
+                                                    alert("err " + result.responseText);
 
-                                        <div class="col-md-6 con-left">
+                                                }
+                                            })
+                                        }
+                                    </script>
+
+                                    @if (Model.Picture != null)
+                                    {
+
+
+                                    }
+                                    @*<div class="col-md-6 con-left">
                                             <div class="form-group" style="text-align:left">
-                                                <label class="my-2">Product name</label>
-                                                <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
+                                                <label class="my-2">Picture</label>
+                                                <label for="file">Upload Image:</label>
+                                                <input type="file" name="file" id="file" /><br><br>
+                                                <input type="submit" value="Upload Image" />
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 con-left">
-                                            <div class="form-group" style="text-align:left">
-                                                <label class="my-2">Short description</label>
-                                                <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
+                                        </div>*@
+
+                                    <div class="col-md-6 con-left">
+                                        &nbsp;
+                                    </div>
+                                </form>
+                            </div>
+
+                            @* Below Div is for Products Search *@
+                            @*<div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search">Search</button>
+                                    <div id="search" class="collapse">
+                                        <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
+
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Product name</label>
+                                                    <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 con-left">
-                                            <div class="form-group" style="text-align:left">
-                                                <label class="my-2">Category</label>
-                                                <select class="form-control" name="CategoryId_search" id="CategoryId_search">
-                                                    <option value="x">Select Category</option>";
-                                                    <option value="Clothing">Clothing</option>
-                                                    <option value="Clothing">Shoes</option>
-                                                    <option value="Clothing">Bags</option>
-                                                </select>
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Short description</label>
+                                                    <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 con-right">
-                                            <div class="form-group" style="text-align:left">
-                                                <label class="my-2">Price</label>
-                                                <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 con-right">
-                                            <div class="form-group" style="text-align:left">
-                                                <div class="select">
-                                                    <select class="form-control" name="VendorId" id="VendorId">
-                                                        <option value="0">Vendor </option>
-                                                        <option value="1">Mohtashim</option>
-                                                        <option value="2">Khadi</option>
-                                                        <option value="3">Junaid Jamshed</option>
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Category</label>
+                                                    <select class="form-control" name="CategoryId_search" id="CategoryId_search">
+                                                        <option value="x">Select Category</option>";
+                                                        <option value="Clothing">Clothing</option>
+                                                        <option value="Clothing">Shoes</option>
+                                                        <option value="Clothing">Bags</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 con-right">
-                                            <div class="form-group" style="text-align:left">
-                                                <div class="select">
-                                                    <select class="form-control" name="ProductTypeId" id="ProductTypeId">
-                                                        <option value="1">Simple </option>
-                                                        <option value="2">Group Product</option>
-                                                    </select>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Price</label>
+                                                    <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <div class="select">
+                                                        <select class="form-control" name="VendorId" id="VendorId">
+                                                            <option value="0">Vendor </option>
+                                                            <option value="1">Mohtashim</option>
+                                                            <option value="2">Khadi</option>
+                                                            <option value="3">Junaid Jamshed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <div class="select">
+                                                        <select class="form-control" name="ProductTypeId" id="ProductTypeId">
+                                                            <option value="1">Simple </option>
+                                                            <option value="2">Group Product</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                    </form>
-                                </div>
-                            </div>*@
-                        @* Below Div is for Attributes *@
-                        <div id="attribute" style="width:90%;align-self:center;align-content:center" display:none>
-                            @*<div class="wrap">
-
-                                <div class="row contact_left_grid ">*@
-
-                            @*<div class="col-md-6 con-left">
-                                    <div class="form-group" style="text-align:left">
-                                        <label class="my-2">Product Name</label>
-                                        <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
+                                        </form>
                                     </div>
                                 </div>*@
+                            @* Below Div is for Attributes *@
+                            <div id="attribute" style="width:90%;align-self:center;align-content:center" display:none>
+                                @*<div class="wrap">
+
+                                    <div class="row contact_left_grid ">*@
+
+                                @*<div class="col-md-6 con-left">
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2">Product Name</label>
+                                            <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
+                                        </div>
+                                    </div>*@
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @*</div>*@
+            @*</div>*@
     </section>
     <!--footer -->
     <footer class="py-lg-5 py-4">
