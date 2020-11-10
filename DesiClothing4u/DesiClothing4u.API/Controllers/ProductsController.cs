@@ -33,9 +33,10 @@ namespace DesiClothing4u.API.Controllers
 
         // GET: api/Products/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct([FromBody] dynamic myproduct)
         {
-            var product = await _context.Products.FindAsync(id);
+            var sproduct = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(myproduct.ToString());
+            var product = await _context.Products.FindAsync(sproduct.id);
 
             if (product == null)
             {
