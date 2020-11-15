@@ -48,12 +48,11 @@ namespace DesiClothing4u.API.Controllers
         [HttpGet("GetPictureByProduct")]
         public async Task<ActionResult<IEnumerable<Picture>>> GetPictureByProduct(int ProductId)
         {
-            var Picture = await _context.Pictures
-                             .Include(a => a.ProductPictureMappings)
+            var Picture = await _context.Pictures.Where(a => a.ProductId == ProductId)
+
                              .ToListAsync();
             return Picture;
         }
-
         //GET: api/PostPicture 
         [HttpPost("PostPicture")]
         public async Task<ActionResult<IEnumerable<Picture>>> PostPicture(List<IFormFile> file, IFormCollection Id )

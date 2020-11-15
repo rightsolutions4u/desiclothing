@@ -433,30 +433,54 @@
                                 @*<img src="~/images/gridview.jpg" />*@
                                 <div class="row">
                                     <div class="col-md-10">
-                                        <h2>Uploaded File Details</h2>
-                                        <div class="form-group">
-                                            <div>
+                                        <form id="frmProductE" method="post">
+                                            @*<h2>Uploaded File Details</h2>*@
+                                            <div class="form-group">
+                                                <div>
+                                                    @Html.Grid(Model.Product).Columns(columns =>
+                                                                                  {
+                                                                                      columns.Add(model => model.Id).Titled("Rec Id");
+                                                                                      columns.Add(model => model.Name).Titled("Name");
+                                                                                      columns.Add(model => model.Price).Titled("Path");
+                                                                                      columns.Add()
+                                                                                        .Encoded(false)
+                                                                                        .Sanitized(false)
+                                                                                        .SetWidth(80)
+                                                                                        .RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Edit</button>);
+                                                                                                                                  })
+                                                    @*.Using(GridFilterMode.Header)
+                                                    .Empty("No data found")
+                                                    .Filterable()
+                                                    .Sortable()
+                                                    .Pageable()*@
 
-                                                @Html.Grid(Model.Product).Columns(columns =>
-                                                               {
-                                                                   columns.Add(model => model.Id).Titled("Rec Id");
-                                                                   columns.Add(model => model.Name).Titled("Name");
-                                                                   columns.Add(model => model.Price).Titled("Path");
-                                                                   columns.Add()
-                                                                     .Encoded(false)
-                                                                     .Sanitized(false)
-                                                                     .SetWidth(80)
-                                                                     .RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Edit</button>);
-                                                                                               })
-                                                .Using(GridFilterMode.Header)
-                                                .Empty("No data found")
-                                                .Filterable()
-                                                .Sortable()
-                                                .Pageable()
-
+                                                </div>
+                                                <script>
+                                                    function GetProduct() {
+                                                        alert("called");
+                                                        
+                                                        var VendorId = '@ViewBag.VendorId';
+                                                        var productid = 20;
+                                                          $.ajax({
+                                                             url: 'https://localhost:44356/api/Products/GetProduct',
+                                                             type: 'GET',
+                                                              data: { id: productid },
+                                                              success: function (result) {
+                                                                  $('#ProductNameE').val(result.name);
+                                                                  $('#ShortDescriptionE').val(result.shortDescription);
+                                                                  $('#FullDescriptionE').val(result.fullDescription);
+                                                                  $('#PriceE').val(result.price);
+                                                                  
+                                                           }
+                                                            , error: function (result) {
+                                                                alert("err " + result.responseText);
+                                                            }
+                                                        })
+                                                    }
+                                                </script>
                                             </div>
+                                            </form>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -686,29 +710,18 @@
             </div>*@
                             @* Below Div is for Attributes *@
                             <div id="attribute" style="width:90%;align-self:center;align-content:center" display:none>
-                                @*<div class="wrap">
-
-                <div class="row contact_left_grid ">*@
-
-                                @*<div class="col-md-6 con-left">
-                    <div class="form-group" style="text-align:left">
-                        <label class="my-2">Product Name</label>
-                        <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
-                    </div>
-                </div>*@
                             </div>
                         </div>
-                        <div id="Editproduct" style="display:none">
+                        <div id="Editproduct" @*style="display:none"*@>
                             <div id="default" style="width:99%;align-self:center;align-content:center">
-                                <form id="frmProduct" method="post">
+                                <form id="frmProductE" method="post">
                                     <table width="100%">
                                         <tr valign="middle">
                                             <td width="50%">
-                                                <h4>Add Products</h4>
+                                                <h4>Edit Products</h4>
                                             </td>
                                             <td width="50%" align="right">
-                                                <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
-                                                @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@
+                                                <button type="submit" class="btn btn-primary submit mb-4" onclick="EditProduct()">Save</button>
                                             </td>
                                         </tr>
                                     </table>
@@ -744,50 +757,57 @@
                                                 <input class="form-control" type="hidden" name="ProductIdE" id="ProductIdE" placeholder="" required="" style="width:500px;">
                                             </div>
                                         </div>
+                                        <script>
+                                                    function EditProduct() {
+                                                        alert("Edit");
+
+                                                        var ProductName = $('#ProductNameE').val();
+                                                        var ShortDescription = $('#ShortDescriptionE').val();
+                                                        var FullDescription = $('#FullDescriptionE').val();
+                                                        var Price = parseInt($('#PriceE').val());
+                                                        var VendorId = parseInt('@ViewBag.VendorId');
+                                                        var ProductId = parseInt(20);
+                                                        var myproduct = {
+                                                            ProductName: ProductName,
+                                                            ShortDescription: ShortDescription,
+                                                            FullDescription: FullDescription,
+                                                            Price: Price,
+                                                            VendorId: VendorId,
+                                                            Id: ProductId
+                                                        }
+                                                            $.ajax({
+                                                                url: 'https://localhost:44356/api/Products/PutProduct',
+                                                                type: 'PUT',
+                                                                dataType: 'json',
+                                                                contentType: 'application/json; charset=utf-8',
+                                                                data: JSON.stringify(myproduct)
+                                                                , success: function (result) {
+
+                                                                    alert("New Product has been added : " + result.name);
+                                                                    alert("New Product has been added : " + result.id);
+                                                                    $('#ProductId').val(result.id);
+                                                                    alert("ProductId : " + $('#ProductId').val());
+                                                            }
+                                                            , error: function (result) {
+                                                                alert("err " + result.responseText);
+                                                            }
+                                                        })
+                                                    }
+                                        </script>
                                     </div>
 
-                                    <script>
-                                        function GetProduct() {
-                                            alert("GetProduct");
-                                        var myproductE = {
-                                            Id=20,
-                                            ProductName: "",
-                                            ShortDescription: "",
-                                            FullDescription: "",
-                                            Price: 0,
-                                            VendorId: VendorId
-
-                                        }
-                                          $.ajax({
-                                             url: 'https://localhost:44356/api/Products/GetProduct',
-                                             type: 'Get',
-                                             dataType: 'json',
-                                             contentType: 'application/json; charset=utf-8',
-                                             data: JSON.stringify(myproduct)
-                                              , success: function (result) {
-
-                                                  //alert("New Product has been added : " + result.name);
-                                                  //alert("New Product has been added : " + result.id);
-                                                  $('#ProductNameE').val(result.ProductName);
-                                                  alert("ProductId : " + $('#ProductNameE').val());
-                                           }
-                                            , error: function (result) {
-                                                alert("err " + result.responseText);
-                                            }
-                                        })
-                                    }
-                                    </script>
+                                    
                                 </form>
                             </div>
                             @* for pic upload*@
 
-                            <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
+                            <div id="PicUploadE" class="border border-warning" style="width:90%;align-self:center;align-content:center">
                                 @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
-                                <form id="frmPic" method="post" enctype="multipart/form-data">
+                                <form id="frmPicE" method="post" enctype="multipart/form-data">
                                     <div class="col-md-6 con-left">
                                     </div>
                                     <span>Select File:</span>
-                                    <input type="file" name="myfiles" id="myfiles" multiple />
+                                    <input type="file" name="myfilesE" id="myfilesE" multiple />
                                     <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
                                     <br />
                                     <span style="color:green">@Html.Raw(ViewBag.Message)</span>

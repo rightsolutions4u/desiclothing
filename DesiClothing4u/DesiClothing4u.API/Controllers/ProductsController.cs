@@ -32,11 +32,11 @@ namespace DesiClothing4u.API.Controllers
         }
 
         // GET: api/Products/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct([FromBody] dynamic myproduct)
+        [HttpGet("GetProduct")]
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var sproduct = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(myproduct.ToString());
-            var product = await _context.Products.FindAsync(sproduct.id);
+            //var sproduct = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(id.ToString());
+            var product = await _context.Products.FindAsync(id);
 
             if (product == null)
             {
@@ -64,14 +64,10 @@ namespace DesiClothing4u.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct([FromBody] Product myproduct)
         {
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(product).State = EntityState.Modified;
+            _context.Entry(myproduct).State = EntityState.Modified;
 
             try
             {
@@ -79,7 +75,7 @@ namespace DesiClothing4u.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!ProductExists(myproduct.Id))
                 {
                     return NotFound();
                 }
@@ -215,6 +211,29 @@ namespace DesiClothing4u.API.Controllers
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.Id == id);
+        }
+
+        // GET: api/Products
+        [HttpGet("GetFeatuedProducts")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetFeatuedProducts()
+        {
+            var product = await _context.Products.OrderByDescending(a => a.MarkAsNew == true
+                            )
+                            .Include(a => a.ProductPictureMappings)
+                            .ThenInclude(f => f.Picture).Take(8)
+                             .ToListAsync();
+            return product;
+        }
+        // GET: api/Products
+        [HttpGet("GetNewProducts")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetNewProducts()
+        {
+            var product = await _context.Products.OrderByDescending(a => a.CreatedOnUtc
+                           )
+                           .Include(a => a.ProductPictureMappings)
+                           .ThenInclude(f => f.Picture).Take(8)
+                            .ToListAsync();
+            return product;
         }
     }
 }

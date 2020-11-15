@@ -87,7 +87,19 @@ namespace DesiClothing4u.API.Controllers
 
             return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
         }
-
+        // GET: api/Customers
+        [HttpGet("LoginID")]
+        public async Task<ActionResult<Customer>> LoginID(int UserId)
+        {
+            bool UserExists;
+            UserExists = _context.Customers.Any(e => e.Id == UserId);
+            if (UserExists == false)
+            {
+                return NotFound();
+            }
+            var customers = await _context.Customers.FindAsync(UserId);
+            return customers;
+        }
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Customer>> DeleteCustomer(int id)

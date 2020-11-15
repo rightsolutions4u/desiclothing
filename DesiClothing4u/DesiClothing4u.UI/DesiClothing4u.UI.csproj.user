@@ -11,5 +11,6 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>DesiClothing4u.Common.Models.desiclothingContext</WebStackScaffolding_DbContextTypeFullName>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
 </Project>

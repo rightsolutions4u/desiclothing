@@ -1286,10 +1286,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.HasIndex(e => e.PictureId, "IX_PictureBinary_PictureId");
 
-                entity.HasOne(d => d.Picture)
-                    .WithMany(p => p.PictureBinaries)
-                    .HasForeignKey(d => d.PictureId)
-                    .HasConstraintName("FK_PictureBinary_PictureId_Picture_Id");
+                //entity.HasOne(d => d.Picture)
+                //    .WithMany(p => p.PictureBinaries)
+                //    .HasForeignKey(d => d.PictureId)
+                //    .HasConstraintName("FK_PictureBinary_PictureId_Picture_Id");
             });
 
             modelBuilder.Entity<Poll>(entity =>
@@ -1603,10 +1603,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.HasIndex(e => e.ProductId, "IX_Product_Picture_Mapping_ProductId");
 
-                entity.HasOne(d => d.Picture)
-                    .WithMany(p => p.ProductPictureMappings)
-                    .HasForeignKey(d => d.PictureId)
-                    .HasConstraintName("FK_Product_Picture_Mapping_PictureId_Picture_Id");
+                //entity.HasOne(d => d.Picture)
+                //    .WithMany(p => p.ProductPictureMappings)
+                //    .HasForeignKey(d => d.PictureId)
+                //    .HasConstraintName("FK_Product_Picture_Mapping_PictureId_Picture_Id");
 
                 //entity.HasOne(d => d.Product)
                 //    .WithMany(p => p.ProductPictureMappings)

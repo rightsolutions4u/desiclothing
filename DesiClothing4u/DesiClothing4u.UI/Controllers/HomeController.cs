@@ -23,9 +23,50 @@ namespace DesiClothing4u.UI.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        //By SM on Nov 12, 2020, remove Index1 action controller
+        public async Task<ActionResult> Index()
         {
-            return View();
+            try
+            {
+                Load load = new Load();
+                //Featured--field name MarkAsNew
+                var clientF = new HttpClient();
+                var urlF = "https://localhost:44356/api/Products/GetFeatuedProducts";
+                var responseF = await clientF.GetAsync(urlF);
+                var FeaturedProduct = responseF.Content.ReadAsStringAsync().Result;
+                load.FeaturedProduct = JsonConvert.DeserializeObject<Product[]>(FeaturedProduct);
+                //New Arrivals--field name Recent
+                var clientN = new HttpClient();
+                var urlN = "https://localhost:44356/api/Products/GetNewProducts";
+                var responseN = await clientN.GetAsync(urlN);
+                var NewProduct = responseN.Content.ReadAsStringAsync().Result;
+                load.NewProduct = JsonConvert.DeserializeObject<Product[]>(NewProduct);
+                //Customers
+                if (Request.Cookies["UserId"] != null)
+                {
+                    var clientC = new HttpClient();
+                    UriBuilder builderC = new UriBuilder("https://localhost:44356/api/Customers/LoginID?");
+                    builderC.Query = "UserId=" + Request.Cookies["UserId"];
+                    HttpResponseMessage responseC = await clientC.GetAsync(builderC.Uri);
+                    if (responseC.IsSuccessStatusCode)
+                    {
+                        var Users = responseC.Content.ReadAsStringAsync().Result;
+                        load.Customer = JsonConvert.DeserializeObject<Customer>(Users);
+                        ViewBag.UserName = load.Customer.Username;
+
+                    }
+
+
+                }
+                return View("Index", load);
+            }
+            catch (Exception e)
+            {
+                Error err = new Error();
+                err.ErrorMessage = "Sorry couldn't autoload";
+                ViewBag.Error = err;
+                return View("Error", err);
+            }
         }
 
         public IActionResult Privacy()
@@ -41,22 +82,23 @@ namespace DesiClothing4u.UI.Controllers
         // POST: AccountController/Create
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<ActionResult<Customer>> CreateCustomer(string FirstName, string LastName, string Password, string Email, string StreetAddress1, string StreetAddress2, string Country, string city, string phoneno, string ZipCode)
+        public async Task<ActionResult<Customer>> CreateCustomer([FromBody] dynamic MyCustomer)
         {
             try
 
             {
+                var sMyCustomer = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(MyCustomer.ToString());
                 Address address = new Address
                 {
-                    FirstName = FirstName,
-                    LastName = LastName,
-                    Address1 = StreetAddress1,
-                    Address2 = StreetAddress2,
-                    City = city,
-                    Email = Email,
+                    FirstName = sMyCustomer.FirstName,
+                    LastName = sMyCustomer.LastName,
+                    Address1 = sMyCustomer.StreetAddress1,
+                    Address2 = sMyCustomer.StreetAddress2,
+                    City = sMyCustomer.City,
+                    Email = sMyCustomer.Email,
                     CreatedOnUtc = DateTime.UtcNow,
-                    ZipPostalCode = ZipCode,
-                    PhoneNumber = phoneno
+                    ZipPostalCode = sMyCustomer.ZipCode,
+                    PhoneNumber = sMyCustomer.phoneno
                 };
                 string output = JsonConvert.SerializeObject(address);
                 var data = new StringContent(output, Encoding.UTF8, "application/json");
@@ -71,8 +113,8 @@ namespace DesiClothing4u.UI.Controllers
 
                 Customer customer = new Customer
                 {
-                    Username = Email,
-                    Email = Email,
+                    Username = sMyCustomer.Email,
+                    Email = sMyCustomer.Email,
                     EmailToRevalidate = "",
                     SystemName = "",
                     BillingAddressId = BillingAddress1.Id,
@@ -90,18 +132,8 @@ namespace DesiClothing4u.UI.Controllers
                     LastIpAddress = "",
                     CreatedOnUtc = DateTime.UtcNow,
                     RegisteredInStoreId = 1,
-                    Password = Password,
+                    Password = sMyCustomer.Password
                 };
-                //CustomerPassword customerPassword = new CustomerPassword();
-                //customerPassword.Password = collection["password"];
-                //customerPassword.CreatedOnUtc = DateTime.UtcNow;
-                //customer.CustomerPasswords.Add(customerPassword);
-                //CustomerAddress customerAddress = new CustomerAddress();
-                //customerAddress.AddressId = BillingAddress1.Id;
-                //customerAddress.CustomerId = customer.Id;
-                //customer.CustomerAddresses.Add(customerAddress);
-
-
 
                 output = JsonConvert.SerializeObject(customer);
                 data = new StringContent(output, Encoding.UTF8, "application/json");
@@ -111,22 +143,26 @@ namespace DesiClothing4u.UI.Controllers
                 var Customer = response.Content.ReadAsStringAsync().Result;
                 var a = JsonConvert.DeserializeObject<Customer>(Customer);
                 ViewBag.Customer = a;
-                //return View("~/Views/Home/Index", a);
+                //Store in cookies
+                if (Request.Cookies["UserId"] == null)
+                {
+                    HttpContext.Response.Cookies.Append("UserId", "ENGLISH", new CookieOptions()
+                    {
+                        Expires = DateTime.Now.AddDays(5)
+                    });
+                    //CookieOptions option = new CookieOptions();
+                    //option.Expires = DateTime.Now.AddDays(2);
+                    //Response.Cookies.Append("UserId", a.Id.ToString(), option);
+
+                    string Usr = HttpContext.Request.Cookies["UserId"];
+                }
+                return View(a);
                 //return RedirectToAction(nameof(Index));
-                return a;
-                //return PartialView("Welcome", a);
-                //return View();
             }
-            catch
+            catch(Exception e)
             {
-                return View("~/Views/Home/Index");
+                return View();
             }
         }
-
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
     }
 }

@@ -338,7 +338,7 @@
                 <!-- <p class="sub text-center mb-lg-5 mb-3">We love to discuss your idea</p> -->
 
                 <div class="contact_grid_right">
-                    <form action="~/Home/CreateCustomer/" method="post">
+                    <form method="post" action="@Url.Action("CreateCustomer", "Home")">
                         <div class="row contact_left_grid ">
                             <div class="col-md-6 con-left">
                                 <div class="form-group">
@@ -546,7 +546,7 @@
     <!--//search jQuery-->
     <!-- cart-js -->
     <script src="js/minicart.js"></script>
-    <script>
+    @*<script>
         googles.render();
 
         googles.cart.on('googles_checkout', function (evt) {
@@ -558,9 +558,9 @@
                 for (i = 0, len = items.length; i < len; i++) { }
             }
         });
-    </script>
+    </script>*@
     <!-- //cart-js -->
-    <script>
+    @*<script>
         $(document).ready(function () {
             $(".button-log a").click(function () {
                 $(".overlay-login").fadeToggle(200);
@@ -572,10 +572,10 @@
             $(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
             open = false;
         });
-    </script>
+    </script>*@
     <!-- carousel -->
     <!-- dropdown nav -->
-    <script>
+    @*<script>
         $(document).ready(function () {
             $(".dropdown").hover(
                 function () {
@@ -588,11 +588,11 @@
                 }
             );
         });
-    </script>
+    </script>*@
     <!-- //dropdown nav -->
     <script src="js/move-top.js"></script>
-    <script src="js/easing.js"></script>
-    <script>
+    @*<script src="js/easing.js"></script>*@
+    @*<script>
         jQuery(document).ready(function ($) {
             $(".scroll").click(function (event) {
                 event.preventDefault();
@@ -601,8 +601,8 @@
                 }, 900);
             });
         });
-    </script>
-    <script>
+    </script>*@
+    @*<script>
         $(document).ready(function () {
             /*
                                     var defaults = {
@@ -618,7 +618,7 @@
             });
 
         });
-    </script>
+    </script>*@
     <!--// end-smoth-scrolling -->
 
 

@@ -8,9 +8,9 @@ namespace DesiClothing4u.Common.Models
     public partial class Picture
     {
         public Picture()
-        {
-            PictureBinaries = new HashSet<PictureBinary>();
-            ProductPictureMappings = new HashSet<ProductPictureMapping>();
+        {//commented by SM on Nov 13, 2020 to stop cycling
+            //PictureBinaries = new HashSet<PictureBinary>();
+            //ProductPictureMappings = new HashSet<ProductPictureMapping>();
         }
 
         public int Id { get; set; }
@@ -21,7 +21,17 @@ namespace DesiClothing4u.Common.Models
         public bool IsNew { get; set; }
         public string VirtualPath { get; set; }
 
-        public virtual ICollection<PictureBinary> PictureBinaries { get; set; }
-        public virtual ICollection<ProductPictureMapping> ProductPictureMappings { get; set; }
+        public string FileName
+        {
+            get
+            {
+                return VirtualPath + SeoFilename;
+            }
+        }
+        //commented by SM on Nov 13, 2020 to stop cycling
+        public int ProductId { get; set; }
+        //commented by SM on Nov 13, 2020 to stop cycling
+        //public virtual ICollection<PictureBinary> PictureBinaries { get; set; }
+        //public virtual ICollection<ProductPictureMapping> ProductPictureMappings { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace DesiClothing4u.Common.Models
         public int DisplayOrder { get; set; }
 
         public virtual Picture Picture { get; set; }
-        public virtual Product Product { get; set; }
+        //commented by SM on Nov 13, 2020 to stop cycling
+        //public virtual Product Product { get; set; }
     }
 }
