@@ -98,14 +98,6 @@ namespace DesiClothing4u.UI.Controllers
         public async Task<ActionResult<Vendor>> CheckVendorLogin(IFormCollection collection)
             //string email,string pwd)
         {
-            //ValidateVendor
-            //Vendor vendor = new Vendor
-            //{
-            //    Email = email,
-            //    password = pwd
-            //};
-
-
             Vendor vendor = new Vendor();
             VendorProduct vendorproduct = new VendorProduct();
             var client = new HttpClient();
@@ -115,7 +107,6 @@ namespace DesiClothing4u.UI.Controllers
             UriBuilder builder = new UriBuilder("https://localhost:44356/api/Vendors/ValidateVendor?");
             builder.Query = "email=" + collection["exampleInputEmail1"] + "&UserPassword=" + collection["exampleInputPassword1"];
             HttpResponseMessage Res = await client.GetAsync(builder.Uri);
-
 
             //var output = JsonConvert.SerializeObject(vendor);
             //var data = new StringContent(output, Encoding.UTF8, "application/json");
@@ -129,17 +120,23 @@ namespace DesiClothing4u.UI.Controllers
             ViewBag.VendorId = vendorproduct.Vendor.Id/* a.Id*/;
             var client1 = new HttpClient();
             //Load Products of that vendor only along with picture once productpicturemapping table is populated
-            UriBuilder builder1 = new UriBuilder("https://localhost:44356/api/Products/GetProductByVendor?");
+            UriBuilder builder1 = new UriBuilder("https://localhost:44356/api/Products/GetProductByVendor1?");
             builder1.Query = "VendorId=" + vendorproduct.Vendor.Id;
             HttpResponseMessage Prodresponse = await client1.GetAsync(builder1.Uri);
             var Products = Prodresponse.Content.ReadAsStringAsync().Result;
-            vendorproduct.Product = JsonConvert.DeserializeObject<Product[]>(Products);
+            vendorproduct.ProductByVendor = JsonConvert.DeserializeObject<ProductByVendor[]>(Products);
+
+            //var query = from p in Products
+            //            join c in ProductProductAttributeMapping on p. equals c.
+
+            //            select new ProductWithCategory { Product = p, Category = c };
+            //var model = query.ToList();
             //Load Picture, once above mapping is done, remove this code
-            var PicClient = new HttpClient();
-            var Picurl = "https://localhost:44356/api/Pictures";
-            var Picresponse = await PicClient.GetAsync(Picurl);
-            var Pics = Picresponse.Content.ReadAsStringAsync().Result;
-            vendorproduct.Picture = JsonConvert.DeserializeObject<Picture[]>(Pics);
+            //var PicClient = new HttpClient();
+            //var Picurl = "https://localhost:44356/api/Pictures";
+            //var Picresponse = await PicClient.GetAsync(Picurl);
+            //var Pics = Picresponse.Content.ReadAsStringAsync().Result;
+            //vendorproduct.Picture = JsonConvert.DeserializeObject<Picture[]>(Pics);
 
 
 

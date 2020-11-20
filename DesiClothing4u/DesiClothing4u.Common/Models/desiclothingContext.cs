@@ -143,7 +143,10 @@ namespace DesiClothing4u.Common.Models
         public virtual DbSet<VendorBankDetail> VendorBankDetails { get; set; }
         public virtual DbSet<VendorNote> VendorNotes { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
+        //added by SM on Nov 20, 2020
+        public virtual DbSet<ProductByVendor> ProductByVendors { get; set; }
         
+
 
 
 

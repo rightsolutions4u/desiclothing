@@ -437,22 +437,24 @@
                                             @*<h2>Uploaded File Details</h2>*@
                                             <div class="form-group">
                                                 <div>
-                                                    @Html.Grid(Model.Product).Columns(columns =>
-                                                                                  {
-                                                                                      columns.Add(model => model.Id).Titled("Rec Id");
-                                                                                      columns.Add(model => model.Name).Titled("Name");
-                                                                                      columns.Add(model => model.Price).Titled("Path");
-                                                                                      columns.Add()
-                                                                                        .Encoded(false)
-                                                                                        .Sanitized(false)
-                                                                                        .SetWidth(80)
-                                                                                        .RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Edit</button>);
-                                                                                                                                  })
-                                                    @*.Using(GridFilterMode.Header)
-                                                    .Empty("No data found")
-                                                    .Filterable()
-                                                    .Sortable()
-                                                    .Pageable()*@
+                                                    @Html.Grid(Model.ProductByVendor).Columns(columns =>
+                                               {
+                                               columns.Add(model => model.Id).Titled("Rec Id");
+                                               columns.Add(model => model.Name).Titled("Name");
+                                               columns.Add(model => model.Price).Titled("Price");
+                                               //columns.Add(model => model.FileName).Titled("FileName");
+                                               columns.Add(model => model.FileName).Titled("Image").Filterable(false).RenderValueAs(model => @<img alt="Image" src='@Url.Content(model.FileName)'>)
+
+                                                    .Encoded(false)
+                                                    .Sanitized(false)
+                                                    .SetWidth(80);
+                                                    @*.RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Edit</button>);*@
+                                                    })
+                                                    
+        @*.Empty("No data found")
+        .Filterable()
+        .Sortable()
+        .Pageable()*@
 
                                                 </div>
                                                 <script>

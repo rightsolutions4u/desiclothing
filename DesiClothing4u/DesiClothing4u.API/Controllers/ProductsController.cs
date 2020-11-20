@@ -53,13 +53,24 @@ namespace DesiClothing4u.API.Controllers
         {
             var product = await _context.Products.Where(a => a.VendorId == VendorId
                             )
-                             //.Include(a => a.ProductPictureMappings)
-                             //   .ThenInclude(f => f.Picture)
-                             //.Include(a => a.ProductCategoryMappings)
+                             .Include(a => a.ProductPictureMappings)
+                                .ThenInclude(f => f.Picture)
+
                              .ToListAsync();
             return product;
+
         }
-             
+        //added by SM on Nov 20, 2020
+        // GET: api/Products/5
+        [HttpGet("GetProductByVendor1")]
+        public IEnumerable<ProductByVendor> GetProductByVendor1(int VendorId)
+        {
+             var product = _context.ProductByVendors
+            .FromSqlRaw("Execute dbo.GetProductByVendor {0}", VendorId) 
+            .ToList();
+            return product;
+        }
+
         // PUT: api/Products/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

@@ -140,14 +140,6 @@ namespace DesiClothing4u.Common.Models
         //    public virtual ICollection<ProductManufacturerMapping> ProductManufacturerMappings { get; set; }
         //by SM on Nov 12, 2020
         public virtual ICollection<ProductPictureMapping> ProductPictureMappings { get; set; }
-        //    public virtual ICollection<ProductProductAttributeMapping> ProductProductAttributeMappings { get; set; }
-        //    public virtual ICollection<ProductProductTagMapping> ProductProductTagMappings { get; set; }
-        //    public virtual ICollection<ProductReview> ProductReviews { get; set; }
-        //    public virtual ICollection<ProductSpecificationAttributeMapping> ProductSpecificationAttributeMappings { get; set; }
-        //    public virtual ICollection<ProductWarehouseInventory> ProductWarehouseInventories { get; set; }
-        //    public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
-        //    public virtual ICollection<StockQuantityHistory> StockQuantityHistories { get; set; }
-        //    public virtual ICollection<TierPrice> TierPrices { get; set; }
-        //}
+        
     }
 }

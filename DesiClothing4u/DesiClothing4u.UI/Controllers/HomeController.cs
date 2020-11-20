@@ -146,13 +146,15 @@ namespace DesiClothing4u.UI.Controllers
                 //Store in cookies
                 if (Request.Cookies["UserId"] == null)
                 {
-                    HttpContext.Response.Cookies.Append("UserId", "ENGLISH", new CookieOptions()
-                    {
-                        Expires = DateTime.Now.AddDays(5)
-                    });
-                    //CookieOptions option = new CookieOptions();
-                    //option.Expires = DateTime.Now.AddDays(2);
-                    //Response.Cookies.Append("UserId", a.Id.ToString(), option);
+                    //HttpContext.Response.Cookies.Append("UserId", "ENGLISH", new CookieOptions()
+                    //{
+                    //    Expires = DateTime.Now.AddDays(5)
+                    //    IsEssential = true
+                    //}) ;
+                    CookieOptions option = new CookieOptions();
+                    option.Expires = DateTime.Now.AddDays(2);
+                    option.IsEssential = true;
+                    Response.Cookies.Append("UserId", a.Id.ToString(), option);
 
                     string Usr = HttpContext.Request.Cookies["UserId"];
                 }
