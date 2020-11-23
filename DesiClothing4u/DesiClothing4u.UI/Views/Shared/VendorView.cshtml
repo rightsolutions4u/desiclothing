@@ -442,16 +442,22 @@
                                                columns.Add(model => model.Id).Titled("Rec Id");
                                                columns.Add(model => model.Name).Titled("Name");
                                                columns.Add(model => model.Price).Titled("Price");
-                                               //columns.Add(model => model.FileName).Titled("FileName");
-                                               columns.Add(model => model.FileName).Titled("Image").Filterable(false).RenderValueAs(model => @<img alt="Image" src='@Url.Content(model.FileName)'>)
+                                               columns.Add(model => model.FileName).Titled("Image").Filterable(false).Encoded(false)
+                                                .Sanitized(false)
+                                                .SetWidth(80).RenderValueAs(model => @<img width="75" height="75" alt="Image" src='@Url.Content(model.FileName)'>);
+                                                columns.Add()
+                                                .Encoded(false)
+                                                .Sanitized(false)
+                                                .SetWidth(80)
+                                                .RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Edit</button>);
+                                                columns.Add()
+                                                .Encoded(false)
+                                                .Sanitized(false)
+                                                .SetWidth(80)
+                                                .RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Delete</button>);
+                                                })
 
-                                                    .Encoded(false)
-                                                    .Sanitized(false)
-                                                    .SetWidth(80);
-                                                    @*.RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Edit</button>);*@
-                                                    })
-                                                    
-        @*.Empty("No data found")
+                                                    @*.Empty("No data found")
         .Filterable()
         .Sortable()
         .Pageable()*@
