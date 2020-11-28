@@ -37,7 +37,7 @@ namespace DesiClothing4u.API.Controllers
         {
             //var sproduct = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(id.ToString());
             var product = await _context.Products.FindAsync(id);
-
+           
             if (product == null)
             {
                 return NotFound();
@@ -48,17 +48,15 @@ namespace DesiClothing4u.API.Controllers
 
 
         // GET: api/Products/5
-        [HttpGet("GetProductByVendor")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductByVendor(int VendorId)
+        [HttpGet("GetProductDetail")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductDetail(int Id)
         {
-            var product = await _context.Products.Where(a => a.VendorId == VendorId
+            var product =   await _context.Products.Where(a => a.Id == Id
                             )
                              .Include(a => a.ProductPictureMappings)
-                                .ThenInclude(f => f.Picture)
-
+                             .ThenInclude(f => f.Picture)
                              .ToListAsync();
             return product;
-
         }
         //added by SM on Nov 20, 2020
         // GET: api/Products/5

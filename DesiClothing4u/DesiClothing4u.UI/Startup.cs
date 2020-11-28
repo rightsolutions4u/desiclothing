@@ -30,8 +30,17 @@ namespace DesiClothing4u.UI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDistributedMemoryCache();
+            //added by SM on Nov 24, 2020
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddHttpContextAccessor();
             services.AddScoped<HttpContextAccessor>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +64,8 @@ namespace DesiClothing4u.UI
             app.UseRouting();
             app.UseCors("CorsApi");
             app.UseAuthorization();
-
+            //added by SM on Nov 24, 2020 for session
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

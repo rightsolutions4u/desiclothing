@@ -877,3 +877,6 @@ C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\De
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.UI.StaticWebAssets.Manifest.cache
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.UI.StaticWebAssets.xml
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\DesiClothing4u.UI.genruntimeconfig.cache
+C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Single.cshtml.g.cs
+C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\MyCart.cshtml.g.cs
+C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\checkout.cshtml.g.cs

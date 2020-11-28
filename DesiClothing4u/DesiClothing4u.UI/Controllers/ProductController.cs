@@ -21,11 +21,66 @@ namespace DesiClothing4u.UI.Controllers
         }
 
         // GET: ProductController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
+            Product product = new Product();
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Clear();
+            UriBuilder builder = new UriBuilder("https://localhost:44356/api/Products/GetProductDetail?");
+            builder.Query = "Id=" + id;
+            HttpResponseMessage Res = await client.GetAsync(builder.Uri);
+            if (Res.IsSuccessStatusCode)
+            {
+                //Storing the response details recieved from web api
+                var Product1 = Res.Content.ReadAsStringAsync().Result;
+                //Deserializing the response recieved from web api and storing into the SiteUser object 
+                Product[] a= JsonConvert.DeserializeObject<Product[]>(Product1);
+                ViewBag.Product = product;
+                ViewBag.Error = null;
+                return View("Single", a);
+            }
             return View();
         }
+        //Added by SM on Nov 25, 2020 for cart
+        public ActionResult AddCart(int Id, string Name, decimal Price)
+        {
+            Cart cart = new Cart
+            {
 
+                Id = Id,
+                Name = Name,
+                Price = Price
+
+            };
+            //key="cart", key="count"
+            //if cart is empty
+            if (HttpContext.Session.GetString("cart") == null)
+            {
+
+                List<Cart> li = new List<Cart>();
+                li.Add(cart);
+                HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
+                ViewBag.cartCount = li.Count();
+                HttpContext.Session.SetInt32("count", li.Count());
+                ViewBag.cart = cart;
+                //ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
+                 return View("~/Views/Home/Index");
+                //return View("MyCart", (List<Cart>)JsonConvert.SerializeObject(li));
+            }
+            else //not empty
+            {
+                var value = HttpContext.Session.GetString("cart");
+                List<Cart> li = (List<Cart>)JsonConvert.DeserializeObject(value);
+                li.Add(cart);//newly entered item
+                HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
+                ViewBag.cartCount = li.Count();// new count
+                HttpContext.Session.SetInt32("count", li.Count());
+                //Session["count"] = Convert.ToInt32(Session["count"]) + 1;
+                return View("~/Views/Home/Index");
+
+            }
+
+        }
         // GET: ProductController/Create
         public ActionResult Create()
         {

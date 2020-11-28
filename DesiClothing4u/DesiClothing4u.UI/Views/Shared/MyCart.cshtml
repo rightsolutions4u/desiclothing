@@ -1,0 +1,185 @@
+﻿@model IEnumerable<DesiClothing4u.Common.Models.Cart>
+
+<script>
+    function wcqib_refresh_quantity_increments() {
+        jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function (a, b) {
+            var c = jQuery(b);
+            c.addClass("buttons_added"), c.children().first().before('<input type="button" value="-" class="minus" />'), c.children().last().after('<input type="button" value="+" class="plus" />')
+        })
+    }
+    String.prototype.getDecimals || (String.prototype.getDecimals = function () {
+        var a = this,
+            b = ("" + a).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+        return b ? Math.max(0, (b[1] ? b[1].length : 0) - (b[2] ? +b[2] : 0)) : 0
+    }), jQuery(document).ready(function () {
+        wcqib_refresh_quantity_increments()
+    }), jQuery(document).on("updated_wc_div", function () {
+        wcqib_refresh_quantity_increments()
+    }), jQuery(document).on("click", ".plus, .minus", function () {
+        var a = jQuery(this).closest(".quantity").find(".qty"),
+            b = parseFloat(a.val()),
+            c = parseFloat(a.attr("max")),
+            d = parseFloat(a.attr("min")),
+            e = a.attr("step");
+        b && "" !== b && "NaN" !== b || (b = 0), "" !== c && "NaN" !== c || (c = ""), "" !== d && "NaN" !== d || (d = 0), "any" !== e && "" !== e && void 0 !== e && "NaN" !== parseFloat(e) || (e = 1), jQuery(this).is(".plus") ? c && b >= c ? a.val(c) : a.val((b + parseFloat(e)).toFixed(e.getDecimals())) : d && b <= d ? a.val(d) : b > 0 && a.val((b - parseFloat(e)).toFixed(e.getDecimals())), a.trigger("change")
+    });
+</script>
+@if (Model != null)
+{
+    int count = 0;
+    var body = "";
+
+    <div class="modal-body">
+        <div class="login_wrap">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <h2><span>Your Cart </span></h2>
+                    </div>
+                    @{
+                        body = "<table class='table table-bordered' border='1'>";
+                        body += "<thead>";
+                        body += "<tr>";
+                        body += "<th style='font-size:10px'>Id</th>";
+                        body += "<th style='font-size:10px'>Name</th>";
+                        body += "<th style='font-size:10px'>Price</th>";
+                        body += "<th style='font-size:10px'>Quantity</th>";
+                        body += "<th style='font-size:10px'>Remove</th>";
+                        body += "</tr>";
+                        body += "</thead>";
+                        body += "<tbody>";
+                    }
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="font-size:14px" align="left">Id</th>
+                                <th style="font-size:14px" align="left">Name</th>
+                                <th style="font-size:14px" align="left">Price</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                //sum = Convert.ToInt32(@item.SellPri) + sum;
+                                count = count + 1;
+                                body += "<tr>";
+                                body += "<td>" + @item.Id + "</td>";
+                                body += "<td>" + @item.Name + "</td>";
+                                body += "<td>" + @item.Price + "</td>";
+                                //body += "<td>" + @item. + "</td>";
+                                body += "</tr>";
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td> @item.Price</td>
+                                    @*<td>@item.Units</td>*@
+                                    <td>
+                                        <input type="button" value="-">
+                                        <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="2" class="input-text qty text" pattern="" inputmode="">
+                                        <input type="button" value="+">
+                                    </td>
+                                    <td><button style="font-size:24px;color:red"> <i class="fa fa-trash-o " onclick="location.href='@Url.Action("DeleteCart", "Category", item)'"></i></button></td>
+                                </tr>
+
+                            }
+                            <tr>
+                                @*<td colspan="4" class="text-right"><b>Total: $@sum</b></td>*@
+                                <td colspan="5" class="text-left">
+                                    <b>Total: @count</b>
+                                    <input type="hidden" id="bodyval" value="@body" />
+                                </td>
+                            </tr>
+                            @{
+                                body += "</tbody>";
+                                body += "</table>";
+                            }
+                        </tbody>
+                    </table>
+                    @*<button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-id="@body">Mail >> </button>*@
+                    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Home")'"> Continue Shopping >></button>
+                </div>
+
+                @*<div class="mid_divider"></div>*@
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <form id="mail" action="~/Category/SendEmail" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Send Email
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone No.</label>
+                            <input type="text" class="form-control" name="Phoneno">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" class="form-control" name="Subject">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="bodytxt" id="bodytxt" />
+                            @*<textarea id="bodytxt" name="bodytxt" class="form-control" ></textarea>*@
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary" onclick="sendmail()">  Send </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+}
+<script src="~/js/jquery-3.1.1.slim.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#exampleModal').on('show.bs.modal', function (e) {
+            var btext = $(e.relatedTarget).data('id');
+            $('#bodytxt').val(btext);
+        });
+    });
+
+</script>
+@*<script>
+        function sendmail() {
+            var body = $('#bodyval').val();
+                                       var pwd = $('#UserPassword').val();
+                                       $.ajax({
+                                           url: '@Url.Action("Login", "Account")',
+                                           type: 'POST',
+                                           data: { "UserId": userId, "UserPassword": pwd }
+                                           , success: function (result) {
+                                              $('#welcome').replaceWith(result);
+                                           }
+                                           , error: function (result) {
+                                               alert("err " + result.responseText);
+                                               $('#welcome').replaceWith(result);
+                                               }
+                                           })
+                                   }
+    </script>*@

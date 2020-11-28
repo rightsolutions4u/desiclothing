@@ -1903,7 +1903,8 @@ var defaults = module.exports = {
 
     parent: (typeof document !== 'undefined') ? document.body : null,
 
-    action: 'checkout.html',
+    action: 'checkout.cshtml',
+    //action: 'checkout.html',
 
     target: '',
 
@@ -1976,7 +1977,6 @@ var Cart = require('./cart'),
     cartModel,
     confModel,
     viewModel;
-
 
 /**
  * Renders the Mini Cart to the page's DOM.
