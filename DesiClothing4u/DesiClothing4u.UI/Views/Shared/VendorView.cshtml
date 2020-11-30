@@ -466,8 +466,9 @@
                                                 <script>
                                                     function GetProduct() {
                                                         var VendorId = '@ViewBag.VendorId';
-                                                        var productid = 26;
                                                         var i = 0;
+                                                        var productid = 94;
+                                                        
                                                           $.ajax({
                                                              url: 'https://localhost:44356/api/Products/GetProduct',
                                                              type: 'GET',
@@ -503,11 +504,11 @@
                                                             }
                                                         })
                                                     }
-                                                    function delpic(id) {
+                                                    function delpic(PicId) {
                                                         $.ajax({
-                                                            url: 'https://localhost:44356/api/Pictures/Delete',
-                                                            type: 'Delete',
-                                                            data: { id: id },
+                                                            url: 'https://localhost:44356/api/Pictures',
+                                                            type: 'DELETE',
+                                                            data: { id: PicId },
                                                             success: function (result) {
                                                                 var productid = $('#ProductIdE').val();
                                                                 $.ajax({

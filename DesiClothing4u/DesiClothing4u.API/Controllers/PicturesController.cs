@@ -19,6 +19,8 @@ namespace DesiClothing4u.API.Controllers
     public class PicturesController : Controller
     {
         private readonly desiclothingContext _context;
+
+       
         //private readonly IWebHostEnvironment _webHostEnvironment;
 
         public PicturesController(desiclothingContext context)
@@ -167,10 +169,10 @@ namespace DesiClothing4u.API.Controllers
                 return View();
             }
         }
-
-        // DELETE: PicturesController/Delete/5
-        [HttpDelete("{id}")]
-        [ValidateAntiForgeryToken]
+        
+        // DELETE: api/Pictures/5
+        [HttpDelete("DeletePicture")]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult<Picture>> DeletePicture(int id)
         {
             var picture = await _context.Pictures.FindAsync(id);
