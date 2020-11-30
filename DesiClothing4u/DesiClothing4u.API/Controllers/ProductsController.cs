@@ -58,6 +58,7 @@ namespace DesiClothing4u.API.Controllers
                              .ToListAsync();
             return product;
         }
+
         //added by SM on Nov 20, 2020
         // GET: api/Products/5
         [HttpGet("GetProductByVendor1")]

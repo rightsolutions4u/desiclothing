@@ -44,6 +44,17 @@ namespace DesiClothing4u.API.Controllers
             return picture;
         }
 
+        // GET: api/Products/5
+        [HttpGet("GetProductPicture")]
+        public async Task<ActionResult<IEnumerable<Picture>>> GetProductPicture(int Id)
+        {
+            var picture = await _context.Pictures.Where(a => a.ProductId == Id
+                            )
+                             .ToListAsync();
+            return picture;
+        }
+
+
         // GET: api/Pictures/5
         [HttpGet("GetPictureByProduct")]
         public async Task<ActionResult<IEnumerable<Picture>>> GetPictureByProduct(int ProductId)
@@ -157,19 +168,21 @@ namespace DesiClothing4u.API.Controllers
             }
         }
 
-        // POST: PicturesController/Delete/5
-        [HttpPost("Delete")]
+        // DELETE: PicturesController/Delete/5
+        [HttpDelete("{id}")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult<Picture>> DeletePicture(int id)
         {
-            try
+            var picture = await _context.Pictures.FindAsync(id);
+            if (picture == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
+
+            _context.Pictures.Remove(picture);
+            await _context.SaveChangesAsync();
+
+            return picture;
         }
     }
 }
