@@ -439,7 +439,7 @@
                                                 <div>
                                                @Html.Grid(Model.ProductByVendor).Columns(columns =>
                                                {
-                                               columns.Add(model => model.Id).Titled("Rec Id");
+                                               columns.Add(model => model.Id).Titled("RecId");
                                                columns.Add(model => model.Name).Titled("Name");
                                                columns.Add(model => model.Price).Titled("Price");
                                                columns.Add(model => model.FileName).Titled("Image").Filterable(false).Encoded(false)
@@ -449,12 +449,12 @@
                                                 .Encoded(false)
                                                 .Sanitized(false)
                                                 .SetWidth(80)
-                                                .RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Edit</button>);
+                                                .RenderValueAs(o => @<button type="button" value="" onclick=GetProduct(@o.Id)>Edit</button>);
                                                 columns.Add()
                                                 .Encoded(false)
                                                 .Sanitized(false)
                                                 .SetWidth(80)
-                                                .RenderValueAs(data => @<button type="button" value="" onclick="GetProduct()">Delete</button>);
+                                                .RenderValueAs(o => @<button type="button" value="" onclick="GetProduct(@o.Id)">Delete</button>);
                                                 })
 
                                                     @*.Empty("No data found")
@@ -464,11 +464,11 @@
 
                                                 </div>
                                                 <script>
-                                                    function GetProduct() {
+                                                    function GetProduct(productid) {
                                                         var VendorId = '@ViewBag.VendorId';
                                                         var i = 0;
-                                                        var productid = 94;
-                                                        
+                                                        alert("Id " + productid);
+                                                                                        
                                                           $.ajax({
                                                              url: 'https://localhost:44356/api/Products/GetProduct',
                                                              type: 'GET',
@@ -487,7 +487,7 @@
                                                                           var trHTML = '';
                                                                           var path = window.location.origin;
                                                                           $.each(data, function (i, item) {
-                                                                              trHTML += '<tr><td><img src=' + path + '/ProductImages/' +  item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + data.iD + ' )">Delete</a></td></tr>';
+                                                                              trHTML += '<tr><td><img src=' + path + '/ProductImages/' +  item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick=delpic('+ item.id +')>Delete</a></td></tr>';
                                                                               alert(trHTML);
                                                                           });
                                                                           $('#tblpic').append(trHTML);
@@ -505,12 +505,14 @@
                                                         })
                                                     }
                                                     function delpic(PicId) {
+                                                        alert("PicId " + PicId);
                                                         $.ajax({
-                                                            url: 'https://localhost:44356/api/Pictures',
+                                                            url: 'https://localhost:44356/api/Pictures/DeletePicture',
                                                             type: 'DELETE',
-                                                            data: { id: PicId },
+                                                            data: { Id: PicId },
                                                             success: function (result) {
                                                                 var productid = $('#ProductIdE').val();
+                                                                alert("productid " + productid);
                                                                 $.ajax({
                                                                     url: 'https://localhost:44356/api/Pictures/GetProductPicture',
                                                                     type: 'GET',
@@ -521,7 +523,7 @@
                                                                         $('#EdpicGrid').html = "";
                                                                         trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
                                                                         $.each(data, function (i, item) {
-                                                                            trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + data.iD + ' )">Delete</a></td></tr>';
+                                                                            trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + item.id + ' )">Delete</a></td></tr>';
                                                                         });
                                                                         trHTML += "</table>"
                                                                         $('#EdpicGrid').html = trHTML;
@@ -811,6 +813,7 @@
                                                     <option value="3">Men -- Clothing</option>
                                                     <option value="6">Women -- Clothing -- Kurti</option>
                                                     <option value="10">Kids -- Boys -- TShirts</option>
+                                                    <option value="12">Both Men & Women--Clothing</option>
                                                 </select>
                                             </div>
                                             <div class="form-group" style="text-align:left">
@@ -904,7 +907,9 @@
                                                 processData: false,
                                                 contentType: false,
                                                 success: function (result) {
-                                                    alert("New Picture has been added"); //this message now coming now
+                                                    alert("New Picture has been added"); //
+
+                                                    //Nov 30, 2020
                                                     //var grid1 = $('#PicGrid').GetHtml();
                                                     //grid1.dataSource({ dataSource: result });
                                                     //alert("Grid ds changed");
