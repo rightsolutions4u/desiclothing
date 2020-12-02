@@ -53,7 +53,7 @@ namespace DesiClothing4u.API
                
             });
             services.AddControllers();
-            services.AddRazorPages(); //Added on Nov 29, 2020 to fix delete pic issue
+            //services.AddRazorPages(); //Added on Nov 29, 2020 to fix delete pic issue
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

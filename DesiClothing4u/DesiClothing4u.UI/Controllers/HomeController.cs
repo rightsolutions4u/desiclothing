@@ -22,6 +22,55 @@ namespace DesiClothing4u.UI.Controllers
         {
             _logger = logger;
         }
+        //By Mohtashim on Nov 29, 2020
+        public async Task<ActionResult<Customer>> CheckCustomerLogin(IFormCollection collection)
+        {
+            Customer cutomer = new Customer();
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Clear();
+            UriBuilder builder = new UriBuilder("https://localhost:44356/api/Customers/ValidateCustomer?");
+            builder.Query = "email=" + collection["exampleInputEmail1"] + "&UserPassword=" + collection["exampleInputPassword1"];
+            HttpResponseMessage Res = await client.GetAsync(builder.Uri);
+            var Customer = Res.Content.ReadAsStringAsync().Result;
+            var a = JsonConvert.DeserializeObject<Customer>(Customer);
+            //Store in co+kies
+            if (Request.Cookies["UserId"] == null)
+            {
+                CookieOptions option = new CookieOptions();
+                option.Expires = DateTime.Now.AddDays(2);
+                option.IsEssential = true;
+                Response.Cookies.Append("UserId", a.Id.ToString(), option);
+                string Usr = HttpContext.Request.Cookies["UserId"];
+            }
+            Load load = new Load();
+            //Featured--field name MarkAsNew
+            var clientF = new HttpClient();
+            var urlF = "https://localhost:44356/api/Products/GetFeatuedProducts";
+            var responseF = await clientF.GetAsync(urlF);
+            var FeaturedProduct = responseF.Content.ReadAsStringAsync().Result;
+            load.FeaturedProduct = JsonConvert.DeserializeObject<Product[]>(FeaturedProduct);
+            //New Arrivals--field name Recent
+            var clientN = new HttpClient();
+            var urlN = "https://localhost:44356/api/Products/GetNewProducts";
+            var responseN = await clientN.GetAsync(urlN);
+            var NewProduct = responseN.Content.ReadAsStringAsync().Result;
+            load.NewProduct = JsonConvert.DeserializeObject<Product[]>(NewProduct);
+            //Customers
+            if (Request.Cookies["UserId"] != null)
+            {
+                var clientC = new HttpClient();
+                UriBuilder builderC = new UriBuilder("https://localhost:44356/api/Customers/LoginID?");
+                builderC.Query = "UserId=" + Request.Cookies["UserId"];
+                HttpResponseMessage responseC = await clientC.GetAsync(builderC.Uri);
+                if (responseC.IsSuccessStatusCode)
+                {
+                    var Users = responseC.Content.ReadAsStringAsync().Result;
+                    load.Customer = JsonConvert.DeserializeObject<Customer>(Users);
+                    ViewBag.UserName = load.Customer.Username;
+                }
+            }
+            return View("Index", load);
+        }
 
         //By SM on Nov 12, 2020, remove Index1 action controller
         public async Task<ActionResult> Index()

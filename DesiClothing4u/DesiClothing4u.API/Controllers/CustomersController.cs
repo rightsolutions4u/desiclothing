@@ -22,6 +22,23 @@ namespace DesiClothing4u.API.Controllers
             _context = context;
             //_Customer = CustomerService;
         }
+        //Added by Mohtashim on Nov 29, 2020
+        [HttpGet("ValidateCustomer")]
+        public ActionResult<Customer> ValidateCustomer(string email, string UserPassword)
+        {
+            bool CustomeExists;
+            CustomeExists = _context.Customers.Any(e => e.Email == email && e.Password == UserPassword);
+
+            if (CustomeExists == false)
+            {
+                return NotFound();
+            }
+
+
+            var Customer = _context.Customers.SingleOrDefault(e => e.Email == email);
+            return Customer;
+
+        }
 
         // GET: api/Customers
         [HttpGet]

@@ -19,19 +19,14 @@ namespace DesiClothing4u.API.Controllers
     public class PicturesController : Controller
     {
         private readonly desiclothingContext _context;
-
-       
-        //private readonly IWebHostEnvironment _webHostEnvironment;
-
-        public PicturesController(desiclothingContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        [Obsolete]
+        private readonly IHostingEnvironment _Environment;
+        public PicturesController(desiclothingContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
-
-        //public PicturesController(IWebHostEnvironment webHostEnvironment)
-        //{
-        //    _webHostEnvironment = webHostEnvironment;
-        //}
         // GET: PicturesController
         [HttpGet("Index")]
         public ActionResult Index()
@@ -68,14 +63,16 @@ namespace DesiClothing4u.API.Controllers
         }
         //GET: api/PostPicture 
         [HttpPost("PostPicture")]
-        public async Task<ActionResult<IEnumerable<Picture>>> PostPicture(List<IFormFile> file, IFormCollection Id )
+        public async Task<ActionResult<IEnumerable<Picture>>> PostPicture(List<IFormFile> file, IFormCollection Id)
         {
-            //string webRootPath = _webHostEnvironment.WebRootPath;
-            //string webRootPath = WebHostEnvironment.WebRootPath;
-
-            //string contentRootPath = _webHostEnvironment.ContentRootPath;
+            string webRootPath = _webHostEnvironment.WebRootPath;
+           //string contentRootPath = _webHostEnvironment.ContentRootPath;
+            if (string.IsNullOrWhiteSpace(webRootPath))
+            {
+                webRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            }
+            string path = "/ProductImages/";
             
-            string path = "c:/ProductImages/";
             var id = Id["Id"];
             if (!Directory.Exists(path))
             {
@@ -89,14 +86,13 @@ namespace DesiClothing4u.API.Controllers
                 var fileName = Path.GetFileName(postedFile.FileName) + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Extension;
 
                 //Saving file to Folder
-                using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                using (FileStream stream = new FileStream(Path.Combine(webRootPath + path, fileName), FileMode.Create))
                 {
                     postedFile.CopyTo(stream);
                     uploadedFiles.Add(fileName);
-                    //ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
                 }
+                var ProdId = Convert.ToInt32(id.ToString());
                 //Saving data to database
-                //VendorProduct vendorproduct = new VendorProduct();
                 Picture picture = new Picture
                 {
                     MimeType = "Jpg",
@@ -104,29 +100,30 @@ namespace DesiClothing4u.API.Controllers
                     AltAttribute = "",
                     TitleAttribute = "",
                     IsNew = true,
-                    VirtualPath = path
+                    VirtualPath = webRootPath+path,
+                    ProductId = ProdId
                 };
                 _context.Pictures.Add(picture);
                 await _context.SaveChangesAsync();
                 //code to insert picture and product mapping
-                //var pid = Convert.ToInt32(id.ToString());
-                //ProductPictureMapping map = new ProductPictureMapping
-                //{
-                //    ProductId = pid
-                //};
-                //map.PictureId = picture.Id;
-                //map.DisplayOrder = 0;
-                //_context.ProductPictureMappings.Add(map);
-                //await _context.SaveChangesAsync();
+                var pid = Convert.ToInt32(id.ToString());
+                ProductPictureMapping map = new ProductPictureMapping
+                {
+                    ProductId = pid
+                };
+                map.PictureId = picture.Id;
+                map.DisplayOrder = 0;
+                _context.ProductPictureMappings.Add(map);
+                await _context.SaveChangesAsync();
             }
-            return await PostPictureJson(); 
+            return await PostPictureJson();
         }
         private async Task<ActionResult<IEnumerable<Picture>>> PostPictureJson()
         {
 
             return await _context.Pictures.ToListAsync();
         }
-        
+
         private string EnsureCorrectFilename(string filename)
         {
             if (filename.Contains("\\"))
@@ -154,7 +151,7 @@ namespace DesiClothing4u.API.Controllers
                 return View();
             }
         }
-      
+
         // POST: PicturesController/Edit/5
         [HttpPost("Edit")]
         [ValidateAntiForgeryToken]
@@ -169,13 +166,13 @@ namespace DesiClothing4u.API.Controllers
                 return View();
             }
         }
-        
-        // DELETE: api/Pictures/5
-        [HttpDelete("DeletePicture")]
-        //[ValidateAntiForgeryToken]
-        public async Task<ActionResult<Picture>> DeletePicture(int id)
+
+        // Post: api/Pictures/5
+        [HttpPost("DeletePicture")]
+            public async Task<ActionResult<Picture>> DeletePicture(int Id)
         {
-            var picture = await _context.Pictures.FindAsync(id);
+            
+            var picture = await _context.Pictures.FindAsync(Id);
             if (picture == null)
             {
                 return NotFound();
