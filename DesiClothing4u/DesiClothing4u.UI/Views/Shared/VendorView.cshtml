@@ -506,19 +506,21 @@
                                                     }
                                                     function delpic(PicId) {
                                                         alert("PicId " + PicId);
-                                                        var PicId = 1;
+                                                                                
                                                         $.ajax({
                                                             url: 'https://localhost:44356/api/Pictures/DeletePicture',
                                                             type: 'POST',
-                                                            data: { Id: PicId },
+                                                            //contentType: 'application/x-www-form-urlencoded',
+                                                            data: { PictureId: PicId },
                                                             success: function (result) {
                                                                 var productid = $('#ProductIdE').val();
-                                                                alert("productid " + productid);
+                                                                alert("productid after deletion" + productid);
                                                                 $.ajax({
                                                                     url: 'https://localhost:44356/api/Pictures/GetProductPicture',
                                                                     type: 'GET',
                                                                     data: { id: productid },
                                                                     success: function (data) {
+                                                                        alert("GetProductPics before");
                                                                         var trHTML = '';
                                                                         var path = window.location.origin;
                                                                         $('#EdpicGrid').html = "";
@@ -528,6 +530,7 @@
                                                                         });
                                                                         trHTML += "</table>"
                                                                         $('#EdpicGrid').html = trHTML;
+                                                                        alert("GetProductPics after");
 
                                                                     }
                                                                     , error: function (result) {
@@ -638,73 +641,71 @@
 
                             <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
                                 @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
-                                <form id="frmPic" method="post" enctype="multipart/form-data">
-                                    <div class="col-md-6 con-left">
-                                    </div>
-                                    <span>Select File:</span>
-                                    <input type="file" name="myfiles" id="myfiles" multiple />
-                                    <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
-                                    <br />
-                                    <span style="color:green">@Html.Raw(ViewBag.Message)</span>
-                                    <script>
+                                      <form id="frmPic" method="post" enctype="multipart/form-data">
+                                          <div class="col-md-6 con-left">
+                                          </div>
+                                          <span>Select File:</span>
+                                          <input type="file" name="myfiles" id="myfiles" multiple />
+                                          <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
+                                          <br />
+                                          <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+                                          <div class="col-md-6 con-left">
+                                              <div id="picGrid">
+                                                  <table width="70%" id="tblpic" border="1" style="border-color:maroon">
+                                                      <tr>
+                                                          <td width="75%">Pictures</td>
+                                                          <td width="25%">&nbsp;</td>
+                                                      </tr>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                          <script>
+                                              function PostPicture(inputId) {
+                                                  var grid = $("#PicGrid").val();
+                                                  var input = $('#myfiles').get(0).files;
+                                                  var formData = new FormData();
+                                                  var ProductId = $('#ProductId').val();// for pic prod mapping
+                                                  alert("product is " + ProductId);
+                                                  for (var i = 0; i <= input.length; i++) {
+                                                      formData.append("file", input[i]);
+                                                  }
+                                                  formData.append("Id", ProductId);
+                                                  alert("after formdata");
+                                                  $.ajax({
+                                                      url: 'https://localhost:44356/api/Pictures/PostPicture',
+                                                      type: 'POST',
+                                                      dataType: 'json',
+                                                      data: formData,
+                                                      processData: false,
+                                                      contentType: false,
+                                                      success: function (result) {
+                                                          alert("New Picture has been added"); //this message coming now
+                                                          alert("seofilename " + result.seoFilename);
+                                                          var trHTML = '';
+                                                          var path = window.location.origin;
+                                                          $('#picGrid').html = "";
+                                                          trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
+                                                          $.each(data, function (i, item) {
 
-                                        function PostPicture(inputId) {
-                                            var grid = $("#PicGrid").val();
-                                            var input = $('#myfiles').get(0).files;
-                                            var formData = new FormData();
-                                            var ProductId = $('#ProductId').val();// for pic prod mapping
-                                            alert("product is " + ProductId);
-                                            for (var i = 0; i <= input.length; i++) {
-                                                formData.append("file", input[i]);
-                                            }
+                                                              trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + item.id + ' )">Delete</a></td></tr>';
+                                                          });
+                                                          trHTML += "</table>"
+                                                          $('#picGrid').html = trHTML;
 
-                                            formData.append("Id", ProductId);
-                                            alert("after formdata");
-                                            $.ajax({
-                                                url: 'https://localhost:44356/api/Pictures/PostPicture',
-                                                type: 'POST',
-                                                dataType: 'json',
-                                                data: formData,
-                                                processData: false,
-                                                contentType: false,
-                                                success: function (result) {
-                                                    alert("New Picture has been added"); //this message coming now
-                                                    $('#EdpicGrid').html = "";
-                                                    trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
-                                                    $.each(data, function (i, item) {
-                                                        trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td></tr>';
-                                                    });
-                                                    trHTML += "</table>"
-                                                    $('#EdpicGrid').html = trHTML;
-                                                    //var grid1 = $('#PicGrid').GetHtml();
-                                                    //grid1.dataSource({ dataSource: result });
-                                                    //alert("Grid ds changed");
-                                                    //grid1.columns("seoFilename", "add");//Add column
-                                                    //grid1.columns("virtualPath", "add");//Add column
-                                                    //grid1.column($('#ProductName').val(), "add");//Add column
-                                                    //grid1.refresh();
-                                                    //or below.
-                                                    //alert("Grid added");
-                                                    //grid.dataSource = result;
-                                                    //grid('dataBind')
-                                                    //    .Columns(columns => {
-                                                    //        columns.Add(model => result.SeoFilename).Titled("Name");
-                                                    //        columns.Add(model => result.VirtualPath).Titled("Path");
-                                                    //    });
-                                                }
-                                                , error: function (result) {
-                                                    alert("err " + result.responseText);
+                                                      }
+                                                      , error: function (result) {
+                                                          alert("err " + result.responseText);
 
-                                                }
-                                            })
-                                        }
-                                    </script>
+                                                      }
+                                                  })
+                                              }
+                                          </script>
 
-                                    @if (Model.Picture != null)
-                                    {
+                                          @if (Model.Picture != null)
+                                          {
 
 
-                                    }@*<div class="col-md-6 con-left">
+                                          }@*<div class="col-md-6 con-left">
             <div class="form-group" style="text-align:left">
                 <label class="my-2">Picture</label>
                 <label for="file">Upload Image:</label>
@@ -712,11 +713,19 @@
                 <input type="submit" value="Upload Image" />
             </div>
         </div>*@
+    @*<div class="col-md-6 con-left">
+                                              <div class="form-group" style="text-align:left">
+                                                  <label class="my-2"></label>
+                                                  <label for="file"></label>
+                                                  <input type="file" name="file" id="file" /><br><br>
+                                                  <input type="submit" value="Upload Image" />
+                                              </div>
+                                          </div>*@
 
-                                    <div class="col-md-6 con-left">
-                                        &nbsp;
-                                    </div>
-                                </form>
+                                          <div class="col-md-6 con-left">
+                                              &nbsp;
+                                          </div>
+                                      </form>
                             </div>
 
                             @* Below Div is for Products Search *@
@@ -784,7 +793,7 @@
                             <div id="attribute" style="width:90%;align-self:center;align-content:center" display:none>
                             </div>
                         </div>
-                        <div id="Editproduct" @*style="display:none"*@>
+                        <div id="Editproduct" style="display:none">
                             <div id="default" style="width:99%;align-self:center;align-content:center">
                                 <form id="frmProductE" method="post">
                                     <table width="100%">
@@ -831,14 +840,14 @@
                                                 <input class="form-control" type="hidden" name="ProductIdE" id="ProductIdE" placeholder="" required="" style="width:500px;">
                                             </div>
                                             <div class="col-md-6 con-left">
-                                                <div id="EdpicGrid">
+                                                @*<div id="EdpicGrid">
                                                     <table width="70%" id="tblpic" border="1" style="border-color:maroon">
                                                         <tr>
                                                             <td width="75%">Pictures</td>
                                                             <td width="25%">&nbsp;</td>
                                                         </tr>
                                                     </table>
-                                                </div>
+                                                </div>*@
                                             </div>
                                         </div>
                                         <script>
@@ -889,12 +898,12 @@
                                    
                                     <span>Select File:</span>
                                     <input type="file" name="myfilesE" id="myfilesE" multiple />
-                                    <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
+                                    <input type="submit" value="Upload" onclick="PostPictureE(myfiles)" />
                                     <br />
                                     <span style="color:green">@Html.Raw(ViewBag.Message)</span>
                                     <script>
 
-                                        function PostPicture(inputId) {
+                                        function PostPictureE(inputId) {
                                             var grid = $("#PicGrid").val();
                                             var input = $('#myfiles').get(0).files;
                                             var formData = new FormData();
@@ -914,24 +923,18 @@
                                                 processData: false,
                                                 contentType: false,
                                                 success: function (result) {
-                                                    alert("New Picture has been added"); //
-
-                                                    //Nov 30, 2020
-                                                    //var grid1 = $('#PicGrid').GetHtml();
-                                                    //grid1.dataSource({ dataSource: result });
-                                                    //alert("Grid ds changed");
-                                                    //grid1.columns("seoFilename", "add");//Add column
-                                                    //grid1.columns("virtualPath", "add");//Add column
-                                                    //grid1.column($('#ProductName').val(), "add");//Add column
-                                                    //grid1.refresh();
-                                                    //or below.
-                                                    //alert("Grid added");
-                                                    //grid.dataSource = result;
-                                                    //grid('dataBind')
-                                                    //    .Columns(columns => {
-                                                    //        columns.Add(model => result.SeoFilename).Titled("Name");
-                                                    //        columns.Add(model => result.VirtualPath).Titled("Path");
-                                                    //    });
+                                                    alert("New Picture has been added"); 
+                                                    var trHTML = '';
+                                                    var path = window.location.origin;
+                                                    $('#EdpicGrid').html = "";
+                                                    trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
+                                                    $.each(data, function (i, item) {
+                                                        trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + item.id + ' )">Delete</a></td></tr>';
+                                                    });
+                                                    trHTML += "</table>"
+                                                    $('#EdpicGrid').html = trHTML;
+                                                    alert("grid after");
+                                                    
                                                 }
                                                 , error: function (result) {
                                                     alert("err " + result.responseText);
