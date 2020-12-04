@@ -238,6 +238,20 @@ namespace DesiClothing4u.API.Controllers
         [HttpGet("GetNewProducts")]
         public async Task<ActionResult<IEnumerable<Product>>> GetNewProducts()
         {
+      
+            //var firstProducts = await _context.ProductsGroup
+            //.Select(g => g.OrderByDescending(p => p.CreatedOnUtc).FirstOrDefault())
+            //.Include(a => a.ProductPictureMappings)
+            //               .ThenInclude(f => f.Picture).Take(8)
+            //                .ToListAsync();
+            //var product1 = await _context.Products
+            //.GroupBy(p => p.Id)
+            //.Select(g => g.OrderByDescending(a => a.CreatedOnUtc
+            //               ).FirstOrDefault())
+            //.Include(a => a.ProductPictureMappings)
+            //               .ThenInclude(f => f.Picture).Take(8)
+                          
+            // .ToListAsync();
             var product = await _context.Products.OrderByDescending(a => a.CreatedOnUtc
                            )
                            .Include(a => a.ProductPictureMappings)

@@ -107,12 +107,6 @@ namespace DesiClothing4u.UI.Controllers
             UriBuilder builder = new UriBuilder("https://localhost:44356/api/Vendors/ValidateVendor?");
             builder.Query = "email=" + collection["exampleInputEmail1"] + "&UserPassword=" + collection["exampleInputPassword1"];
             HttpResponseMessage Res = await client.GetAsync(builder.Uri);
-
-            //var output = JsonConvert.SerializeObject(vendor);
-            //var data = new StringContent(output, Encoding.UTF8, "application/json");
-            //var url = "https://localhost:44356/api/Vendors/ValidateVendor";
-            //var client = new HttpClient();
-            //var response = await client.PostAsync(url, data);
             var Vendor = Res.Content.ReadAsStringAsync().Result;
             //var a = JsonConvert.DeserializeObject<Vendor>(Vendor);
             vendorproduct.Vendor = JsonConvert.DeserializeObject<Vendor>(Vendor);
@@ -125,64 +119,9 @@ namespace DesiClothing4u.UI.Controllers
             HttpResponseMessage Prodresponse = await client1.GetAsync(builder1.Uri);
             var Products = Prodresponse.Content.ReadAsStringAsync().Result;
             vendorproduct.ProductByVendor = JsonConvert.DeserializeObject<ProductByVendor[]>(Products);
-
-            //var query = from p in Products
-            //            join c in ProductProductAttributeMapping on p. equals c.
-
-            //            select new ProductWithCategory { Product = p, Category = c };
-            //var model = query.ToList();
-            //Load Picture, once above mapping is done, remove this code
-            //var PicClient = new HttpClient();
-            //var Picurl = "https://localhost:44356/api/Pictures";
-            //var Picresponse = await PicClient.GetAsync(Picurl);
-            //var Pics = Picresponse.Content.ReadAsStringAsync().Result;
-            //vendorproduct.Picture = JsonConvert.DeserializeObject<Picture[]>(Pics);
-
-
-
             return View("VendorView", vendorproduct);
         }
 
-        // GET: VendorController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        // POST: VendorController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        // GET: VendorController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: VendorController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        
     }
 }

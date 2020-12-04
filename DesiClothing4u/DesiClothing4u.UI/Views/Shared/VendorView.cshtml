@@ -30,18 +30,32 @@
             window.scrollTo(0, 1);
         }
         function hideme(name) {
-            var x = document.getElementById(name);
-            if (name == 'addproduct') {
+            //var x = document.getElementById(name);
+
+            if (name == 'defaultdiv') {
                 var x = document.getElementById('addproduct');
                 x.style.display = "none";
-                var y = document.getElementById('defaultdiv');
-                y.style.display = "block";
+                var y = document.getElementById('editproduct');
+                y.style.display = "none";
+                var z = document.getElementById('defaultdiv');
+                z.style.display = "block";
             }
-            else {
-                var a = document.getElementById('defaultdiv');
-                a.style.display = "none";
-                var b = document.getElementById('addproduct');
-                b.style.display = "block";
+            else if (name == 'addproduct') {
+                var x = document.getElementById('defaultdiv');
+                x.style.display = "none";
+                var y = document.getElementById('editproduct');
+                y.style.display = "none";
+                var z = document.getElementById('addproduct');
+                z.style.display = "block";
+            }
+            else if (name == 'editproduct') {
+                var x = document.getElementById('defaultdiv');
+                x.style.display = "none";
+                var y = document.getElementById('editproduct');
+                y.style.display = "block";
+                var z = document.getElementById('addproduct');
+                z.style.display = "none";
+
             }
             //if (x.style.display
             //    === "none") {
@@ -425,7 +439,7 @@
                                         <h4>Products</h4>
                                     </td>
                                     <td width="50%" align="right">
-                                        <button type="submit" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv');">Add New</button>
+                                        <button type="submit" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Add New</button>
                                     </td>
                                 </tr>
                             </table>
@@ -437,38 +451,38 @@
                                             @*<h2>Uploaded File Details</h2>*@
                                             <div class="form-group">
                                                 <div>
-                                               @Html.Grid(Model.ProductByVendor).Columns(columns =>
-                                               {
-                                               columns.Add(model => model.Id).Titled("RecId");
-                                               columns.Add(model => model.Name).Titled("Name");
-                                               columns.Add(model => model.Price).Titled("Price");
-                                               columns.Add(model => model.FileName).Titled("Image").Filterable(false).Encoded(false)
-                                                .Sanitized(false)
-                                                .SetWidth(80).RenderValueAs(model => @<img width="75" height="75" alt="Image" src='@Url.Content(model.FileName)'>);
-                                                columns.Add()
-                                                .Encoded(false)
-                                                .Sanitized(false)
-                                                .SetWidth(80)
-                                                .RenderValueAs(o => @<button type="button" value="" onclick=GetProduct(@o.Id)>Edit</button>);
-                                                columns.Add()
-                                                .Encoded(false)
-                                                .Sanitized(false)
-                                                .SetWidth(80)
-                                                .RenderValueAs(o => @<button type="button" value="" onclick="GetProduct(@o.Id)">Delete</button>);
-                                                })
-
-                                                    @*.Empty("No data found")
-                    .Filterable()
-                    .Sortable()
-                    .Pageable()*@
+                                                    @Html.Grid(Model.ProductByVendor).Columns(columns =>
+                                                    {
+                                                    columns.Add(model => model.Id).Titled("RecId");
+                                                    columns.Add(model => model.Name).Titled("Name");
+                                                    columns.Add(model => model.Price).Titled("Price");
+                                                    columns.Add(model => model.FileName).Titled("Image").Filterable(false).Encoded(false)
+                                                     .Sanitized(false)
+                                                     .SetWidth(80).RenderValueAs(model => @<img width="75" height="75" alt="Image" src='@Url.Content(model.FileName)'>);
+columns.Add()
+.Encoded(false)
+.Sanitized(false)
+.SetWidth(80)
+.RenderValueAs(o => @<img src="~/images/editicon.png" width="30" height="30" onclick=GetProduct(@o.Id) />);
+columns.Add()
+.Encoded(false)
+.Sanitized(false)
+.SetWidth(80)
+.RenderValueAs(o => @<img src="~/images/delicon.png" width="30" height="30" onclick=GetProduct(@o.Id) />);
+})
 
                                                 </div>
                                                 <script>
                                                     function GetProduct(productid) {
                                                         var VendorId = '@ViewBag.VendorId';
                                                         var i = 0;
-                                                        alert("Id " + productid);
-                                                                                        
+                                                        //alert("Id " + productid);
+                                                        var x = document.getElementById('editproduct');
+                                                        //var x = document.getElementById('addproduct');
+                                                        x.style.display = "block";
+                                                        var y = document.getElementById('defaultdiv');
+                                                        y.style.display = "none";
+
                                                           $.ajax({
                                                              url: 'https://localhost:44356/api/Products/GetProduct',
                                                              type: 'GET',
@@ -484,14 +498,16 @@
                                                                       type: 'GET',
                                                                       data: { id: productid },
                                                                       success: function (data) {
+
                                                                           var trHTML = '';
                                                                           var path = window.location.origin;
+                                                                          $('#Edpicgrid').html = '';
+                                                                          var trHTML = '<table width="100%" id="tblpic" border="1" style="border-color:maroon"><tr><td colspan="2">Pictures</td></td></tr>';
                                                                           $.each(data, function (i, item) {
                                                                               trHTML += '<tr><td><img src=' + path + '/ProductImages/' +  item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick=delpic('+ item.id +')>Delete</a></td></tr>';
-                                                                              alert(trHTML);
                                                                           });
-                                                                          $('#tblpic').append(trHTML);
-                                                                          
+                                                                          trHTML += '</table>';
+                                                                          $('#Edpicgrid').html = trHTML;
                                                                       }
                                                                       , error: function (result) {
                                                                           alert("err " + result.responseText);
@@ -506,7 +522,7 @@
                                                     }
                                                     function delpic(PicId) {
                                                         alert("PicId " + PicId);
-                                                                                
+
                                                         $.ajax({
                                                             url: 'https://localhost:44356/api/Pictures/DeletePicture',
                                                             type: 'POST',
@@ -548,7 +564,7 @@
                                                 </script>
                                             </div>
                                         </form>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -563,8 +579,9 @@
                                                 <h4>Add Products</h4>
                                             </td>
                                             <td width="50%" align="right">
+                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv')">Cancel</button>
                                                 <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
-                                                @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@
+                                                @*<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Cancel</button>*@<button type="button" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');"></button>
                                             </td>
                                         </tr>
                                     </table>
@@ -598,6 +615,20 @@
                                             </div>
                                             <div class="form-group" style="text-align:left">
                                                 <input class="form-control" type="hidden" name="ProductId" id="ProductId" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                            <div>
+                                                <div class="col-md-6 con-left">
+                                                    <div id="picGrid">
+                                                        <table width="100%" id="tblpic" border="1" style="border-color:maroon">
+                                                            <tr>
+                                                                <td width="75%" colspan="2">Pictures</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="75%" colspan="2">No pictures available</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -640,160 +671,223 @@
                             @* for pic upload*@
 
                             <div id="PicUpload" class="border border-warning" style="width:90%;align-self:center;align-content:center">
-                                @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
-                                      <form id="frmPic" method="post" enctype="multipart/form-data">
-                                          <div class="col-md-6 con-left">
-                                          </div>
-                                          <span>Select File:</span>
-                                          <input type="file" name="myfiles" id="myfiles" multiple />
-                                          <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
-                                          <br />
-                                          <span style="color:green">@Html.Raw(ViewBag.Message)</span>
-                                          <div class="col-md-6 con-left">
-                                              <div id="picGrid">
-                                                  <table width="70%" id="tblpic" border="1" style="border-color:maroon">
-                                                      <tr>
-                                                          <td width="75%">Pictures</td>
-                                                          <td width="25%">&nbsp;</td>
-                                                      </tr>
-                                                  </table>
-                                              </div>
-                                          </div>
-                                          <script>
-                                              function PostPicture(inputId) {
-                                                  var grid = $("#PicGrid").val();
-                                                  var input = $('#myfiles').get(0).files;
-                                                  var formData = new FormData();
-                                                  var ProductId = $('#ProductId').val();// for pic prod mapping
-                                                  alert("product is " + ProductId);
-                                                  for (var i = 0; i <= input.length; i++) {
-                                                      formData.append("file", input[i]);
-                                                  }
-                                                  formData.append("Id", ProductId);
-                                                  alert("after formdata");
-                                                  $.ajax({
-                                                      url: 'https://localhost:44356/api/Pictures/PostPicture',
-                                                      type: 'POST',
-                                                      dataType: 'json',
-                                                      data: formData,
-                                                      processData: false,
-                                                      contentType: false,
-                                                      success: function (result) {
-                                                          alert("New Picture has been added"); //this message coming now
-                                                          alert("seofilename " + result.seoFilename);
-                                                          var trHTML = '';
-                                                          var path = window.location.origin;
-                                                          $('#picGrid').html = "";
-                                                          trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
-                                                          $.each(data, function (i, item) {
+                                <form id="frmPic" method="post" enctype="multipart/form-data">
+                                    <div class="col-md-6 con-left">
+                                    </div>
+                                    <span>Select File:</span>
+                                    <input type="file" name="myfiles" id="myfiles" multiple />
+                                    <input type="submit" value="Upload" onclick="PostPicture(myfiles)" />
+                                    <br />
+                                    <span style="color:green">@Html.Raw(ViewBag.Message)</span>
 
-                                                              trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + item.id + ' )">Delete</a></td></tr>';
-                                                          });
-                                                          trHTML += "</table>"
-                                                          $('#picGrid').html = trHTML;
+                                    <script>
+                                        function PostPicture(inputId) {
+                                            var grid = $("#PicGrid").val();
+                                            var input = $('#myfiles').get(0).files;
+                                            var formData = new FormData();
+                                            var ProductId = $('#ProductId').val();// for pic prod mapping
+                                            alert("product is " + ProductId);
+                                            for (var i = 0; i <= input.length; i++) {
+                                                formData.append("file", input[i]);
+                                            }
+                                            formData.append("Id", ProductId);
+                                            alert("after formdata");
+                                            $.ajax({
+                                                url: 'https://localhost:44356/api/Pictures/PostPicture',
+                                                type: 'POST',
+                                                dataType: 'json',
+                                                data: formData,
+                                                processData: false,
+                                                contentType: false,
+                                                success: function (result) {
+                                                    alert("New Picture has been added"); //this message coming now
+                                                    alert("seofilename " + result.seoFilename);
+                                                    var trHTML = '';
+                                                    var path = window.location.origin;
+                                                    $('#picGrid').html = "";
+                                                    trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
+                                                    $.each(data, function (i, item) {
 
-                                                      }
-                                                      , error: function (result) {
-                                                          alert("err " + result.responseText);
+                                                        trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + item.id + ' )">Delete</a></td></tr>';
+                                                    });
+                                                    trHTML += "</table>"
+                                                    $('#picGrid').html = trHTML;
 
-                                                      }
-                                                  })
-                                              }
-                                          </script>
+                                                }
+                                                , error: function (result) {
+                                                    alert("err " + result.responseText);
 
-                                          @if (Model.Picture != null)
-                                          {
+                                                }
+                                            })
+                                        }
+                                    </script>
+
+                                    @if (Model.Picture != null)
+                                    {
 
 
-                                          }@*<div class="col-md-6 con-left">
-            <div class="form-group" style="text-align:left">
-                <label class="my-2">Picture</label>
-                <label for="file">Upload Image:</label>
-                <input type="file" name="file" id="file" /><br><br>
-                <input type="submit" value="Upload Image" />
-            </div>
-        </div>*@
-    @*<div class="col-md-6 con-left">
-                                              <div class="form-group" style="text-align:left">
-                                                  <label class="my-2"></label>
-                                                  <label for="file"></label>
-                                                  <input type="file" name="file" id="file" /><br><br>
-                                                  <input type="submit" value="Upload Image" />
-                                              </div>
-                                          </div>*@
+                                    }@*<div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2">Picture</label>
+                                                <label for="file">Upload Image:</label>
+                                                <input type="file" name="file" id="file" /><br><br>
+                                                <input type="submit" value="Upload Image" />
+                                            </div>
+                                        </div>*@<div class="col-md-6 con-left">
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2"></label>
+                                            <label for="file"></label>
+                                            <input type="file" name="file" id="file" /><br><br>
+                                            <input type="submit" value="Upload Image" />
+                                        </div>
+                                    </div>
+                                    @*<div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <label for="file"></label>
+                                                <input type="file" name="file" id="file" /><br><br>
+                                                <input type="submit" value="Upload Image" />
+                                            </div>
+                                        </div>*@<div class="col-md-6 con-left">
+                                        <div class="form-group" style="text-align:left">
+                                            <label class="my-2"></label>
+                                            <label for="file"></label>
+                                            <input type="file" name="file" id="file" /><br><br>
+                                            <input type="submit" value="Upload Image" />
+                                        </div>
+                                    </div>
 
-                                          <div class="col-md-6 con-left">
-                                              &nbsp;
-                                          </div>
-                                      </form>
+                                    <div class="col-md-6 con-left">
+                                        &nbsp;
+                                    </div>
+                                </form>
                             </div>
 
                             @* Below Div is for Products Search *@
                             @*<div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search">Search</button>
-                <div id="search" class="collapse">
-                    <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search">Search</button>
+                                    <div id="search" class="collapse">
+                                        <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
 
-                        <div class="col-md-6 con-left">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Product name</label>
-                                <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-left">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Short description</label>
-                                <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-left">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Category</label>
-                                <select class="form-control" name="CategoryId_search" id="CategoryId_search">
-                                    <option value="x">Select Category</option>";
-                                    <option value="Clothing">Clothing</option>
-                                    <option value="Clothing">Shoes</option>
-                                    <option value="Clothing">Bags</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-right">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Price</label>
-                                <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-right">
-                            <div class="form-group" style="text-align:left">
-                                <div class="select">
-                                    <select class="form-control" name="VendorId" id="VendorId">
-                                        <option value="0">Vendor </option>
-                                        <option value="1">Mohtashim</option>
-                                        <option value="2">Khadi</option>
-                                        <option value="3">Junaid Jamshed</option>
-                                    </select>
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Product name</label>
+                                                    <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Short description</label>
+                                                    <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Category</label>
+                                                    <select class="form-control" name="CategoryId_search" id="CategoryId_search">
+                                                        <option value="x">Select Category</option>";
+                                                        <option value="Clothing">Clothing</option>
+                                                        <option value="Clothing">Shoes</option>
+                                                        <option value="Clothing">Bags</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Price</label>
+                                                    <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <div class="select">
+                                                        <select class="form-control" name="VendorId" id="VendorId">
+                                                            <option value="0">Vendor </option>
+                                                            <option value="1">Mohtashim</option>
+                                                            <option value="2">Khadi</option>
+                                                            <option value="3">Junaid Jamshed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <div class="select">
+                                                        <select class="form-control" name="ProductTypeId" id="ProductTypeId">
+                                                            <option value="1">Simple </option>
+                                                            <option value="2">Group Product</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>*@<div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search"></button>
+                                <div id="search" class="collapse">
+                                    <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
+
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <select class="form-control" name="CategoryId_search" id="CategoryId_search">
+                                                    <option value="x"></option>
+                                                    <option value="Clothing"></option>
+                                                    <option value="Clothing"></option>
+                                                    <option value="Clothing"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-right">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-right">
+                                            <div class="form-group" style="text-align:left">
+                                                <div class="select">
+                                                    <select class="form-control" name="VendorId" id="VendorId">
+                                                        <option value="0"></option>
+                                                        <option value="1"></option>
+                                                        <option value="2"></option>
+                                                        <option value="3"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-right">
+                                            <div class="form-group" style="text-align:left">
+                                                <div class="select">
+                                                    <select class="form-control" name="ProductTypeId" id="ProductTypeId">
+                                                        <option value="1"></option>
+                                                        <option value="2"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 con-right">
-                            <div class="form-group" style="text-align:left">
-                                <div class="select">
-                                    <select class="form-control" name="ProductTypeId" id="ProductTypeId">
-                                        <option value="1">Simple </option>
-                                        <option value="2">Group Product</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-            </div>*@
                             @* Below Div is for Attributes *@
                             <div id="attribute" style="width:90%;align-self:center;align-content:center" display:none>
                             </div>
                         </div>
-                        <div id="Editproduct" style="display:none">
+                        <div id="editproduct" style="display:none">
                             <div id="default" style="width:99%;align-self:center;align-content:center">
                                 <form id="frmProductE" method="post">
                                     <table width="100%">
@@ -802,6 +896,7 @@
                                                 <h4>Edit Products</h4>
                                             </td>
                                             <td width="50%" align="right">
+                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv')">Cancel</button>
                                                 <button type="submit" class="btn btn-primary submit mb-4" onclick="EditProduct()">Save</button>
                                             </td>
                                         </tr>
@@ -840,20 +935,18 @@
                                                 <input class="form-control" type="hidden" name="ProductIdE" id="ProductIdE" placeholder="" required="" style="width:500px;">
                                             </div>
                                             <div class="col-md-6 con-left">
-                                                @*<div id="EdpicGrid">
-                                                    <table width="70%" id="tblpic" border="1" style="border-color:maroon">
+                                                <div id="EdpicGrid">
+                                                    <table width="0%" id="tblpic" border="1" style="border-color:maroon">
                                                         <tr>
-                                                            <td width="75%">Pictures</td>
-                                                            <td width="25%">&nbsp;</td>
+                                                            <td width="75%"></td>
+                                                            <td width="25%"></td>
                                                         </tr>
                                                     </table>
-                                                </div>*@
+                                                </div>
                                             </div>
                                         </div>
                                         <script>
                                                     function EditProduct() {
-                                                        alert("Edit");
-
                                                         var ProductName = $('#ProductNameE').val();
                                                         var ShortDescription = $('#ShortDescriptionE').val();
                                                         var FullDescription = $('#FullDescriptionE').val();
@@ -889,159 +982,207 @@
                                         </script>
                                     </div>
                                 </form>
-                            </div>
-                            @* for pic upload*@
+                                <div id="PicUploadE" class="border border-warning" style="width:90%;align-self:center;align-content:center">
+                                    <form id="frmPicE" method="post" enctype="multipart/form-data">
 
-                            <div id="PicUploadE" class="border border-warning" style="width:90%;align-self:center;align-content:center">
-                                @*<form id="frmPic" method="post" action="@Url.Action("Index", "VendorProduct")" enctype="multipart/form-data">*@
-                                <form id="frmPicE" method="post" enctype="multipart/form-data">
-                                   
-                                    <span>Select File:</span>
-                                    <input type="file" name="myfilesE" id="myfilesE" multiple />
-                                    <input type="submit" value="Upload" onclick="PostPictureE(myfiles)" />
-                                    <br />
-                                    <span style="color:green">@Html.Raw(ViewBag.Message)</span>
-                                    <script>
+                                        <span>Select File:</span>
+                                        <input type="file" name="myfilesE" id="myfilesE" multiple />
+                                        <input type="submit" value="Upload" onclick="PostPictureE(myfiles)" />
+                                        <br />
+                                        <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+                                        <script>
 
-                                        function PostPictureE(inputId) {
-                                            var grid = $("#PicGrid").val();
-                                            var input = $('#myfiles').get(0).files;
-                                            var formData = new FormData();
-                                            var ProductId = $('#ProductId').val();// for pic prod mapping
-                                            alert("product is " + ProductId);
-                                            for (var i = 0; i <= input.length; i++) {
-                                                formData.append("file", input[i]);
+                                            function PostPictureE(inputId) {
+                                                var grid = $("#PicGrid").val();
+                                                var input = $('#myfiles').get(0).files;
+                                                var formData = new FormData();
+                                                var ProductId = $('#ProductId').val();// for pic prod mapping
+                                                alert("product is " + ProductId);
+                                                for (var i = 0; i <= input.length; i++) {
+                                                    formData.append("file", input[i]);
+                                                }
+                                                formData.append("Id", ProductId);
+                                                alert("formdata after");
+                                                $.ajax({
+                                                    url: 'https://localhost:44356/api/Pictures/PostPicture',
+                                                    type: 'POST',
+                                                    dataType: 'json',
+                                                    data: formData,
+                                                    processData: false,
+                                                    contentType: false,
+                                                    success: function (result) {
+                                                        alert("New Picture has been added");
+                                                        var trHTML = '';
+                                                        var path = window.location.origin;
+                                                        $('#EdpicGrid').html = "";
+                                                        trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
+                                                        $.each(data, function (i, item) {
+                                                            trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + item.id + ' )">Delete</a></td></tr>';
+                                                        });
+                                                        trHTML += "</table>"
+                                                        $('#EdpicGrid').html = trHTML;
+                                                        alert("grid after");
+
+                                                    }
+                                                    , error: function (result) {
+                                                        alert("err " + result.responseText);
+
+                                                    }
+                                                })
                                             }
+                                        </script>
+                                        <div class="col-md-6 con-left">
+                                            &nbsp;
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            @*Below Div is for Products Search
+                                                <div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search">Search</button>
+                                    <div id="search" class="collapse">
+                                        <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
 
-                                            formData.append("Id", ProductId);
-                                            alert("formdata after");
-                                            $.ajax({
-                                                url: 'https://localhost:44356/api/Pictures/PostPicture',
-                                                type: 'POST',
-                                                dataType: 'json',
-                                                data: formData,
-                                                processData: false,
-                                                contentType: false,
-                                                success: function (result) {
-                                                    alert("New Picture has been added"); 
-                                                    var trHTML = '';
-                                                    var path = window.location.origin;
-                                                    $('#EdpicGrid').html = "";
-                                                    trHTML = "<table width='70%' id='tblpic' border='1' style='border-color:maroon'><tr><td width='75%'>Pictures</td><td width='25%'>&nbsp;</td></tr>"
-                                                    $.each(data, function (i, item) {
-                                                        trHTML += '<tr><td><img src=' + path + '/ProductImages/' + item.seoFilename + ' height="75" width="75"></td><td><a href="#" onClick="delpic(' + item.id + ' )">Delete</a></td></tr>';
-                                                    });
-                                                    trHTML += "</table>"
-                                                    $('#EdpicGrid').html = trHTML;
-                                                    alert("grid after");
-                                                    
-                                                }
-                                                , error: function (result) {
-                                                    alert("err " + result.responseText);
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Product name</label>
+                                                    <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Short description</label>
+                                                    <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Category</label>
+                                                    <select class="form-control" name="CategoryId_search" id="CategoryId_search">
+                                                        <option value="x">Select Category</option>";
+                                                        <option value="Clothing">Clothing</option>
+                                                        <option value="Clothing">Shoes</option>
+                                                        <option value="Clothing">Bags</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Price</label>
+                                                    <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <div class="select">
+                                                        <select class="form-control" name="VendorId" id="VendorId">
+                                                            <option value="0">Vendor </option>
+                                                            <option value="1">Mohtashim</option>
+                                                            <option value="2">Khadi</option>
+                                                            <option value="3">Junaid Jamshed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 con-right">
+                                                <div class="form-group" style="text-align:left">
+                                                    <div class="select">
+                                                        <select class="form-control" name="ProductTypeId" id="ProductTypeId">
+                                                            <option value="1">Simple </option>
+                                                            <option value="2">Group Product</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                }
-                                            })
-                                        }
-                                    </script>
-
-                                    @if (Model.Picture != null)
-                                    {
-
-
-                                    }@*<div class="col-md-6 con-left">
-            <div class="form-group" style="text-align:left">
-                <label class="my-2">Picture</label>
-                <label for="file">Upload Image:</label>
-                <input type="file" name="file" id="file" /><br><br>
-                <input type="submit" value="Upload Image" />
-            </div>
-        </div>*@
-
-                                    <div class="col-md-6 con-left">
-                                        &nbsp;
+                                        </form>
                                     </div>
-                                </form>
-                            </div>
+                                </div>*@
+                            <div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search"></button>
+                                <div id="search" class="collapse">
+                                    <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
 
-                            @* Below Div is for Products Search *@
-                            @*<div id="SearchProduct" style="width:90%;align-self:center;align-content:center" display:none>
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#search">Search</button>
-                <div id="search" class="collapse">
-                    <form id="frmSearchPrd" action="Product/SearchPrd" method="post">
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <select class="form-control" name="CategoryId_search" id="CategoryId_search">
+                                                    <option value="x"></option>
+                                                    <option value="Clothing"></option>
+                                                    <option value="Clothing"></option>
+                                                    <option value="Clothing"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-right">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-right">
+                                            <div class="form-group" style="text-align:left">
+                                                <div class="select">
+                                                    <select class="form-control" name="VendorId" id="VendorId">
+                                                        <option value="0"></option>
+                                                        <option value="1"></option>
+                                                        <option value="2"></option>
+                                                        <option value="3"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 con-right">
+                                            <div class="form-group" style="text-align:left">
+                                                <div class="select">
+                                                    <select class="form-control" name="ProductTypeId" id="ProductTypeId">
+                                                        <option value="1"></option>
+                                                        <option value="2"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <div class="col-md-6 con-left">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Product name</label>
-                                <input class="form-control" type="text" name="Product_name" id="Product_name" placeholder="" required="" style="width:500px;">
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-left">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Short description</label>
-                                <input class="form-control" type="text" name="Short_desc" id="Short_desc" placeholder="" required="" style="width:500px;">
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-left">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Category</label>
-                                <select class="form-control" name="CategoryId_search" id="CategoryId_search">
-                                    <option value="x">Select Category</option>";
-                                    <option value="Clothing">Clothing</option>
-                                    <option value="Clothing">Shoes</option>
-                                    <option value="Clothing">Bags</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-right">
-                            <div class="form-group" style="text-align:left">
-                                <label class="my-2">Price</label>
-                                <input class="form-control" type="text" name="Product_price" id="Product_price" placeholder="" required="" style="width:500px;">
-                            </div>
-                        </div>
-                        <div class="col-md-6 con-right">
-                            <div class="form-group" style="text-align:left">
-                                <div class="select">
-                                    <select class="form-control" name="VendorId" id="VendorId">
-                                        <option value="0">Vendor </option>
-                                        <option value="1">Mohtashim</option>
-                                        <option value="2">Khadi</option>
-                                        <option value="3">Junaid Jamshed</option>
-                                    </select>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 con-right">
-                            <div class="form-group" style="text-align:left">
-                                <div class="select">
-                                    <select class="form-control" name="ProductTypeId" id="ProductTypeId">
-                                        <option value="1">Simple </option>
-                                        <option value="2">Group Product</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-            </div>*@
                             @* Below Div is for Attributes *@
                             <div id="attribute" style="width:90%;align-self:center;align-content:center" display:none>
                                 @*<div class="wrap">
 
-                <div class="row contact_left_grid ">*@
+                                    <div class="row contact_left_grid ">*@<div class="wrap">
 
-                                @*<div class="col-md-6 con-left">
-                    <div class="form-group" style="text-align:left">
-                        <label class="my-2">Product Name</label>
-                        <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
-                    </div>
-                </div>*@
+                                    <div class="row contact_left_grid ">
+                                        @*<div class="col-md-6 con-left">
+                                                <div class="form-group" style="text-align:left">
+                                                    <label class="my-2">Product Name</label>
+                                                    <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
+                                                </div>
+                                            </div>*@<div class="col-md-6 con-left">
+                                            <div class="form-group" style="text-align:left">
+                                                <label class="my-2"></label>
+                                                <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="" required="" style="width:500px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    @*</div>*@
                 </div>
-            </div>
-            @*</div>*@
     </section>
     <!--footer -->
     <footer class="py-lg-5 py-4">
@@ -1178,6 +1319,19 @@
                 }
             });
         </script>*@
+    <script>
+            googles.render();
+
+            googles.cart.on('googles_checkout', function (evt) {
+                var items, len, i;
+
+                if (this.subtotal() > 0) {
+                    items = this.items();
+
+                    for (i = 0, len = items.length; i < len; i++) { }
+                }
+            });
+    </script>
     <!-- //cart-js -->
     <script>
         $(document).ready(function () {
@@ -1210,7 +1364,9 @@
     </script>
     <!-- //dropdown nav -->
     @*<script src="js/move-top.js"></script>*@
+    <script src="js/move-top.js"></script>
     @*<script src="js/easing.js"></script>*@
+    <script src="js/easing.js"></script>
     @*<script>
             jQuery(document).ready(function ($) {
                 $(".scroll").click(function (event) {
@@ -1221,6 +1377,16 @@
                 });
             });
         </script>*@
+    <script>
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({
+                        scrollTop: $(this.hash).offset().top
+                    }, 900);
+                });
+            });
+    </script>
     @*<script>
             $(document).ready(function () {
                 /*
@@ -1238,6 +1404,23 @@
 
             });
         </script>*@
+    <script>
+            $(document).ready(function () {
+                /*
+                                        var defaults = {
+                                              containerID: 'toTop', // fading element id
+                                            containerHoverID: 'toTopHover', // fading element hover id
+                                            scrollSpeed: 1200,
+                                            easingType: 'linear'
+                                         };
+                                        */
+
+                $().UItoTop({
+                    easingType: 'easeOutQuart'
+                });
+
+            });
+    </script>
     <!--// end-smoth-scrolling -->
 
 

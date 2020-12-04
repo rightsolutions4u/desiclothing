@@ -104,7 +104,9 @@ namespace DesiClothing4u.UI.Controllers
                         ViewBag.UserName = load.Customer.Username;
 
                     }
-
+                }
+                else //if request.cookies is null
+                {
 
                 }
                 return View("Index", load);
@@ -157,9 +159,7 @@ namespace DesiClothing4u.UI.Controllers
                 var Address = response.Content.ReadAsStringAsync().Result;
                 var BillingAddress1 = JsonConvert.DeserializeObject<Address>(Address);
                 var BillingAddressId = BillingAddress1.Id;
-                //ViewBag.SiteUsers = a;
-                //PostAddress
-
+                
                 Customer customer = new Customer
                 {
                     Username = sMyCustomer.Email,
@@ -183,7 +183,6 @@ namespace DesiClothing4u.UI.Controllers
                     RegisteredInStoreId = 1,
                     Password = sMyCustomer.Password
                 };
-
                 output = JsonConvert.SerializeObject(customer);
                 data = new StringContent(output, Encoding.UTF8, "application/json");
                 url = "https://localhost:44356/api/Customers";
@@ -195,17 +194,12 @@ namespace DesiClothing4u.UI.Controllers
                 //Store in cookies
                 if (Request.Cookies["UserId"] == null)
                 {
-                    //HttpContext.Response.Cookies.Append("UserId", "ENGLISH", new CookieOptions()
-                    //{
-                    //    Expires = DateTime.Now.AddDays(5)
-                    //    IsEssential = true
-                    //}) ;
                     CookieOptions option = new CookieOptions();
-                    option.Expires = DateTime.Now.AddDays(2);
+                    option.Expires = DateTime.Now.AddDays(6);
                     option.IsEssential = true;
                     Response.Cookies.Append("UserId", a.Id.ToString(), option);
-
                     string Usr = HttpContext.Request.Cookies["UserId"];
+                /* cookie code ends here*/
                 }
                 return View(a);
                 //return RedirectToAction(nameof(Index));

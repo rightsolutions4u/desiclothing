@@ -64,8 +64,8 @@ namespace DesiClothing4u.UI.Controllers
                 HttpContext.Session.SetInt32("count", li.Count());
                 ViewBag.cart = cart;
                 //ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
-                 return View("~/Views/Home/Index");
-                //return View("MyCart", (List<Cart>)JsonConvert.SerializeObject(li));
+                //return View("~/Views/Home/Index");
+                return View("MyCart", (List<Cart>)li);
             }
             else //not empty
             {
@@ -86,7 +86,7 @@ namespace DesiClothing4u.UI.Controllers
         {
             return View();
         }
-
+   
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

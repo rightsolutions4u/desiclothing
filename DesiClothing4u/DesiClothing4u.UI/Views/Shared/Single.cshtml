@@ -65,7 +65,8 @@
                                 <span class="fa fa-user" aria-hidden="true"></span>
                             </a>
                         </li>
-                        <li class="galssescart galssescart2 cart cart box_1">
+                        @* Below commented by SM on Dec 3, 2020 and added another cart *@
+                        @*<li class="galssescart galssescart2 cart cart box_1">
                             <form action="#" method="post" class="last">
                                 <input type="hidden" name="cmd" value="_cart">
                                 <input type="hidden" name="display" value="1">
@@ -74,9 +75,37 @@
                                     <i class="fas fa-cart-arrow-down"></i>
                                 </button>
                             </form>
+                        </li>*@
+                        <li> 
+                            <a href="@Url.Action("MyCart", "Carts", new { BuyrId = ViewBag.UserId})">
+                                <i class="fa fa-shopping-cart" style="font-size:48px;color:red" aria-hidden="true" onclick="MyCart()"></i>
+                            </a>
                         </li>
+                        @* changes end here *@
+
                     </ul>
                     <!---->
+                    @* Added by SM on Dec 3, 2020 for cart *@
+                    <div id="mycart" @*style="width: 10%; height: 130px;*@ display:none">
+                        <script>
+                                     function MyCart() {
+                                     var BuyrId = '@(ViewBag.UserId)';
+                                    $.ajax({
+                                        url: '@Url.Action("MyCart", "Products")',
+                                        type: 'POST',
+                                        data: { "BuyrId": BuyrId}
+                                        , success: function (result) {
+                                            $('#mycart').replaceWith(result);
+                                        }
+                                        , error: function (result) {
+                                            alert("err " + result.responseText);
+                                            $('#mycart').replaceWith(result);
+                                            }
+                                        })
+                                }
+                        </script>
+                    </div>
+                    @* Added by SM on Dec 3, 2020 for cart ends here*@
                     <div class="overlay-login text-left">
                         <button type="button" class="overlay-close1">
                             <i class="fa fa-times" aria-hidden="true"></i>
@@ -111,8 +140,7 @@
                                     <div>
                                         <p>Don't have an account? <a href="#signupform" data-toggle="modal" data-dismiss="modal">Signup Here</a></p></br>
                                     </div>
-
-                                </form>
+                                @*</form>*@
                             </div>
                             <!---->
                         </div>
@@ -637,7 +665,7 @@
 
                                             </div>
                                             <div class="googles single-item hvr-outline-out">
-                                                <form action="#" method="post">
+                                                @*<form action="#" method="post">
                                                     <input type="hidden" name="cmd" value="_cart">
                                                     <input type="hidden" name="add" value="1">
                                                     <input type="hidden" name="googles_item" value=@item.Name>
@@ -645,7 +673,12 @@
                                                     <button type="submit" class="googles-cart pgoogles-cart" onclick="@Url.Action("AddCart", "Product", new {Id=@item.Id, Name=@item.Name, Price=@item.Price})">
                                                         <i class="fas fa-cart-plus"></i>
                                                     </button>
-                                                </form>
+                                                </form>*@
+                                                        <a href="@Url.Action("AddCart", "Product", new {Id=@item.Id, Name=@item.Name, Price=@item.Price})">
+                                                            <i class="fa fa-shopping-cart" style="font-size:48px;color:red" aria-hidden="true" ></i>
+                                                        </a>
+                                                   
+                                                
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>

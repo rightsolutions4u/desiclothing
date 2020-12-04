@@ -610,8 +610,21 @@
                                 <div class="men-thumb-item">
                                     @foreach (var p in i.ProductPictureMappings)
                                     {
+                                        int len = i.ProductPictureMappings.Count;
+
+                                        for (int j = 0; j < len;)
+                                        {
+                                            <img src='@Url.Content(p.Picture.FileName )' class="img-fluid" alt="">j = len;
+                                            break;
+
+                                        }
+                                            break;
+                                     }
+
+                                    @*@foreach (var p in i.ProductPictureMappings)
+                                    {
                                         <img src='@Url.Content(p.Picture.FileName )' class="img-fluid" alt="">
-                                    }
+                                    }*@
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             @*<a href="single.html" class="link-product-add-cart">Quick View</a>*@
