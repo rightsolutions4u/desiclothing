@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,9 +28,13 @@ namespace DesiClothing4u.UI
             services.AddControllersWithViews();
             services.Configure<CookiePolicyOptions>(options =>
             {
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+               
             });
+            //added by SM on Dec 5, 2020
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie();
             services.AddDistributedMemoryCache();
             //added by SM on Nov 24, 2020
             services.AddSession(options =>
@@ -63,9 +68,10 @@ namespace DesiClothing4u.UI
             //
             app.UseRouting();
             app.UseCors("CorsApi");
-            app.UseAuthorization();
             //added by SM on Nov 24, 2020 for session
             app.UseSession();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

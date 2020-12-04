@@ -63,7 +63,6 @@ F:\Mars\FreelanceWork\DesiClothingShazia\desiclothing\DesiClothing4u\DesiClothin
 F:\Mars\FreelanceWork\DesiClothingShazia\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.Common.StaticWebAssets.xml
 F:\Mars\FreelanceWork\DesiClothingShazia\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.dll
 F:\Mars\FreelanceWork\DesiClothingShazia\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.pdb
-C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.deps.json
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.dll
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.pdb
@@ -71,8 +70,9 @@ C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\ob
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.AssemblyInfoInputs.cache
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.AssemblyInfo.cs
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.csproj.CoreCompileInputs.cache
-C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.RazorTargetAssemblyInfo.cache
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.Common.StaticWebAssets.Manifest.cache
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.Common.StaticWebAssets.xml
+C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\scopedcss\bundle\DesiClothing4u.Common.styles.css
+C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.RazorTargetAssemblyInfo.cache
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.dll
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.pdb
