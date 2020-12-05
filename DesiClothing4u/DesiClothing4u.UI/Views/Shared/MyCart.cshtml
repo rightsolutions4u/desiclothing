@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <h2><span>Your Cart </span></h2>
                     </div>
-                    @{
+                    @*@{
                         body = "<table class='table table-bordered' border='1'>";
                         body += "<thead>";
                         body += "<tr>";
@@ -49,56 +49,65 @@
                         body += "</tr>";
                         body += "</thead>";
                         body += "<tbody>";
-                    }
-                    <table class="table table-bordered">
-                        <thead>
+                    }*@
+                <table class="table table-bordered">
+                    @*<thead>
+            <tr>
+                <th style="font-size:14px" align="left">Id</th>
+                <th style="font-size:14px" align="left">Name</th>
+                <th style="font-size:14px" align="left">Price</th>
+
+            </tr>
+        </thead>*@
+                    <thead>
+                        <tr>
+                            <th style="font-size:14px">Id</th>
+                            <th style="font-size:14px">Name</th>
+                            <th style="font-size:14px">Price color</th>
+                            <th style="font-size:14px">Quantity</th>
+                            <th style="font-size:14px">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            sum = Convert.ToInt32(@item.Price) + sum;
+                            count = count + 1;
+                            //body += "<tr>";
+                            //body += "<td>" + @item.Id + "</td>";
+                            //body += "<td>" + @item.Name + "</td>";
+                            //body += "<td>" + @item.Price + "</td>";
+
+                            //body += "</tr>";
                             <tr>
-                                <th style="font-size:14px" align="left">Id</th>
-                                <th style="font-size:14px" align="left">Name</th>
-                                <th style="font-size:14px" align="left">Price</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-
-                                sum = Convert.ToInt32(@item.Price) + sum;
-                                count = count + 1;
-                                body += "<tr>";
-                                body += "<td>" + @item.Id + "</td>";
-                                body += "<td>" + @item.Name + "</td>";
-                                body += "<td>" + @item.Price + "</td>";
-                                //body += "<td>" + @item. + "</td>";
-                                body += "</tr>";
-                                <tr>
-                                    <td>@item.Id</td>
-                                    <td>@item.Name</td>
-                                    <td> @item.Price</td>
-                                    @*<td>@item.Units</td>*@
-                                    <td>
-                                        <input type="button" value="-">
-                                        <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="2" class="input-text qty text" pattern="" inputmode="">
-                                        <input type="button" value="+">
-                                    </td>
-                                    <td><button style="font-size:24px;color:red"> <i class="fa fa-trash-o " onclick="location.href='@Url.Action("DeleteCart", "Category", item)'"></i></button></td>
-                                </tr>
-
-                            }
-                            <tr>
-                                <td colspan="4" class="text-right"><b>Total: $@sum</b></td>
-                                <td colspan="5" class="text-left">
-                                    <b>Total: @count</b>
-                                    <input type="hidden" id="bodyval" value="@body" />
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td> @item.Price</td>
+                                @*<td>@item.Units</td>*@
+                                <td>
+                                    <input type="button" value="-">
+                                    <input type="text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="2" class="input-text qty text" pattern="" inputmode="">
+                                    <input type="button" value="+">
                                 </td>
+                                <td><button style="font-size:20px;color:red"> <i class="fa fa-trash-o " onclick="location.href='@Url.Action("DeleteCart", "Category", item)'"></i></button></td>
                             </tr>
-                            @{
-                                body += "</tbody>";
-                                body += "</table>";
-                            }
-                        </tbody>
-                    </table>
-                    @*<button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-id="@body">Mail >> </button>*@
+
+                        }
+                        <tr>
+                            <td colspan="4" class="text-right"><b>Total: $@sum</b></td>
+                            <td colspan="5" class="text-left"><b>Total: @count</b>
+                                
+                                @*<input type="hidden" id="bodyval" value="@body" />*@
+                            </td>
+                        </tr>
+                        @*@{
+                            body += "</tbody>";
+                            body += "</table>";
+                        }*@
+                    </tbody>
+                </table>
+                    
                     <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Home")'"> Continue Shopping >></button>   <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Check out")'"> Check Out >></button>
                 </div>
 

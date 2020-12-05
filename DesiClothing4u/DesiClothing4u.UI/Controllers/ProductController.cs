@@ -14,12 +14,17 @@ namespace DesiClothing4u.UI.Controllers
 {
     public class ProductController : Controller
     {
+        
         // GET: ProductController
         public ActionResult Index()
         {
             return View();
         }
-
+        //private static T GetObjectFromJson<T>(this ISession session, string key)
+        //{
+        //    var value = session.GetString(key);
+        //    return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
+        //}
         // GET: ProductController/Details/5
         public async Task<ActionResult> Details(int id)
         {
@@ -41,9 +46,11 @@ namespace DesiClothing4u.UI.Controllers
             }
             return View();
         }
+        
         //Added by SM on Nov 25, 2020 for cart
         public ActionResult AddCart(int Id, string Name, decimal Price)
         {
+            
             Cart cart = new Cart
             {
 
@@ -61,7 +68,7 @@ namespace DesiClothing4u.UI.Controllers
                 li.Add(cart);
                 HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
                 ViewBag.cartCount = li.Count();
-                HttpContext.Session.SetInt32("count", li.Count());
+                HttpContext.Session.SetInt32("count", 1);
                 ViewBag.cart = cart;
                 //ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
                 //return View("~/Views/Home/Index");
@@ -69,15 +76,20 @@ namespace DesiClothing4u.UI.Controllers
             }
             else //not empty
             {
-                var value = HttpContext.Session.GetString("cart");
-                List<Cart> li = (List<Cart>)JsonConvert.DeserializeObject(value);
-                li.Add(cart);//newly entered item
+
+                List<Cart> li = new List<Cart>();
+                li.Add(cart);
                 HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
+                var value = HttpContext.Session.GetString("cart");
+                List<Cart> li1 = JsonConvert.DeserializeObject<List<Cart>>(value);
+                //Cart[] li = JsonConvert.DeserializeObject<Cart[]>(value);
+                //li.Add(cart);//newly entered item
+                //HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
                 ViewBag.cartCount = li.Count();// new count
                 HttpContext.Session.SetInt32("count", li.Count());
+                var a = HttpContext.Session.GetInt32("count");
                 //Session["count"] = Convert.ToInt32(Session["count"]) + 1;
-                return View("~/Views/Home/Index");
-
+                return View("MyCart", li1);
             }
 
         }

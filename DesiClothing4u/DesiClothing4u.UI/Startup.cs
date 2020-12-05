@@ -28,15 +28,13 @@ namespace DesiClothing4u.UI
             services.AddControllersWithViews();
             services.Configure<CookiePolicyOptions>(options =>
             {
-                options.CheckConsentNeeded = context => false;
+                options.CheckConsentNeeded = context => false; //changing to false
                 options.MinimumSameSitePolicy = SameSiteMode.None;
-               
+
             });
-            //added by SM on Dec 5, 2020
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie();
-            services.AddDistributedMemoryCache();
             //added by SM on Nov 24, 2020
+            services.AddDistributedMemoryCache();
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
@@ -44,7 +42,7 @@ namespace DesiClothing4u.UI
                 options.Cookie.IsEssential = true;
             });
             services.AddHttpContextAccessor();
-            services.AddScoped<HttpContextAccessor>();
+            //services.AddScoped<HttpContextAccessor>();
             
         }
 
@@ -64,13 +62,13 @@ namespace DesiClothing4u.UI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             //
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
             //
             app.UseRouting();
             app.UseCors("CorsApi");
             //added by SM on Nov 24, 2020 for session
             app.UseSession();
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

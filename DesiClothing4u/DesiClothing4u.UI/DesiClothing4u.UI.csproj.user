@@ -12,7 +12,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>DesiClothing4u.Common.Models.desiclothingContext</WebStackScaffolding_DbContextTypeFullName>
     <ShowAllFiles>true</ShowAllFiles>
-    <_SelectedScaffolderID>RazorViewScaffolder</_SelectedScaffolderID>
+    <_SelectedScaffolderID>MvcControllerEmptyScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Common</_SelectedScaffolderCategoryPath>
   </PropertyGroup>
 </Project>

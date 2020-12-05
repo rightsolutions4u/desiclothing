@@ -11,5 +11,6 @@ namespace DesiClothing4u.Common.Models
         public IEnumerable<Product> FeaturedProduct { get; set; }
         public IEnumerable<Product> NewProduct { get; set; }
         public Customer Customer { get; set; }
+        public IEnumerable<Cart> Cart { get; set; }
     }
 }

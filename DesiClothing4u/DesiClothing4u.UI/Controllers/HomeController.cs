@@ -17,13 +17,11 @@ namespace DesiClothing4u.UI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        public IHttpContextAccessor Accessor { get; private set; }
-
-
-        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor accessor)
+       
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            Accessor = accessor;
+          
         }
         //By Mohtashim on Nov 29, 2020
         public async Task<ActionResult<Customer>> CheckCustomerLogin(IFormCollection collection)
@@ -42,8 +40,8 @@ namespace DesiClothing4u.UI.Controllers
                 CookieOptions option = new CookieOptions();
                 option.Expires = DateTime.Now.AddDays(50);
                 option.IsEssential = true;
-                Accessor.HttpContext.Response.Cookies.Append("UserId", a.Id.ToString(), option);
-                string Usr = HttpContext.Request.Cookies["UserId"];
+                Response.Cookies.Append("UserId", a.Id.ToString(), option);
+                var Usr = Request.Cookies["UserId"];
             }
             Load load = new Load();
             //Featured--field name MarkAsNew
@@ -132,7 +130,7 @@ namespace DesiClothing4u.UI.Controllers
 
         // POST: AccountController/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+     
         public async Task<ActionResult<Customer>> CreateCustomer([FromBody] dynamic MyCustomer)
         {
             try
@@ -192,16 +190,16 @@ namespace DesiClothing4u.UI.Controllers
                 var a = JsonConvert.DeserializeObject<Customer>(Customer);
                 ViewBag.Customer = a;
                 //Store in cookies
-                if (Request.Cookies["UserId"] == null)
+                if (Request.Cookies["userid"] == null)
                 {
                     CookieOptions option = new CookieOptions();
                     option.Expires = DateTime.Now.AddDays(50);
                     option.IsEssential = true;
-                    
-                    Response.Cookies.Append("UserId", a.Id.ToString(), option);
-                    string Usr = HttpContext.Request.Cookies["UserId"];
+                    Response.Cookies.Append("UserId", a.Username, option);
+                    ViewBag.UserName = Request.Cookies["UserId"];
                 /* cookie code ends here*/
                 }
+                
                 return View(a);
                 //return RedirectToAction(nameof(Index));
             }
