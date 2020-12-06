@@ -37,7 +37,8 @@ namespace DesiClothing4u.UI
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                //options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromDays(60);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
