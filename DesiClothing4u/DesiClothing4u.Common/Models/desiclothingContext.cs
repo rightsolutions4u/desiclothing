@@ -145,7 +145,9 @@ namespace DesiClothing4u.Common.Models
         public virtual DbSet<Warehouse> Warehouses { get; set; }
         //added by SM on Nov 20, 2020
         public virtual DbSet<ProductByVendor> ProductByVendors { get; set; }
-        
+        //added by SM on Dec 5, 2020
+        public virtual DbSet<Cart> Carts { get; set; }
+
 
 
 

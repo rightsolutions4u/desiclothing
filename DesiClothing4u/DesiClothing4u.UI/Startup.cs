@@ -34,7 +34,7 @@ namespace DesiClothing4u.UI
             });
             //added by SM on Nov 24, 2020
             services.AddDistributedMemoryCache();
-
+            services.AddSession();
             services.AddSession(options =>
             {
                 //options.IdleTimeout = TimeSpan.FromSeconds(10);

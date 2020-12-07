@@ -43,67 +43,7 @@ namespace DesiClothing4u.UI.Controllers
             return View();
         }
         
-        //Added by SM on Nov 25, 2020 for cart
-        public ActionResult AddCart(int Id, string Name, decimal Price)
-        {
-           Cart cart = new Cart
-            {
-               Id = Id,
-                Name = Name,
-                Price = Price
-            };
-            List<Cart> li = HttpContext.Session.Get<List<Cart>>("cart");
-            Cart li1 = HttpContext.Session.Get<Cart>("cart"); //this runs for null but not for not null
-            if (li == null) //list is empty
-            {
-                List<Cart> a = new List<Cart>();
-                a.Add(cart);
-                HttpContext.Session.Set<Cart>("cart", cart);
-                return View("MyCart", a);
-            }
-           
-            else
-            {
-
-                li.Add(cart);
-                HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
-                HttpContext.Session.Set<List<Cart>>("cart",li);
-                return View("mycart", li);
-            }
-
-            //if (HttpContext.Session.GetString("cart") == null)
-            //{
-
-            //    List<Cart> li = new List<Cart>();
-            //    li.Add(cart);
-
-            //    HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
-            //    ViewBag.cartCount = li.Count();
-            //    HttpContext.Session.SetInt32("count", 1);
-            //    ViewBag.cart = cart;
-            //    //ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
-            //    //return View("~/Views/Home/Index");
-            //    return View("MyCart", (List<Cart>)li);
-            //}
-            //else //not empty
-            //{
-
-            //    List<Cart> li = new List<Cart>();
-            //    li.Add(cart);
-            //    HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
-            //    var value = HttpContext.Session.GetString("cart");
-            //    List<Cart> li1 = JsonConvert.DeserializeObject<List<Cart>>(value);
-            //    //Cart[] li = JsonConvert.DeserializeObject<Cart[]>(value);
-            //    //li.Add(cart);//newly entered item
-            //    //HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
-            //    ViewBag.cartCount = li.Count();// new count
-            //    HttpContext.Session.SetInt32("count", li.Count());
-            //    var a = HttpContext.Session.GetInt32("count");
-            //    //Session["count"] = Convert.ToInt32(Session["count"]) + 1;
-            //    return View("MyCart", li1);
-            //}
-
-        }
+       
         // GET: ProductController/Create
         public ActionResult Create()
         {
