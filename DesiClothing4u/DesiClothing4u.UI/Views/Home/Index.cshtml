@@ -36,14 +36,16 @@
                         </a>
                     </li>
                     <li class="galssescart galssescart2 cart cart box_1">
-                        <form action="#" method="post" class="last">
-                            <input type="hidden" name="cmd" value="_cart">
-                            <input type="hidden" name="display" value="1">
-                            <button class="top_googles_cart" type="submit" name="submit" value="">
-                                My Cart
-                                <i class="fas fa-cart-arrow-down"></i>
-                            </button>
-                        </form>
+                        @* Commented by SM on Dec 16, 2020 *@
+                        @*<form action="#" method="post" class="last">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="display" value="1">
+            <button class="top_googles_cart" type="submit" name="submit" value="">
+                My Cart
+                <i class="fas fa-cart-arrow-down"></i>
+            </button>
+        </form>*@
+                        <a class="fa fa-shopping-cart" style="font-size:20px;color:black" aria-hidden="true" href="@Url.Action("MyCart", "Carts", new { CustId = ViewBag.UserName})">My Cart </a>
                     </li>
                 </ul>
                 <!---->
@@ -57,8 +59,7 @@
                             @* Added by Mohtashim on Nov 29, 2020 *@
                             <script>
                                 function changeAction() {
-                                  
-                                    var frm = document.getElementById('frmLogin') || null;
+                                   var frm = document.getElementById('frmLogin') || null;
                                     var chk = document.getElementById('loginasvendor') || null;
                                     if (frm) {
                                         if (chk.checked == true) {
@@ -78,7 +79,6 @@
                                 <div class="login p-5 bg-dark mx-auto mw-100">*@
 
                             <form action="/" id="frmLogin" method="post">
-
                                 <div class="form-check mb-2">
                                     <input type="checkbox" class="form-check-input" id="loginasvendor">
                                     <label class="form-check-label" for="loginasvendor">Login as Vendor</label>
@@ -316,18 +316,22 @@
 
                     }
                 </div>*@
-            <div id="welcome" display:none">
-                <label id="welcomemessage">Welcome</label>
-                <script>
-                                   @if (@Model.Customer==null)
-                                    {
-                                    }
-                                    else
-                                    {
-                                        <text>var a= "@Model.Customer.Username";
-                                        document.getElementById("welcome").innerHTML = "Welcome " + a; </text>
-                                    }
-                </script>
+            <div id="welcome" @*style="display:none"*@>
+                @if (@ViewBag.UserName != null)
+                {
+                <label id="welcomemessage">Welcome @ViewBag.UserName </label>
+                }
+                    @*<script>
+                               @if (@ViewBag.UserName==null)
+                               {
+                               }
+                               else
+                               {
+
+                                    <text>var a = "shazia";
+                                   document.getElementById("welcome").innerHTML = "Welcome " + a; </text>
+                               }
+            </script>*@
                 <script>
                     function checklogin() {
                     //alert("First one");

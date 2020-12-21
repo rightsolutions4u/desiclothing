@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LoRhIMi3XBs7osl14cAPcmfNgxVaNq6kWIjDPndsTd7I0lgfG0Dye1He8Jufuim1QGA98jEHajZOG/BLv1MmYg==",
+  "dgSpecHash": "6MoHisWEhGJXqrIZPE4D+e3TDGBMGZWPyo5VL24FNrvhpy/avcnCIeOEoT7tfNf2qWey5Fe5+q1YPar4Pev24A==",
   "success": true,
   "projectFilePath": "C:\\Users\\smali\\DesiClothing\\desiclothing\\DesiClothing4u\\DesiClothing4u.UI\\DesiClothing4u.UI.csproj",
   "expectedPackageFiles": [
@@ -181,7 +181,9 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\smali\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
   ],
   "logs": [
     {

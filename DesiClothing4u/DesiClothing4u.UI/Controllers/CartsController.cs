@@ -49,37 +49,19 @@ namespace DesiClothing4u.UI.Controllers
                 var a = HttpContext.Session.GetInt32("count");
                 return View("MyCart", li);
             }
-            //List<Cart> li = HttpContext.Session.Get<List<Cart>>("cart");
-            //// Cart li = HttpContext.Session.Get<Cart>("cart"); //this runs for null but not for not null
-            // if (li == null) //list is empty
-            // {
-            //     List<Cart> a = new List<Cart>();
-            //     a.Add(cart);
-            //     HttpContext.Session.Set<Cart>("cart", cart);
-            //     return View("MyCart", a);
-            // }
-            // //return View("MyCart", cart);
-            // else
-            // {
-
-            //     li.Add(cart);
-            //     HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
-            //     HttpContext.Session.Set<List<Cart>>("cart", li);
-            //     return View("mycart", li);
-            // }
-
         }
         // GET: Carts/MyCart
         public async Task<ActionResult> MyCart(string CustId)
         {
-            if (CustId != null)
-            {
+            
                 if (HttpContext.Session.GetString("cart") != null)
                 {
                     var value = HttpContext.Session.GetString("cart");
                     List<Cart> li = JsonConvert.DeserializeObject<List<Cart>>(value);
                     return View("MyCart", li);
                 }
+            if (CustId != null)
+            {
                 //if session["cart"] is empty    
                 Cart cart = new Cart();
                 var client = new HttpClient();
@@ -109,7 +91,7 @@ namespace DesiClothing4u.UI.Controllers
                         HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
                         return View("MyCart", li);
                     }
-                }
+                }//if not successful
                 else
                 {
                     Error err = new Error();

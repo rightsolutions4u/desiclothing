@@ -35,13 +35,13 @@ namespace DesiClothing4u.UI.Controllers
             var Customer = Res.Content.ReadAsStringAsync().Result;
             var a = JsonConvert.DeserializeObject<Customer>(Customer);
             //Store in cookies
-            if (Request.Cookies["UserId"] == null)
+            if (Request.Cookies["userid"] == null)
             {
                 CookieOptions option = new CookieOptions();
                 option.Expires = DateTime.Now.AddDays(50);
                 option.IsEssential = true;
-                Response.Cookies.Append("UserId", a.Id.ToString(), option);
-                var Usr = Request.Cookies["UserId"];
+                Response.Cookies.Append("userid", a.Id.ToString(), option);
+               
             }
             Load load = new Load();
             //Featured--field name MarkAsNew
@@ -57,11 +57,11 @@ namespace DesiClothing4u.UI.Controllers
             var NewProduct = responseN.Content.ReadAsStringAsync().Result;
             load.NewProduct = JsonConvert.DeserializeObject<Product[]>(NewProduct);
             //Customers
-            if (Request.Cookies["UserId"] != null)
+            if (Request.Cookies["userid"] != null)
             {
                 var clientC = new HttpClient();
                 UriBuilder builderC = new UriBuilder("https://localhost:44356/api/Customers/LoginID?");
-                builderC.Query = "UserId=" + Request.Cookies["UserId"];
+                builderC.Query = "UserId=" + Request.Cookies["userid"];
                 HttpResponseMessage responseC = await clientC.GetAsync(builderC.Uri);
                 if (responseC.IsSuccessStatusCode)
                 {
@@ -92,11 +92,11 @@ namespace DesiClothing4u.UI.Controllers
                 var NewProduct = responseN.Content.ReadAsStringAsync().Result;
                 load.NewProduct = JsonConvert.DeserializeObject<Product[]>(NewProduct);
                 //Customers
-                if (Request.Cookies["UserId"] != null)
+                if (Request.Cookies["userid"] != null)
                 {
                     var clientC = new HttpClient();
                     UriBuilder builderC = new UriBuilder("https://localhost:44356/api/Customers/LoginID?");
-                    builderC.Query = "UserId=" + Request.Cookies["UserId"];
+                    builderC.Query = "UserId=" + Request.Cookies["userid"];
                     HttpResponseMessage responseC = await clientC.GetAsync(builderC.Uri);
                     if (responseC.IsSuccessStatusCode)
                     {
@@ -189,14 +189,15 @@ namespace DesiClothing4u.UI.Controllers
                 var Customer = response.Content.ReadAsStringAsync().Result;
                 var a = JsonConvert.DeserializeObject<Customer>(Customer);
                 ViewBag.Customer = a;
+                ViewBag.UserName = a.Username;
                 //Store in cookies
                 if (Request.Cookies["userid"] == null)
                 {
                     CookieOptions option = new CookieOptions();
-                    option.Expires = DateTime.Now.AddDays(50);
+                    option.Expires = DateTime.Now.AddDays(1);
                     option.IsEssential = true;
-                    Response.Cookies.Append("UserId", a.Username, option);
-                    ViewBag.UserName = Request.Cookies["UserId"];
+                    Response.Cookies.Append("userid", a.Id.ToString(), option);
+                    ViewBag.UserName = a.Username;//Request.Cookies["userid"];
                 /* cookie code ends here*/
                 }
                 
