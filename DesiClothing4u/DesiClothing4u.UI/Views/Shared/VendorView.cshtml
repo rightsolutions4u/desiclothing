@@ -452,20 +452,20 @@
                                                            columns.Add(model => model.Name).Titled("Name");
                                                            columns.Add(model => model.Price).Titled("Price");
                                                            columns.Add(model => model.FileName).Titled("Image").Filterable(false).Encoded(false)
-                                                       .Sanitized(false)
-                                                       .SetWidth(80).RenderValueAs(model => @<img width="75" height="75" alt="Image" src='@Url.Content(model.FileName)'>);
-columns.Add()
-.Encoded(false)
-.Sanitized(false)
-.SetWidth(80)
-.RenderValueAs(o => @<img src="~/images/editicon.png" width="20" height="20" onclick="GetProduct(@o.Id);" />);
-columns.Add()
-.Encoded(false)
-.Sanitized(false)
-.SetWidth(80)
-.RenderValueAs(o => @<img src="~/images/delicon.png" width="20" height="20" onclick="delprod(@o.Id);" />);
-})
-                                                    }
+                                                           .Sanitized(false)
+                                                           .SetWidth(40).RenderValueAs(model => @<img width="75" height="75" alt="Image" src='@Url.Content(model.FileName)'>);
+                                                            columns.Add()
+                                                            .Encoded(false)
+                                                            .Sanitized(false)
+                                                            .SetWidth(40)
+                                                            .RenderValueAs(o => @<img src="~/images/editicon.png" width="20" height="20" onclick="GetProduct(@o.Id);" />);
+                                                            columns.Add()
+                                                            .Encoded(false)
+                                                            .Sanitized(false)
+                                                            .SetWidth(80)
+                                                            .RenderValueAs(o => @<img src="~/images/delicon.png" width="20" height="20" onclick="delprod(@o.Id);" />);
+                                                            })
+                                                            }
                                                     else
                                                     {
                                                         <div>
@@ -504,7 +504,6 @@ columns.Add()
                                                                           //$('#Edpicgrid').html = '';
                                                                           var tablePicE = $('#tblpicE tbody');
                                                                           $.each(data, function (i, item) {
-                                                                              alert(item.seoFilename);
                                                                               var ht = '<tr><td align="center">' + item.id + '</td><td align="center"><img src=' + path + '/ProductImages/' + item.seoFilename + ' height = "75" width = "75" ></td><td align="center">' + item.productId + '</td><td align="center"><a href="#" onClick=delpicE(' + item.id + ')><img src=' + path + '/Images/delicon.png height = "25" width = "25" ></a></td></tr>';
                                                                               //tablePicE.append('<tr><td align="center">' + item.id + '</td><td align="center"><img src=' + path + '/ProductImages/' + item.seoFilename + ' height = "75" width = "75" ></td><td align="center">' + item.productId + '</td><td align="center"><a href="#" onClick=delpicE('+ item.id +')><img src=' + path + '/Images/delicon.png height = "25" width = "25" ></a></td></tr>');
                                                                               tablePicE.append(ht);
@@ -523,11 +522,16 @@ columns.Add()
                                                         }
                                                         function delprod(productid) {
                                                             var Id = productid;
-                                                            alert("product id "+Id)
-                                                           $.ajax({
-                                                             url: 'https://localhost:44356/api/Products/DeleteProduct',
-                                                             type: 'DELETE',
-                                                               data: { id: Id },
+                                                            alert("product id " + Id);
+                                                            var myproduct = {
+                                                                id: Id
+                                                            }
+                                                            $.ajax({
+                                                             url: 'https://localhost:44356/api/Products/DeleteProduct/',
+                                                                type: 'DELETE',
+                                                                contentType: 'application/json; charset=utf-8',
+                                                                data: JSON.stringify(myproduct),
+                                                                @*data: { id: Id },*@
                                                               success: function (result) {
                                                                   alert("Product deleted successfully");
                                                            }
@@ -541,7 +545,7 @@ columns.Add()
                                                         alert("PicId " + PicId);
 
                                                         $.ajax({
-                                                            url: 'https://localhost:44356/api/Pictures/DeletePicture',
+                                                            url: 'https://localhost:44356/api/Pictures/DeletePicture/',
                                                             type: 'POST',
                                                             //contentType: 'application/x-www-form-urlencoded',
                                                             data: { PictureId: PicId },

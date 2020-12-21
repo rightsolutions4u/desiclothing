@@ -63,11 +63,9 @@
                                     var chk = document.getElementById('loginasvendor') || null;
                                     if (frm) {
                                         if (chk.checked == true) {
-                                            alert('checkbox clicked');
                                             frm.action = '/Vendor/CheckVendorLogin';
                                         }
                                         else {
-
                                             frm.action = '/Home/CheckCustomerLogin'
                                         }
                                     }
@@ -241,7 +239,6 @@
                                             var City1 = $('#City').val();
                                             var Phoneno1 = $('#Phoneno').val();
                                             var ZipCode1 = $('#Zipcode').val();
-                                            alert('called AGAIN');
                                             var MyCustomer = {
                                                 FirstName: FirstName1,
                                                 LastName: LastName1,
@@ -339,11 +336,8 @@
                     //alert(form.serialize());
                     var userId = $('#exampleInputEmail1').val();
                     var pwd = $('#exampleInputPassword1').val();
-                        alert(userId);
-                        alert(pwd);
                     var checkBox = document.getElementById("loginasvendor");
                     if (checkBox.checked == true) {
-                        //alert("Checked");
                         $.ajax({
                         data: { "email": userId, "pwd": pwd },
                         url: '@Url.Action("CheckVendorLogin", "Vendor")',

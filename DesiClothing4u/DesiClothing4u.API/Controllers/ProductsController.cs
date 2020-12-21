@@ -63,11 +63,20 @@ namespace DesiClothing4u.API.Controllers
         // GET: api/Products/5
         [HttpGet("GetProductByVendor1")]
         public IEnumerable<ProductByVendor> GetProductByVendor1(int VendorId)
-        {
-             var product = _context.ProductByVendors
-            .FromSqlRaw("Execute dbo.GetProductByVendor {0}", VendorId) 
-            .ToList();
-            return product;
+        {   
+            /*Added by Mohtashim on Dec 21, 2020*/
+            try
+            {
+                var product = _context.ProductByVendors
+                .FromSqlRaw("Execute dbo.GetProductByVendor {0}", VendorId)
+                .ToList();
+                return product;
+            }
+            catch(Exception e )
+            {
+                /*if the vendor dont have any product*/
+                return null;
+            }
         }
 
         // PUT: api/Products/5
@@ -201,12 +210,29 @@ namespace DesiClothing4u.API.Controllers
                  return CreatedAtAction("GetProduct", new { id = product.Id }, product);
             //return NoContent();
         }
-        
+
+        /* // DELETE: api/Products/5
+         [HttpDelete("{id}")]
+         public async Task<ActionResult<Product>> DeleteProduct(int id)
+         {
+             var product = await _context.Products.FindAsync(id);
+             if (product == null)
+             {
+                 return NotFound();
+             }
+
+             _context.Products.Remove(product);
+             await _context.SaveChangesAsync();
+
+             return product;
+         }*/
         // DELETE: api/Products/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Product>> DeleteProduct(int id)
+        [HttpDelete("DeleteProduct")]
+        public async Task<ActionResult<Product>> DeleteProduct([FromBody] dynamic myproduct)
         {
-            var product = await _context.Products.FindAsync(id);
+            var sProduct = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(myproduct.ToString());
+            int Id = sProduct.id;
+            var product = await _context.Products.FindAsync(Id);
             if (product == null)
             {
                 return NotFound();
@@ -217,7 +243,6 @@ namespace DesiClothing4u.API.Controllers
 
             return product;
         }
-
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.Id == id);
