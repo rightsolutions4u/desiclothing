@@ -1324,15 +1324,15 @@ namespace DesiClothing4u.Common.Models
                     .HasForeignKey(d => d.PollId)
                     .HasConstraintName("FK_PollAnswer_PollId_Poll_Id");
             });
-            //modelBuilder.Entity<VendorBankDetail>(entity =>
-            //{
-            //    entity.ToTable("VendorBankDetail");
-
-            //    entity.HasOne(d => d.Vendor)
-            //        .WithMany(p => p.VendorBankDetail)
-            //        .HasForeignKey(d => d.Id)
-            //        .HasConstraintName("FK__VendorBan__Vendo__1F2E9E6D");
-            //});
+            modelBuilder.Entity<VendorBankDetail>(entity =>
+            {
+                entity.ToTable("VendorBankDetail");
+                //dec 23, 2020
+                //entity.HasOne(d => d.Vendor)
+                //    .WithMany(p => p.VendorBankDetail)
+                //    .HasForeignKey(d => d.Id)
+                //    .HasConstraintName("FK__VendorBan__Vendo__1F2E9E6D");
+            });
             modelBuilder.Entity<PollVotingRecord>(entity =>
             {
                 entity.ToTable("PollVotingRecord");
@@ -2339,11 +2339,11 @@ namespace DesiClothing4u.Common.Models
                 entity.Property(e => e.SwiftCode)
                     .HasMaxLength(100)
                     .IsUnicode(false);
-                
-                entity.HasOne(d => d.Vendor)
-                   .WithMany(p => p.VendorBankDetail)
-                   .HasForeignKey(d => d.VendorId)
-                   .HasConstraintName("FK__VendorBan__Vendo__1F2E9E6D");
+                //for vendorbankdetails
+                //entity.HasOne(d => d.Vendor)
+                //   .WithMany(p => p.VendorBankDetail)
+                //   .HasForeignKey(d => d.VendorId)
+                //   .HasConstraintName("FK__VendorBan__Vendo__1F2E9E6D");
             });
             //});
 

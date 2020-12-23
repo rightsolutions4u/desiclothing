@@ -42,11 +42,32 @@ namespace DesiClothing4u.API.Controllers
 
             return vendor;
         }
+        // Post: api/VendorBankDetail
+        [HttpPost("PostVendorBankDetail")]
+        public async Task<ActionResult<VendorBankDetail>> PostVendorBankDetail(VendorBankDetail vendorBankDetails)
+        {
+            _context.VendorBankDetails.Add(vendorBankDetails);
+            await _context.SaveChangesAsync();
+           return CreatedAtAction("GetVendorBankDetail", new { id = vendorBankDetails.Id }, vendorBankDetails);
+        }
 
-        // PUT: api/Vendors/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+       // GET: api/GetVendorBankDetail/5
+        [HttpGet("GetVendorBankDetail")]
+        public async Task<ActionResult<VendorBankDetail>> GetVendorBankDetail(int id)
+        {
+            var vendorBankDetail = await _context.VendorBankDetails.FindAsync(id);
+
+            if (vendorBankDetail == null)
+            {
+                return NotFound();
+            }
+
+            return vendorBankDetail;
+        }
+            // PUT: api/Vendors/5
+            // To protect from overposting attacks, enable the specific properties you want to bind to, for
+            // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+            [HttpPut("{id}")]
         public async Task<IActionResult> PutVendor(int id, Vendor vendor)
         {
             if (id != vendor.Id)
@@ -74,7 +95,7 @@ namespace DesiClothing4u.API.Controllers
 
             return NoContent();
         }
-
+        
         // POST: api/Vendors
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -118,15 +139,7 @@ namespace DesiClothing4u.API.Controllers
 
             var siteUsers = _context.Vendors.SingleOrDefault(e => e.Email == email);
             return siteUsers;
-            //VendorExists = _context.Vendors.Any(e => e.Email == email && e.password == UserPassword);
-            //VendorExists = _context.Vendors.Any(e => e.Id == 1007);
-            //var foos = await _context.Vendors.Where(x => x.Email == email && x.password == UserPassword);
-            //if (VendorExists == false)
-            //{
-            //    return NotFound();
-            //}
-            //var a = _context.Vendors.Where(x => x.Email == email && x.password == UserPassword);
-            //return a;
+           
             
         }
         

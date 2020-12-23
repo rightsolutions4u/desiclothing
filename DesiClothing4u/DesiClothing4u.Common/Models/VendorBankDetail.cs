@@ -16,6 +16,6 @@ namespace DesiClothing4u.Common.Models
         public string AccountNumber { get; set; }
         public string AccountType { get; set; }
 
-        public virtual Vendor Vendor { get; set; }
+       // public virtual Vendor Vendor { get; set; }
     }
 }

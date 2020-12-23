@@ -41,6 +41,7 @@
                 y.style.display = "none";
                 var z = document.getElementById('defaultdiv');
                 z.style.display = "block";
+
             }
             else if (name == 'addproduct') {
                 var a = document.getElementById('VendorUpdate');
@@ -61,7 +62,7 @@
                 y.style.display = "block";
                 var z = document.getElementById('addproduct');
                 z.style.display = "none";
-            }
+                            }
             else if (name == 'editvendor') {
                 var a = document.getElementById('VendorUpdate');
                 a.style.display = "block";
@@ -73,9 +74,6 @@
                 z.style.display = "none";
             }
 
-            @*window.onbeforeunload = null;
-            location.reload();*@
-            @*window.setTimeout("window.location.reload()", 60000)*@
         }
     </script>
     <link href="~/css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -119,15 +117,9 @@
                                 <span class="fa fa-user" aria-hidden="true"></span>
                             </a>
                         </li>
+                        @* Below by SM on Dec 23, 2020 added another cart *@
                         <li class="galssescart galssescart2 cart cart box_1">
-                            <form action="#" method="post" class="last">
-                                <input type="hidden" name="cmd" value="_cart">
-                                <input type="hidden" name="display" value="1">
-                                <button class="top_googles_cart" type="submit" name="submit" value="">
-                                    My Cart
-                                    <i class="fas fa-cart-arrow-down"></i>
-                                </button>
-                            </form>
+                            <a class="fa fa-shopping-cart" style="font-size:20px;color:black" aria-hidden="true" href="@Url.Action("MyCart", "Carts", new { CustId = ViewBag.UserName})">My Cart </a>
                         </li>
                     </ul>
                     <!---->

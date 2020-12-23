@@ -10,7 +10,7 @@ namespace DesiClothing4u.Common.Models
     {
         public Vendor()
         {
-            VendorNotes = new HashSet<VendorNote>();
+            //VendorNotes = new HashSet<VendorNote>();
             VendorBankDetail = new HashSet<VendorBankDetail>();
         }
 
@@ -34,5 +34,6 @@ namespace DesiClothing4u.Common.Models
         public string password {get; set;}
         public virtual ICollection<VendorNote> VendorNotes { get; set; }
         public virtual ICollection<VendorBankDetail> VendorBankDetail { get; set; }
+       // public VendorBankDetail VendorBankDetail { get; set; }
     }
 }

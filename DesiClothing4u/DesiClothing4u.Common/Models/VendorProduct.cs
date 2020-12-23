@@ -16,6 +16,8 @@ namespace DesiClothing4u.Common.Models
         public IEnumerable<Category> Category { get; set; }
         public IEnumerable<Picture> Picture { get; set; }
         public IEnumerable<ProductByVendor> ProductByVendor { get; set; }
+        public VendorBankDetail VendorBankDetail { get; set; }
+        
 
     }
 }
