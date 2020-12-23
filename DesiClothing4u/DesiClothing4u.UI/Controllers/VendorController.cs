@@ -64,6 +64,7 @@ namespace DesiClothing4u.UI.Controllers
                 var BillingAddressId = BillingAddress1.Id;
 
                 VendorProduct vendorproduct = new VendorProduct();
+                
 
                 //Post Vendor
                 Vendor vendor = new Vendor
@@ -84,7 +85,26 @@ namespace DesiClothing4u.UI.Controllers
                 //Load Vendor
                 var Vendor = response.Content.ReadAsStringAsync().Result;
                 vendorproduct.Vendor = JsonConvert.DeserializeObject<Vendor>(Vendor);
-                ViewBag.Vendor = vendorproduct.Vendor;
+
+                //code to be corrected to insert vendor bank details
+                //var Vid = vendorproduct.Vendor.Id;
+                //VendorBankDetail vendorBankDetail = new VendorBankDetail();
+                //vendorBankDetail.VendorId = Vid;
+                //vendorBankDetail.AccHolderName = collection["accountholder"];
+                //vendorBankDetail.BankName = collection["bankname"];
+                //vendorBankDetail.BankAddress = collection["bankaddress"];
+                //vendorBankDetail.SwiftCode = collection["swiftcode"];
+                //vendorBankDetail.AccountNumber = collection["accountno"];
+                //vendorBankDetail.AccountType = collection["accounttype"];
+                //output = JsonConvert.SerializeObject(vendorBankDetail);
+                //data = new StringContent(output, Encoding.UTF8, "application/json");
+                //url = "https://localhost:44356/api/vendorBankDetail";
+                //client = new HttpClient();
+                //response = await client.PostAsync(url, data);
+                ////Load Vendor
+                //var vendorBDetail = response.Content.ReadAsStringAsync().Result;
+                //vendorproduct.VendorBankDetail  = JsonConvert.DeserializeObject<VendorBankDetail>(vendorBDetail);
+                //ViewBag.VendorBankDetails = vendorproduct.VendorBankDetail;
 
           
                     return View("VendorView", vendorproduct);
