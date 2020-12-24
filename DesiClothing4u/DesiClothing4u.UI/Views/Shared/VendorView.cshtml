@@ -464,17 +464,17 @@
                                                            columns.Add(model => model.FileName).Titled("Image").Filterable(false).Encoded(false)
                                                            .Sanitized(false)
                                                            .SetWidth(40).RenderValueAs(model => @<img width="75" height="75" alt="Image" src='@Url.Content(model.FileName)'>);
-columns.Add()
-.Encoded(false)
-.Sanitized(false)
-.SetWidth(40)
-.RenderValueAs(o => @<img src="~/images/editicon.png" width="20" height="20" onclick="GetProduct(@o.Id);" />);
-columns.Add()
-.Encoded(false)
-.Sanitized(false)
-.SetWidth(80)
-.RenderValueAs(o => @<img src="~/images/delicon.png" width="20" height="20" onclick="delprod(@o.Id);" />);
-})
+                                                            columns.Add()
+                                                            .Encoded(false)
+                                                            .Sanitized(false)
+                                                            .SetWidth(40)
+                                                            .RenderValueAs(o => @<img src="~/images/editicon.png" width="20" height="20" onclick="GetProduct(@o.Id);" />);
+                                                            columns.Add()
+                                                            .Encoded(false)
+                                                            .Sanitized(false)
+                                                            .SetWidth(80)
+                                                            .RenderValueAs(o => @<img src="~/images/delicon.png" width="20" height="20" onclick="delprod(@o.Id);" />);
+                                                            })
                                                     }
                                                     else
                                                     {
@@ -592,7 +592,7 @@ columns.Add()
                                                 <h4>Add Products</h4>
                                             </td>
                                             <td width="50%" align="right">
-                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv'); location.reload();">Cancel</button>
+                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv'); location.reload()">Cancel</button>
                                                 <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
                                             </td>
                                         </tr>

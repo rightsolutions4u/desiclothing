@@ -148,10 +148,6 @@ namespace DesiClothing4u.Common.Models
         //added by SM on Dec 5, 2020
         public virtual DbSet<Cart> Carts { get; set; }
 
-
-
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

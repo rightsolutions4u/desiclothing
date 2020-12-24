@@ -106,7 +106,7 @@ namespace DesiClothing4u.UI.Controllers
 
                     }
                 }
-                
+                ViewBag.Vendormessage = TempData["Vendormessage"];
                 return View("Index", load);
             }
             catch (Exception e)

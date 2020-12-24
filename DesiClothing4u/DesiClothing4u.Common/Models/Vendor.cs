@@ -11,7 +11,7 @@ namespace DesiClothing4u.Common.Models
         public Vendor()
         {
             //VendorNotes = new HashSet<VendorNote>();
-            VendorBankDetail = new HashSet<VendorBankDetail>();
+           // VendorBankDetail = new HashSet<VendorBankDetail>();
         }
 
         public int Id { get; set; }
@@ -30,10 +30,9 @@ namespace DesiClothing4u.Common.Models
         public string MetaDescription { get; set; }
         public int PageSize { get; set; }
         public bool AllowCustomersToSelectPageSize { get; set; }
-
         public string password {get; set;}
         public virtual ICollection<VendorNote> VendorNotes { get; set; }
-        public virtual ICollection<VendorBankDetail> VendorBankDetail { get; set; }
-       // public VendorBankDetail VendorBankDetail { get; set; }
+       // public virtual ICollection<VendorBankDetail> VendorBankDetail { get; set; }
+        public VendorBankDetail VendorBankDetail { get; set; }
     }
 }
