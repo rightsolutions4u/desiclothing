@@ -486,7 +486,6 @@
                                                         function GetProduct(productid) {
                                                         var VendorId = '@ViewBag.VendorId';
                                                         var i = 0;
-                                                        alert(productid);
                                                           $.ajax({
                                                              url: 'https://localhost:44356/api/Products/GetProduct',
                                                              type: 'GET',
@@ -532,7 +531,6 @@
                                                         }
                                                         function delprod(productid) {
                                                             var Id = productid;
-                                                            alert("product id " + Id);
                                                             var myproduct = {
                                                                 id: Id
                                                             }
@@ -554,17 +552,13 @@
                                                         })
                                                     }
                                                     function delpic(PicId) {
-                                                        alert("PicId " + PicId);
-
                                                         $.ajax({
                                                             url: 'https://localhost:44356/api/Pictures/DeletePicture/',
                                                             type: 'POST',
                                                             //contentType: 'application/x-www-form-urlencoded',
                                                             data: { PictureId: PicId },
                                                             success: function (result) {
-                                                                alert("productid after deletion" + productid);
                                                                 location.reload();
-
                                                             }
                                                             , error: function (result) {
                                                                 alert("err " + result.responseText);
@@ -592,7 +586,8 @@
                                                 <h4>Add Products</h4>
                                             </td>
                                             <td width="50%" align="right">
-                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv'); location.reload()">Cancel</button>
+                                                <input class="form-control" type="button" value="Cancel" onclick="hideme('defaultdiv'); location.reload()">
+                                                <button type="button" class="form-control" onclick="hideme('defaultdiv'); location.reload()">Cancel</button>
                                                 <button type="button" class="btn btn-primary submit mb-4" onclick="PostProduct()">Save</button>
                                             </td>
                                         </tr>
@@ -657,7 +652,7 @@
                                              data: JSON.stringify(myproduct)
                                               , success: function (result) {
 
-                                                  alert("New Product has been added : " + result.name + " with Id: "+ result.id);
+                                                  alert("New Product has been added");
                                                   $('#ProductId').val(result.id);
 
                                            }
@@ -691,7 +686,7 @@
                                                 formData.append("file", input[i]);
                                             }
                                             formData.append("Id", ProductId);
-                                            alert("after formdata");
+                                            
                                             $.ajax({
                                                 url: 'https://localhost:44356/api/Pictures/PostPicture',
                                                 type: 'POST',
@@ -748,7 +743,7 @@
                                                 <h4>Edit Products</h4>
                                             </td>
                                             <td width="50%" align="right">
-                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv')">Cancel</button>
+                                                <button type="button" class="btn btn-primary submit mb-4" onclick="hideme('defaultdiv');location.reload()">Cancel</button>
                                                 <button type="button" class="btn btn-primary submit mb-4" onclick="EditProduct()">Save</button>
                                             </td>
                                         </tr>
@@ -860,7 +855,6 @@
                                                 })
                                             }
                                             function delpicE(PicId) {
-                                                alert("PicId " + PicId);
                                                 var pid = PicId;
                                                 $.ajax({
                                                     url: 'https://localhost:44356/api/Pictures/DeletePicture',
