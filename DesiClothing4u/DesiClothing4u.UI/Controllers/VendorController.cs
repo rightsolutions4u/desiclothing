@@ -101,7 +101,7 @@ namespace DesiClothing4u.UI.Controllers
                     };
                 output = JsonConvert.SerializeObject(vendorBankDetail);
                 data = new StringContent(output, Encoding.UTF8, "application/json");
-                url = "https://localhost:44356/api/PostVendorBankDetail";
+                url = "https://localhost:44356/api/Vendors/PostVendorBankDetail";
                 client = new HttpClient();
                 response = await client.PostAsync(url, data);
                 //Load Vendor Bank details

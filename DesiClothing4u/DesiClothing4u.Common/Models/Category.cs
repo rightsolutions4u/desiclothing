@@ -9,8 +9,8 @@ namespace DesiClothing4u.Common.Models
     {
         public Category()
         {
-            DiscountAppliedToCategories = new HashSet<DiscountAppliedToCategory>();
-            ProductCategoryMappings = new HashSet<ProductCategoryMapping>();
+            //DiscountAppliedToCategories = new HashSet<DiscountAppliedToCategory>();
+            //ProductCategoryMappings = new HashSet<ProductCategoryMapping>();
         }
 
         public int Id { get; set; }
@@ -36,7 +36,7 @@ namespace DesiClothing4u.Common.Models
         public DateTime CreatedOnUtc { get; set; }
         public DateTime UpdatedOnUtc { get; set; }
 
-        public virtual ICollection<DiscountAppliedToCategory> DiscountAppliedToCategories { get; set; }
-        public virtual ICollection<ProductCategoryMapping> ProductCategoryMappings { get; set; }
+        //public virtual ICollection<DiscountAppliedToCategory> DiscountAppliedToCategories { get; set; }
+        //public virtual ICollection<ProductCategoryMapping> ProductCategoryMappings { get; set; }
     }
 }

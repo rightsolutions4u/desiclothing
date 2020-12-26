@@ -66,7 +66,6 @@ F:\Mars\FreelanceWork\DesiClothingShazia\desiclothing\DesiClothing4u\DesiClothin
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.deps.json
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.dll
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\bin\Debug\netcoreapp3.1\DesiClothing4u.Common.pdb
-C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.csprojAssemblyReference.cache
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.AssemblyInfoInputs.cache
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.AssemblyInfo.cs
 C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.csproj.CoreCompileInputs.cache
@@ -102,3 +101,4 @@ F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\De
 F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\staticwebassets\DesiClothing4u.Common.StaticWebAssets.xml
 F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.dll
 F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.pdb
+C:\Users\smali\DesiClothing\desiclothing\DesiClothing4u\DesiClothing4u.Common\obj\Debug\netcoreapp3.1\DesiClothing4u.Common.csprojAssemblyReference.cache

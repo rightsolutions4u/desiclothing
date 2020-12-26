@@ -13,7 +13,7 @@ namespace DesiClothing4u.Common.Models
             //DiscountAppliedToProducts = new HashSet<DiscountAppliedToProduct>();
             //OrderItems = new HashSet<OrderItem>();
             //ProductAttributeCombinations = new HashSet<ProductAttributeCombination>();
-            //ProductCategoryMappings = new HashSet<ProductCategoryMapping>();
+            ProductCategoryMappings = new HashSet<ProductCategoryMapping>();
             //ProductManufacturerMappings = new HashSet<ProductManufacturerMapping>();
             //by SM on Nov 12, 2020 uncomment
             ProductPictureMappings = new HashSet<ProductPictureMapping>();
@@ -136,10 +136,11 @@ namespace DesiClothing4u.Common.Models
         //    public virtual ICollection<DiscountAppliedToProduct> DiscountAppliedToProducts { get; set; }
         //    public virtual ICollection<OrderItem> OrderItems { get; set; }
         //    public virtual ICollection<ProductAttributeCombination> ProductAttributeCombinations { get; set; }
-        //    public virtual ICollection<ProductCategoryMapping> ProductCategoryMappings { get; set; }
+        
         //    public virtual ICollection<ProductManufacturerMapping> ProductManufacturerMappings { get; set; }
         //by SM on Nov 12, 2020
         public virtual ICollection<ProductPictureMapping> ProductPictureMappings { get; set; }
-        
+        public virtual ICollection<ProductCategoryMapping> ProductCategoryMappings { get; set; }
+
     }
 }

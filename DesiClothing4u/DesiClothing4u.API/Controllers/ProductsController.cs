@@ -45,7 +45,23 @@ namespace DesiClothing4u.API.Controllers
 
             return product;
         }
-
+        
+        [HttpGet("GetCatergories")]
+        public IEnumerable<ProductCategory> GetCatergories()
+        {
+            try
+            {
+                var Category =  _context.ProductCategories
+                .FromSqlRaw("Execute dbo.GetCategories")
+                .ToList();
+                return Category;
+            }
+            catch (Exception e)
+            {
+                /*incase of no category*/
+                return null;
+            }
+        }
 
         // GET: api/Products/5
         [HttpGet("GetProductDetail")]

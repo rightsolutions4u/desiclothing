@@ -442,7 +442,7 @@
                                         <h4>Products</h4>
                                     </td>
                                     <td width="50%" align="right">
-                                        <button type="submit" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');">Add New</button>
+                                        <button type="submit" class="btn btn-primary submit mb-4" onclick="hideme('addproduct');populateCategory()">Add New</button>
                                     </td>
                                 </tr>
                             </table>
@@ -609,13 +609,39 @@
                                             </div>
 
                                             <div class="form-group" style="text-align:left">
-                                                <select class="form-control" name="CategoryId" id="CategoryId">
-                                                    <option value="x">Select Category</option>";
-                                                    <option value="3">Men -- Clothing</option>
-                                                    <option value="6">Women -- Clothing -- Kurti</option>
-                                                    <option value="10">Kids -- Boys -- TShirts</option>
-                                                </select>
-                                            </div>
+                                                <select class="form-control" name="CategoryId" id="CategoryId" onchange="populateCategory()">
+                                                  
+                                                        <option value="x">Select Category</option>";
+
+
+                                                        @*<option value="3">Men -- Clothing</option>
+            <option value="6">Women                         -- Clothing -- Kurti</option>
+            <option value="10">Kids                         -- Boys -- TShirts</option>*@
+                                                    </select>
+                                                    <script>
+                                                        function populateCategory() {
+                                                            alert("i'm called in populateCategory");
+                                                            $.ajax({
+                                                                url: 'https://localhost:44356/api/Products/GetCategories',
+                                                                type: 'GET',
+                                                                
+                                                                success: function (result) {
+                                                                    var markup = "<option value='x'>Select Category</option>";
+                                                                    var i;
+                                                                    for (i = 0; i < result.length; i++) {
+                                                                        markup += "<option value=" + JSON.stringify(result[i].recId) + ">" + JSON.stringify(result[i].catName) + "</option>";
+                                                                    }
+                                                                    $("#CategoryId").html(markup).show();
+                                                                },
+                                                                error:
+                                                                    function (result) {
+
+                                                                        alert("error : " + result.responseText);
+                                                                    }
+                                                            });
+                                                        }
+                                                    </script>
+</div>
                                             <div class="form-group" style="text-align:left">
                                                 <label class="my-2">Price</label>
                                                 <input class="form-control" type="text" align="right" name="Price" id="Price" placeholder="" required="" style="width:500px;">

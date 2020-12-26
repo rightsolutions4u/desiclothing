@@ -147,6 +147,8 @@ namespace DesiClothing4u.Common.Models
         public virtual DbSet<ProductByVendor> ProductByVendors { get; set; }
         //added by SM on Dec 5, 2020
         public virtual DbSet<Cart> Carts { get; set; }
+        //on Dec 26, 2020
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -614,10 +616,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.DiscountAppliedToCategories)
-                    .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK_Discount_AppliedToCategories_Category_Id_Category_Id");
+                //entity.HasOne(d => d.Category)
+                //    .WithMany(p => p.DiscountAppliedToCategories)
+                //    .HasForeignKey(d => d.CategoryId)
+                //    .HasConstraintName("FK_Discount_AppliedToCategories_Category_Id_Category_Id");
 
                 entity.HasOne(d => d.Discount)
                     .WithMany(p => p.DiscountAppliedToCategories)
@@ -1559,10 +1561,10 @@ namespace DesiClothing4u.Common.Models
 
                 entity.HasIndex(e => e.ProductId, "IX_Product_Category_Mapping_ProductId");
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.ProductCategoryMappings)
-                    .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK_Product_Category_Mapping_CategoryId_Category_Id");
+                //entity.HasOne(d => d.Category)
+                //    .WithMany(p => p.ProductCategoryMappings)
+                //    .HasForeignKey(d => d.CategoryId)
+                //    .HasConstraintName("FK_Product_Category_Mapping_CategoryId_Category_Id");
 
                 //entity.HasOne(d => d.Product)
                 //    .WithMany(p => p.ProductCategoryMappings)

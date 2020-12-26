@@ -14,6 +14,6 @@ namespace DesiClothing4u.Common.Models
         public int DisplayOrder { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual Product Product { get; set; }
+        //public virtual Product Product { get; set; }
     }
 }
