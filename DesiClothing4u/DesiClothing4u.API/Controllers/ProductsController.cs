@@ -46,8 +46,8 @@ namespace DesiClothing4u.API.Controllers
             return product;
         }
         
-        [HttpGet("GetCatergories")]
-        public IEnumerable<ProductCategory> GetCatergories()
+        [HttpGet("GetCategories")]
+        public IEnumerable<ProductCategory> GetCategories()
         {
             try
             {

@@ -38,6 +38,11 @@ namespace DesiClothing4u.UI.Controllers
         {
             try
             {
+                if (collection["CardNumber"] != "6292400011276686")
+                {
+                    ViewBag.Message = "Payment rejected with Credit Card No. you supplied";
+                    return View("Payment");
+                }
                 string ODate = collection["CardExpiration"];
                 int TotalAmount = 0;
                 Random rnd = new Random();
@@ -90,7 +95,7 @@ namespace DesiClothing4u.UI.Controllers
                     var value = HttpContext.Session.GetString("cart");
                     List<Cart> li = JsonConvert.DeserializeObject<List<Cart>>(value);
                     int i = li.Count();
-                    for (var j = 0; j <= i; j++)
+                    for (var j = 0; j <= i-1; j++)
                     {
                         var price = li[j].Price;
                         var name = li[j].Name;
@@ -126,12 +131,14 @@ namespace DesiClothing4u.UI.Controllers
                     /*collection["exampleInputEmail1"]*/
 
                    
-                } 
-                return RedirectToAction(nameof(Index));
+                }
+                ViewBag.Message = "You order has been placed. You will get confirmation email soon";
+                return View("Payment");
             }
             catch (Exception e)
             {
-                return View();
+                ViewBag.Message = "Error occured during transaction! Please try again";
+                return View("Payment");
             }
         }
 

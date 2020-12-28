@@ -1450,3 +1450,4 @@ F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\De
 F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\DesiClothing4u.UI.dll
 F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\DesiClothing4u.UI.pdb
 F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\DesiClothing4u.UI.genruntimeconfig.cache
+F:\Mars\FreelanceWork\DesiClothingNewAgain - Copy\desiclothing\DesiClothing4u\DesiClothing4u.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Payment.cshtml.g.cs
