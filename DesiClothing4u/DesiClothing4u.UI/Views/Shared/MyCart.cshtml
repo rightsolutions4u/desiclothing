@@ -38,17 +38,11 @@
             <header>
                 <div class="row">
                     <div class="col-md-3 top-info text-left mt-lg-4">
-                        <h6>Need Help</h6>
-                        <ul>
-                            <li>
-                                <i class="fas fa-phone"></i> Call
-                            </li>
-                            <li class="number-phone mt-3">12345678099</li>
-                        </ul>
+                        <h6>&nbsp;</h6>
                     </div>
                     <div class="col-md-6 logo-w3layouts text-center">
                         <h1 class="logo-w3layouts">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                                 Desi Clothing
                             </a>
                         </h1>
@@ -64,13 +58,13 @@
                             @* Below commented by SM on Dec 3, 2020 and added another cart *@
                             <li class="galssescart galssescart2 cart cart box_1">
                                 @*<form action="#" method="post" class="last">
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
-                                    <button class="top_googles_cart" type="submit" name="submit" value="">
-                                        My Cart
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </button>
-                                </form>*@
+                        <input type="hidden" name="cmd" value="_cart">
+                        <input type="hidden" name="display" value="1">
+                        <button class="top_googles_cart" type="submit" name="submit" value="">
+                            My Cart
+                            <i class="fas fa-cart-arrow-down"></i>
+                        </button>
+                    </form>*@
                                 @*<i class="fa fa-shopping-cart" style="font-size:24px;color:black" aria-hidden="true" href="@Url.Action("MyCart", "Carts", new { CustId = ViewBag.UserName})">  My Cart </button>*@
 
                                 <a class="fa fa-shopping-cart" style="font-size:20px;color:black" aria-hidden="true" href="@Url.Action("MyCart", "Carts", new { CustId = ViewBag.UserName})">My Cart </a>
@@ -112,8 +106,7 @@
                                 <div class="login p-5 bg-dark mx-auto mw-100">
                                     @*<form action="~/Vendor/CheckVendorLogin" id="frmLogin" method="post">*@
                                     <div class="form-check mb-2">
-                                        <input type="checkbox" class="form-check-input" id="loginasvendor">
-                                        <label class="form-check-label" for="loginasvendor">Login as Vendor</label>
+                                        <label class="form-check-label" for="loginasvendor">Please login before Checkout</label>
                                     </div>
                                     <div class="form-group">
                                         <label class="mb-2">Email address</label>
@@ -458,10 +451,10 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
+@*                            <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
                             </li>
-                            <li class="nav-item">
+*@                            <li class="nav-item">
                                 <a class="nav-link" href="#signupform" data-toggle="modal" data-dismiss="modal">Signup Here</a>
                             </li>
 
@@ -559,7 +552,7 @@
                             <div class="form-group">
                                 <h2><span>Your Cart </span></h2>
                             </div>
-                           
+
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -576,7 +569,7 @@
 
                                         sum = Convert.ToInt32(@item.Price) + sum;
                                         count = count + 1;
-                                     
+
                                         <tr>
                                             <td>@item.Id</td>
                                             <td>@item.Name</td>
@@ -599,11 +592,31 @@
                                             @*<input type="hidden" id="bodyval" value="@body" />*@
                                         </td>
                                     </tr>
-                                   
+
                                 </tbody>
                             </table>
 
-                            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Home")'"> Continue Shopping >></button>   <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Check out")'"> Check Out >></button>
+                            @*<button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Home")'"> Continue Shopping >></button>   <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Check out")'"> Check Out >></button>*@
+                            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Home")'"> Continue Shopping >></button>   
+                            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("CheckOut", "Carts")'"> Check Out >></button>
+                            @*<button type="button" class="btn btn-success" onclick="checkUserLogin();"> Check Out >></button>*@
+                            <script>
+                                function checkUserLogin() {
+                                    alert('call checkuserlogin');
+                                    $.ajax({
+                                         @*url: "@Url.Action("CheckCustomerCookie", "Home")"*@
+                                         url: "@Url.Action("CheckOut", "Carts")"
+                                              , success: function (result) {
+                                                  @*alert("Customer already logged In");*@
+
+                                           }
+                                            , error: function (result) {
+                                                alert("err " + result.responseText);
+                                            }
+                                        })
+
+                                }
+                            </script>
                         </div>
 
                         @*<div class="mid_divider"></div>*@

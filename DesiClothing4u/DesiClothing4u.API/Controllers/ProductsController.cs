@@ -268,12 +268,19 @@ namespace DesiClothing4u.API.Controllers
         [HttpGet("GetFeatuedProducts")]
         public async Task<ActionResult<IEnumerable<Product>>> GetFeatuedProducts()
         {
-            var product = await _context.Products.OrderByDescending(a => a.MarkAsNew == true
-                            )
-                            .Include(a => a.ProductPictureMappings)
-                            .ThenInclude(f => f.Picture).Take(8)
-                             .ToListAsync();
-            return product;
+            try
+            {
+                var product = await _context.Products.OrderByDescending(a => a.MarkAsNew == true
+                                )
+                                .Include(a => a.ProductPictureMappings)
+                                .ThenInclude(f => f.Picture).Take(8)
+                                 .ToListAsync();
+                return product;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
         // GET: api/Products
         [HttpGet("GetNewProducts")]

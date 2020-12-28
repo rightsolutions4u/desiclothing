@@ -72,7 +72,27 @@ namespace DesiClothing4u.UI.Controllers
             }
             return View("Index", load);
         }
+        public async Task<ActionResult<Customer>> CheckCustomerCookie()
+        {
+            Customer cutomer = new Customer();
+            var client = new HttpClient();
 
+            //Customers
+            if (Request.Cookies["userid"] != null)
+            {
+                var clientC = new HttpClient();
+                UriBuilder builderC = new UriBuilder("https://localhost:44356/api/Customers/LoginID?");
+                builderC.Query = "UserId=" + Request.Cookies["userid"];
+                HttpResponseMessage responseC = await clientC.GetAsync(builderC.Uri);
+                if (responseC.IsSuccessStatusCode)
+                {
+                    var Users = responseC.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<Customer>(Users);
+                }
+            }
+            return null;
+            
+        }
         //By SM on Nov 12, 2020, remove Index1 action controller
         public async Task<ActionResult> Index()
         {

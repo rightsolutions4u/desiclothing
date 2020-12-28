@@ -178,5 +178,65 @@ namespace DesiClothing4u.UI.Controllers
                 return View();
             }
         }
+
+        public async Task<ActionResult> CheckOut(string CustId)
+        {
+            if (HttpContext.Session.GetString("cart") != null)
+            {
+                var value = HttpContext.Session.GetString("cart");
+                List<Cart> li = JsonConvert.DeserializeObject<List<Cart>>(value);
+                return View("checkout", li);
+            }
+            if (CustId != null)
+            {
+                //if session["cart"] is empty    
+                Cart cart = new Cart();
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Clear();
+                //Define request data format  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //Sending request to find web api REST service resource DeleteCart using HttpClient  
+                UriBuilder builder = new UriBuilder("https://localhost:44363/api/Carts/GetCartofBuyer?");
+                builder.Query = "CustId=" + CustId;
+                HttpResponseMessage Res = await client.GetAsync(builder.Uri);
+                if (Res.IsSuccessStatusCode)
+                {
+                    var cart1 = Res.Content.ReadAsStringAsync().Result;
+                    //Deserializing the response recieved from web api and storing into the cart list
+                    Cart[] c = JsonConvert.DeserializeObject<Cart[]>(cart1);
+                    ViewBag.Cart = c;
+
+                    if (HttpContext.Session.GetString("cart") != null)
+                    {
+                        var value = HttpContext.Session.GetString("cart");
+                        List<Cart> li = JsonConvert.DeserializeObject<List<Cart>>(value);
+                        return View("checkout", li);
+                    }
+                    else
+                    {
+                        List<Cart> li = new List<Cart>(c);
+                        HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(li));
+                        return View("checkout", li);
+                    }
+                }//if not successful
+                else
+                {
+                    Error err = new Error();
+                    err.ErrorMessage = "Sorry there are no items in your cart  " + CustId;
+                    ViewBag.Error = err;
+                    ViewBag.Cart = null;
+                    return View("Error", err);
+                }
+            }
+            else //if customer not logged in
+            {
+                Error err = new Error();
+                err.ErrorMessage = "Sorry there are no items in your cart  ";
+                ViewBag.Error = err;
+                ViewBag.Cart = null;
+                return View("Error", err);
+            }
+           /* return View("checkout");*/
+        }
     }
 }

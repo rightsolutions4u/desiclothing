@@ -94,17 +94,11 @@
         <header>
             <div class="row">
                 <div class="col-md-3 top-info text-left mt-lg-4">
-                    <h6>Need Help</h6>
-                    <ul>
-                        <li>
-                            <i class="fas fa-phone"></i> Call
-                        </li>
-                        <li class="number-phone mt-3">12345678099</li>
-                    </ul>
+                    <h6>&nbsp;</h6>
                 </div>
                 <div class="col-md-6 logo-w3layouts text-center">
                     <h1 class="logo-w3layouts">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                             Desi Clothing
                         </a>
                     </h1>
@@ -364,10 +358,10 @@
 
 
                         </li>
-                        <li class="nav-item active">
+@*                        <li class="nav-item active">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-
+*@
                     </ul>
 
                 </div>
@@ -612,11 +606,6 @@
                                                 <select class="form-control" name="CategoryId" id="CategoryId" onchange="populateCategory()">
                                                   
                                                         <option value="x">Select Category</option>";
-
-
-                                                        @*<option value="3">Men -- Clothing</option>
-            <option value="6">Women                         -- Clothing -- Kurti</option>
-            <option value="10">Kids                         -- Boys -- TShirts</option>*@
                                                     </select>
                                                     <script>
                                                         function populateCategory() {

@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\smali\\DesiClothing\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj": {}
+    "F:\\Mars\\FreelanceWork\\DesiClothingNewAgain - Copy\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\smali\\DesiClothing\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj": {
+    "F:\\Mars\\FreelanceWork\\DesiClothingNewAgain - Copy\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\smali\\DesiClothing\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj",
+        "projectUniqueName": "F:\\Mars\\FreelanceWork\\DesiClothingNewAgain - Copy\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj",
         "projectName": "DesiClothing4u.Common",
-        "projectPath": "C:\\Users\\smali\\DesiClothing\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj",
-        "packagesPath": "C:\\Users\\smali\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\smali\\DesiClothing\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\obj\\",
+        "projectPath": "F:\\Mars\\FreelanceWork\\DesiClothingNewAgain - Copy\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\DesiClothing4u.Common.csproj",
+        "packagesPath": "C:\\Users\\mars\\.nuget\\packages\\",
+        "outputPath": "F:\\Mars\\FreelanceWork\\DesiClothingNewAgain - Copy\\desiclothing\\DesiClothing4u\\DesiClothing4u.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\smali\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\mars\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -29,7 +31,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -41,7 +42,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Grid.Mvc": {
               "target": "Package",
@@ -74,12 +74,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -88,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
